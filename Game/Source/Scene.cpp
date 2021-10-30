@@ -34,7 +34,7 @@ bool Scene::Awake(pugi::xml_node& config)
 bool Scene::Start()
 {
 	
-	app->audio->PlayMusic("Assets/audio/music/music_spy.ogg");
+	app->audio->PlayMusic("Assets/audio/music/GamePlaySEGASonic.ogg");
 	background = app->tex->Load("Assets/maps/background.png");
 
 	app->map->Enable();
@@ -83,7 +83,7 @@ bool Scene::Update(float dt)
 				   app->map->mapData.tileWidth, app->map->mapData.tileHeight,
 				   app->map->mapData.tilesets.count());
 
-	app->win->SetTitle(title.GetString());
+	app->win->SetTitle("Platform Game - LEVEL 1");
 
 	app->render->DrawTexture(background, 0, 0, NULL, 0.75f);
 	app->map->Draw();
