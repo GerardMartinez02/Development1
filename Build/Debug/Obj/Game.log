@@ -1,16 +1,2 @@
-<<<<<<< HEAD
-﻿  Scene.cpp
-  Game.vcxproj -> C:\Users\gerardmg\Desktop\VideogameDevelopment1\Build\Debug\Game.exe
-=======
-﻿  ModulePhysics.cpp
-C:\Users\albertrc9\Documents\GitHub\VideogameDevelopment1\Game\Source\ModulePhysics.cpp(139,21): warning C4018: '<': no coinciden signed/unsigned
-C:\Users\albertrc9\Documents\GitHub\VideogameDevelopment1\Game\Source\ModulePhysics.cpp(182,23): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\albertrc9\Documents\GitHub\VideogameDevelopment1\Game\Source\ModulePhysics.cpp(183,25): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\albertrc9\Documents\GitHub\VideogameDevelopment1\Game\Source\ModulePhysics.cpp(207,23): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\albertrc9\Documents\GitHub\VideogameDevelopment1\Game\Source\ModulePhysics.cpp(208,25): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\albertrc9\Documents\GitHub\VideogameDevelopment1\Game\Source\ModulePhysics.cpp(265,21): warning C4018: '<': no coinciden signed/unsigned
-C:\Users\albertrc9\Documents\GitHub\VideogameDevelopment1\Game\Source\ModulePhysics.cpp(436,13): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\albertrc9\Documents\GitHub\VideogameDevelopment1\Game\Source\ModulePhysics.cpp(437,13): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\albertrc9\Documents\GitHub\VideogameDevelopment1\Game\Source\ModulePhysics.cpp(443,27): warning C4244: 'return': conversión de 'float32' a 'int'; posible pérdida de datos
-  Game.vcxproj -> C:\Users\albertrc9\Documents\GitHub\VideogameDevelopment1\Build\Debug\Game.exe
->>>>>>> 870888b06382571e706947fc643e6dec558c7b7f
+﻿  Render.cpp
+  Game.vcxproj -> C:\Users\user\Desktop\UNI\2n\Desenvolupament de Videojocs\Development1\Build\Debug\Game.exe
