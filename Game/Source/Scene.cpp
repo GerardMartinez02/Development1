@@ -6,7 +6,9 @@
 #include "Window.h"
 #include "Scene.h"
 #include "Map.h"
-
+#include "ModulePhysics.h"
+#include "ModulePlayer.h"
+#include "ModuleFadeToBlack.h"
 #include "Defs.h"
 #include "Log.h"
 
@@ -20,23 +22,26 @@ Scene::~Scene()
 {}
 
 // Called before render is available
-bool Scene::Awake()
+bool Scene::Awake(pugi::xml_node& config)
 {
 	LOG("Loading Scene");
 	bool ret = true;
-
+	
 	return ret;
 }
 
 // Called before the first frame
 bool Scene::Start()
 {
+	
+	app->audio->PlayMusic("Assets/audio/music/music_spy.ogg");
+	background = app->tex->Load("Assets/maps/background.png");
+
+	app->map->Enable();
 	// L03: DONE: Load map
 	app->map->Load("SonicMap.tmx");
 	
-	// Load music
-	app->audio->PlayMusic("Assets/audio/music/music_spy.ogg");
-
+	
 	return true;
 }
 
@@ -71,7 +76,6 @@ bool Scene::Update(float dt)
 	//app->render->DrawTexture(img, 380, 100); // Placeholder not needed any more
 
 	// Draw map
-	app->map->Draw();
 
 	// L03: DONE 7: Set the window title with map/tileset info
 	SString title("Map:%dx%d Tiles:%dx%d Tilesets:%d",
@@ -80,6 +84,9 @@ bool Scene::Update(float dt)
 				   app->map->mapData.tilesets.count());
 
 	app->win->SetTitle(title.GetString());
+
+	app->render->DrawTexture(background, 0, 0, NULL, 0.75f);
+	app->map->Draw();
 
 	return true;
 }
@@ -99,6 +106,9 @@ bool Scene::PostUpdate()
 bool Scene::CleanUp()
 {
 	LOG("Freeing scene");
+
+	app->tex->UnLoad(background);
+	app->map->Disable();
 
 	return true;
 }

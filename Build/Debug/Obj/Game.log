@@ -1,1 +1,4 @@
-﻿  Game.vcxproj -> C:\GitHub\Development1\Build\Debug\Game.exe
+﻿  Scene.cpp
+C:\GitHub\Development1\Game\Source\Animation.h(54,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
+C:\GitHub\Development1\Game\Source\Animation.h(56,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  Game.vcxproj -> C:\GitHub\Development1\Build\Debug\Game.exe
