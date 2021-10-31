@@ -33,7 +33,11 @@ bool Scene::Awake(pugi::xml_node& config)
 // Called before the first frame
 bool Scene::Start()
 {
-	
+	app->render->camera.w = 0;
+	app->render->camera.h = 0;
+	app->render->camera.x = -600;
+	app->render->camera.y = -1200;
+
 	app->audio->PlayMusic("Assets/audio/music/GamePlaySEGASonic.ogg");
 	background = app->tex->Load("Assets/maps/background.png");
 

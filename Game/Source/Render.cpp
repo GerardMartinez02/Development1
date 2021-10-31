@@ -43,10 +43,10 @@ bool Render::Awake(pugi::xml_node& config)
 	}
 	else
 	{
-		camera.w = app->win->screenSurface->w;
+		/*camera.w = app->win->screenSurface->w ;
 		camera.h = app->win->screenSurface->h;
 		camera.x = 0;
-		camera.y = 0;
+		camera.y = 0;*/
 	}
 
 	return ret;
@@ -117,7 +117,7 @@ void Render::SetBackgroundColor(SDL_Color color)
 
 void Render::SetViewPort(const SDL_Rect& rect)
 {
-	SDL_RenderSetViewport(renderer, &rect);
+	SDL_RenderSetViewport(renderer , &rect);
 }
 
 void Render::ResetViewPort()
