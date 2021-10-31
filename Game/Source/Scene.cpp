@@ -33,10 +33,10 @@ bool Scene::Awake(pugi::xml_node& config)
 // Called before the first frame
 bool Scene::Start()
 {
-	app->render->camera.w = 0;
-	app->render->camera.h = 0;
+	/*app->render->camera.w = 200;
+	app->render->camera.h = 200;
 	app->render->camera.x = -600;
-	app->render->camera.y = -1200;
+	app->render->camera.y = -1200;*/
 
 	app->audio->PlayMusic("Assets/audio/music/GamePlaySEGASonic.ogg");
 	background = app->tex->Load("Assets/maps/background.png");
@@ -89,7 +89,7 @@ bool Scene::Update(float dt)
 
 	app->win->SetTitle("Platform Game - LEVEL 1");
 
-	app->render->DrawTexture(background, 0, 0, NULL, 0.75f);
+	app->render->DrawTexture(background, -150, -400, NULL, 0.75f);
 	app->map->Draw();
 
 	return true;
