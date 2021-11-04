@@ -3,6 +3,7 @@
 #include "Render.h"
 #include "Textures.h"
 #include "Map.h"
+#include "ModulePhysics.h"
 
 #include "Defs.h"
 #include "Log.h"
@@ -119,9 +120,20 @@ iPoint Map::WorldToMap(int x, int y) const
 	iPoint ret(0, 0);
 
 	// L05: TODO 2: Add orthographic world to map coordinates
+	iPoint ret(0, 0);
 
-	// L05: TODO 3: Add the case for isometric maps to WorldToMap
+	if (mapData.type == MAPTYPE_ORTHOGONAL)
+	{
+		x = ret.x / mapData.tileWidth;
+		y = ret.y / mapData.tileHeight;
+	}
 
+	// L05: TODO_D 3: Add the case for isometric maps to WorldToMap
+	if (mapData.type == MAPTYPE_ISOMETRIC)
+	{
+		y = (ret.y - ret.x) / (2 * (mapData.tileHeight * 0.5f));
+		x = (ret.x + (ret.y - ret.x) / (2 * (mapData.tileHeight * 0.5f)) * (mapData.tileWidth * 0.5f)) / (mapData.tileWidth * 0.5f);
+	}
 
 	return ret;
 }
@@ -449,3 +461,4 @@ bool Map::LoadProperties(pugi::xml_node& node, Properties& properties)
 	
 	return ret;
 }
+

@@ -122,7 +122,9 @@ public:
 
     // Called each loop iteration
     void Draw();
-
+	void DrawColliders();
+	void LoadColliders();
+	
     // Called before quitting
     bool CleanUp();
 
@@ -160,6 +162,7 @@ public:
 
 private:
 
+	List<PhysBody*> Collisions;
     SString folder;
     bool mapLoaded;
 };

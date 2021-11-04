@@ -63,8 +63,6 @@ private:
 	b2World* world;
 	b2Body* body_clicked;
 	b2Body* ground;
-	b2RevoluteJoint* l_stick;
-	b2RevoluteJoint* r_stick;
 	b2DistanceJoint* BouncerJoint;
 }; 
 #pragma once
