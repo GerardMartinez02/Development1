@@ -120,8 +120,6 @@ iPoint Map::WorldToMap(int x, int y) const
 	iPoint ret(0, 0);
 
 	// L05: TODO 2: Add orthographic world to map coordinates
-	iPoint ret(0, 0);
-
 	if (mapData.type == MAPTYPE_ORTHOGONAL)
 	{
 		x = ret.x / mapData.tileWidth;

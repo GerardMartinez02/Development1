@@ -8,6 +8,7 @@
 #include "Map.h"
 #include "ModuleFadeToBlack.h"
 #include "ModulePlayer.h"
+#include "SceneIntro.h"
 
 #include "Defs.h"
 #include "Log.h"
@@ -27,10 +28,12 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	render = new Render();
 	tex = new Textures();
 	audio = new Audio();
+	fadeToBlack = new ModuleFadeToBlack();
+	sceneIntro = new SceneIntro();
 	scene = new Scene();
 	map = new Map();
 	
-	fade = new ModuleFadeToBlack();
+	
 	player = new ModulePlayer();
 
 	// Ordered for awake / Start / Update
@@ -39,9 +42,11 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(input);
 	AddModule(tex);
 	AddModule(audio);
+	AddModule(fadeToBlack);
+	AddModule(sceneIntro);
 	AddModule(scene);
 	AddModule(map);
-	AddModule(fade);
+	
 	
 	AddModule(player);
 

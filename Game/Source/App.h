@@ -20,6 +20,7 @@ class Map;
 class ModuleFadeToBlack;
 class ModulePhysics;
 class ModulePlayer;
+class SceneIntro;
 
 class App
 {
@@ -91,9 +92,10 @@ public:
 	Audio* audio;
 	Scene* scene;
 	Map* map;
-	ModuleFadeToBlack* fade;
+	ModuleFadeToBlack* fadeToBlack;
 	ModulePhysics* physics;
 	ModulePlayer* player;
+	SceneIntro* sceneIntro;
 	
 
 private:
