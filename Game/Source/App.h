@@ -79,8 +79,8 @@ private:
 	bool PostUpdate();
 
 	// Load / Save
-	bool LoadGame();
-	bool SaveGame() const;
+	bool LoadFile();
+	bool SaveFile() const;
 
 public:
 
@@ -109,9 +109,10 @@ private:
 
 	// L01: DONE 2: Create new variables from pugui namespace
 	// NOTE: Redesigned LoadConfig() to avoid storing this variables
-	//pugi::xml_document configFile;
-	//pugi::xml_node config;
-	//pugi::xml_node configApp;
+	pugi::xml_document configFile;
+	pugi::xml_document gameStateFile;
+	pugi::xml_node config;
+	pugi::xml_node configApp;
 
 	uint frames;
 	float dt;
