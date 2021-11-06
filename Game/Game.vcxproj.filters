@@ -25,6 +25,7 @@
     <ClCompile Include="Source\ModulePhysics.cpp">
       <Filter>Physics</Filter>
     </ClCompile>
+    <ClCompile Include="Source\SceneIntro.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Window.h" />
@@ -72,6 +73,7 @@
     <ClInclude Include="Source\ModulePhysics.h">
       <Filter>Physics</Filter>
     </ClInclude>
+    <ClInclude Include="Source\SceneIntro.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="External">
