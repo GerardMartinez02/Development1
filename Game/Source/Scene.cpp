@@ -44,6 +44,9 @@ bool Scene::Start()
 	app->map->Enable();
 	// L03: DONE: Load map
 	app->map->Load("SonicMap.tmx");
+
+	app->render->camera.x = app->map->MapToWorld(0, -15).x;
+	app->render->camera.y = app->map->MapToWorld(0, -15).y;
 	
 	
 	return true;
