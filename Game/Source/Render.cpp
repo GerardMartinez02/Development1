@@ -43,10 +43,10 @@ bool Render::Awake(pugi::xml_node& config)
 	}
 	else
 	{
-		app->render->viewport.w = 300;
-		app->render->viewport.h = 300;
-		app->render->camera.x = -600;
-		app->render->camera.y = -1200;
+		camera.w = app->win->screenSurface->w;
+		camera.h = app->win->screenSurface->h;
+		camera.x = 0;
+		camera.y = 0;
 	}
 
 	return ret;

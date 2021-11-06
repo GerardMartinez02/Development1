@@ -10,18 +10,20 @@
 #include "Scene.h"
 #include <stdio.h>
 #include <time.h>
+#include "ModulePhysics.h"
 
 
 
 
-ModulePlayer::ModulePlayer()
+ModulePlayer::ModulePlayer() : Module()
 {
+	//idleAnim
 	idleAnim.PushBack({ 0, 1, 31, 35 });
 	idleAnim.PushBack({ 138, 1, 31, 37 });
 	idleAnim.loop = true;
 	idleAnim.speed = 0.008f;
 
-
+	//rightAnim
 	leftAnim.PushBack({ 1, 40, 31, 34 });
 	leftAnim.PushBack({ 32, 40, 31, 34 });
 	leftAnim.PushBack({ 64, 40, 31, 34 });
@@ -32,7 +34,7 @@ ModulePlayer::ModulePlayer()
 	leftAnim.speed = 0.1f;
 
 
-
+	//leftAnim
 	rightAnim.PushBack({ 1, 80, 31, 34 });
 	rightAnim.PushBack({ 32, 80, 31, 34 });
 	rightAnim.PushBack({ 64, 80, 31, 34 });
@@ -48,7 +50,7 @@ ModulePlayer::~ModulePlayer()
 
 }
 
-bool ModulePlayer::Awake()
+bool ModulePlayer::Awake(pugi::xml_node&)
 {
 	return true;
 }
@@ -59,26 +61,45 @@ bool ModulePlayer::Start()
 
 	bool ret = true;
 
-	texture = app->tex->Load("Assets/playerSprites.png");
+	texture = app->tex->Load("Assets/textures/playerSprites.png");
 	currentAnimation = &idleAnim;
 
-	laserFx = app->audio->LoadFx("Assets/Fx/laser.wav");
-	explosionFx = app->audio->LoadFx("Assets/Fx/explosion.wav");
-
-	position.x = 830;
-	position.y = 180;
+	//Per fer atacs
+	//laserFx = app->audio->LoadFx("Assets/Fx/laser.wav");
+	//explosionFx = app->audio->LoadFx("Assets/Fx/explosion.wav");
 
 	destroyed = false;
 
+	position.x = 0;
+	position.y = 0;
 
-	// TODO 0: Notice how a font is loaded and the meaning of all its arguments 
-	//char lookupTable[] = { "!  ,_./0123456789$;<&?abcdefghijklmnopqrstuvwxyz" };
-	//scoreFont = app->fonts->Load("Assets/Fonts/rtype_font.png", "! @,_./0123456789$;<&?abcdefghijklmnopqrstuvwxyz", 1);
+	//Box2D
 
-	// TODO 4: Try loading "rtype_font3.png" that has two rows to test if all calculations are correct
-	char lookupTable[] = { "! @,_./0123456789$;< ?abcdefghijklmnopqrstuvwxyz" };
-	//scoreFont = app->fonts->Load("Assets/Fonts/rtype_font3.png", lookupTable, 2);
-	//srand(time(NULL));
+	b2BodyDef body;
+	body.type = b2_dynamicBody;
+	body.position.Set(PIXEL_TO_METERS(position.x), PIXEL_TO_METERS(position.y));
+	body.fixedRotation = true;
+
+	b = app->physics->world->CreateBody(&body);
+
+	pCircle.m_radius = PIXEL_TO_METERS(14);
+
+	b2FixtureDef fixture;
+	fixture.shape = &pCircle;
+	fixture.density = 2.0f;
+	fixture.friction = 100.0f;
+
+	b->CreateFixture(&fixture);
+
+	pbody = new PhysBody();
+	pbody->body = b;
+	b->SetUserData(pbody);
+	pbody->width = pbody->height = pCircle.m_radius;
+	pbody->listener = this;
+
+	//-----
+
+	jump = false;
 
 	uint winWidth, winHeight;
 
@@ -90,21 +111,10 @@ bool ModulePlayer::Start()
 bool ModulePlayer::Update(float dt)
 {
 	
-	if (app->input->GetKey(SDL_SCANCODE_A) == KeyState::KEY_REPEAT)
+	// L10: DONE: Implement gamepad support
+	if (app->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT)
 	{
-		position.x -= speed;
-		app->render->camera.x -= 3;
-		if (currentAnimation != &rightAnim)
-		{
-			rightAnim.Reset();
-			currentAnimation = &rightAnim;
-		}
-	}
-
-	if (app->input->GetKey(SDL_SCANCODE_D) == KeyState::KEY_REPEAT)
-	{
-		position.x += speed;
-		app->render->camera.x += 3;
+		if (pbody->body->GetLinearVelocity().x >= -2) pbody->body->ApplyLinearImpulse({ -1.0f,0 }, { 0,0 }, true);
 		if (currentAnimation != &leftAnim)
 		{
 			leftAnim.Reset();
@@ -112,15 +122,41 @@ bool ModulePlayer::Update(float dt)
 		}
 	}
 
-	// If no up/down movement detected, set the current animation back to idle
-	if (
-		app->input->GetKey(SDL_SCANCODE_A) == KeyState::KEY_IDLE
-		&& app->input->GetKey(SDL_SCANCODE_D) == KeyState::KEY_IDLE)
+	if (app->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT)
 	{
-		currentAnimation = &idleAnim;
+		if (pbody->body->GetLinearVelocity().x <= +2) pbody->body->ApplyLinearImpulse({ 1.0f,0 }, { 0,0 }, true);
+		if (currentAnimation != &rightAnim)
+		{
+			rightAnim.Reset();
+			currentAnimation = &rightAnim;
+		}
+	}
+
+	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN)
+	{
+		pbody->body->ApplyLinearImpulse({ 0,-2 }, { 0,0 }, true);
+	}
+
+	
+	if (app->input->GetKey(SDL_SCANCODE_A) == KEY_IDLE && app->input->GetKey(SDL_SCANCODE_D) == KEY_IDLE && app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_IDLE)
+	{
+		if (currentAnimation == &rightAnim)
+		{
+			currentAnimation = &idleAnim;
+		}
+
+		//Idle anim left
+		
+		if (currentAnimation == &leftAnim)
+		{
+			currentAnimation = &idleAnim;
+		}
+		
 	}
 
 	currentAnimation->Update();
+
+	pbody->GetPosition(position.x, position.y);
 
 	return true;
 }
@@ -129,7 +165,7 @@ bool ModulePlayer::PostUpdate()
 {
 	if (!destroyed)
 	{
-		
+
 	}
 
 	SDL_Rect rect = currentAnimation->GetCurrentFrame();

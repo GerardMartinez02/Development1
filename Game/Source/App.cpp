@@ -15,8 +15,7 @@
 
 #include <iostream>
 #include <sstream>
-
-//#include "ModulePhysics.h"
+#include "ModulePhysics.h"
 
 // Constructor
 App::App(int argc, char* args[]) : argc(argc), args(args)
@@ -29,9 +28,10 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	tex = new Textures();
 	audio = new Audio();
 	fadeToBlack = new ModuleFadeToBlack();
-	sceneIntro = new SceneIntro();
+	//sceneIntro = new SceneIntro();
 	scene = new Scene();
 	map = new Map();
+	physics = new ModulePhysics();
 	
 	
 	player = new ModulePlayer();
@@ -39,11 +39,12 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	// Ordered for awake / Start / Update
 	// Reverse order of CleanUp
 	AddModule(win);
+	AddModule(physics);
 	AddModule(input);
 	AddModule(tex);
 	AddModule(audio);
 	AddModule(fadeToBlack);
-	AddModule(sceneIntro);
+	//AddModule(sceneIntro);
 	AddModule(scene);
 	AddModule(map);
 	

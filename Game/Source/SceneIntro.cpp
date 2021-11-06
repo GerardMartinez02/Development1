@@ -1,3 +1,5 @@
+/*
+
 #include "App.h"
 #include "Input.h"
 #include "Textures.h"
@@ -86,6 +88,6 @@ bool SceneIntro::CleanUp()
 	app->tex->UnLoad(startButton);
 	return true;
 }
-
+*/
 
 

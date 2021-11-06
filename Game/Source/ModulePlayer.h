@@ -4,6 +4,8 @@
 #include "Module.h"
 #include "Animation.h"
 #include "Point.h"
+#include "Box2D/Box2D/Box2D.h"
+#include "ModuleFadeToBlack.h"
 
 struct SDL_Texture;
 struct Collider;
@@ -18,16 +20,19 @@ public:
 	~ModulePlayer();
 
 	// Called before render is available
-	bool Awake();
+	bool Awake(pugi::xml_node&);
 
 	// Called before the first frame
-	bool Start();
+	bool Start() override;
 
 	// Called each loop iteration
-	bool Update(float dt);
+	bool Update(float dt) override;
 
 	// Called before all Updates
-	bool PostUpdate();
+	bool PostUpdate() override;
+
+	bool loadState(pugi::xml_node&);
+	bool saveState(pugi::xml_node&) const;
 
 	// Called before quitting
 	bool CleanUp();
@@ -40,10 +45,17 @@ public:
 	iPoint position;
 
 	// The speed in which we move the player (pixels per frame)
+	PhysBody* pbody;
+	b2Body* b;
+
+	b2CircleShape pCircle;
+
 	int speed = 1;
+	bool jump;
+	bool doubleJump;
 
 	// The player spritesheet loaded into an SDL_Texture
-	SDL_Texture* texture = nullptr;
+	SDL_Texture* texture;
 	
 	// The pointer to the current player animation
 	// It will be switched depending on the player's movement direction
@@ -54,8 +66,10 @@ public:
 	Animation leftAnim;
 	Animation rightAnim;
 
+	int currentScene;
+	
 	// The player's collider
-	Collider* collider = nullptr;
+	
 
 	// A flag to detect when the player has been destroyed
 	bool destroyed = false;
@@ -69,8 +83,13 @@ public:
 	int scoreFont = -1;
 	char scoreText[10] = { "\0" };
 
-	//Margin of movement
 	int horizontalMargin = 45;
+
+	//Margin of movement
+
+	bool debugMode;
+	bool horizonalCamera;
+	bool verticalCamera;
 
 };
 

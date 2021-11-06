@@ -20,7 +20,7 @@ class Map;
 class ModuleFadeToBlack;
 class ModulePhysics;
 class ModulePlayer;
-class SceneIntro;
+//class SceneIntro;
 
 class App
 {
@@ -95,7 +95,7 @@ public:
 	ModuleFadeToBlack* fadeToBlack;
 	ModulePhysics* physics;
 	ModulePlayer* player;
-	SceneIntro* sceneIntro;
+	//SceneIntro* sceneIntro;
 	
 
 private:

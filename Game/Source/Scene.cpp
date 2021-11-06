@@ -41,6 +41,9 @@ bool Scene::Start()
 	app->audio->PlayMusic("Assets/audio/music/GamePlaySEGASonic.ogg");
 	background = app->tex->Load("Assets/maps/background.png");
 
+	app->render->camera.x = app->map->MapToWorld(0, 200).x;
+	app->render->camera.y = app->map->MapToWorld(0, 600).y;
+
 	app->map->Enable();
 	// L03: DONE: Load map
 	app->map->Load("SonicMap.tmx");
@@ -58,6 +61,8 @@ bool Scene::PreUpdate()
 // Called each loop iteration
 bool Scene::Update(float dt)
 {
+	if (app->player->horizonalCamera == false) app->render->camera.x = -(app->player->pbody->body->GetPosition().x * 100) + 630;
+
     // L02: DONE 3: Request Load / Save when pressing L/S
 	if(app->input->GetKey(SDL_SCANCODE_L) == KEY_DOWN)
 		app->LoadGameRequest();
@@ -66,16 +71,16 @@ bool Scene::Update(float dt)
 		app->SaveGameRequest();
 
 	if(app->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT)
-		app->render->camera.y -= 1;
+		app->render->camera.y -= 4;
 
 	if(app->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
-		app->render->camera.y += 1;
+		app->render->camera.y += 4;
 
 	if(app->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT)
-		app->render->camera.x -= 1;
+		app->render->camera.x -= 4;
 
 	if(app->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
-		app->render->camera.x += 1;
+		app->render->camera.x += 4;
 
 	//app->render->DrawTexture(img, 380, 100); // Placeholder not needed any more
 

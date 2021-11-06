@@ -43,7 +43,7 @@ public:
 	bool PostUpdate();
 	bool CleanUp();
 
-	PhysBody* CreateCircle(int x, int y, int radius);
+	PhysBody* CreateCircle(int x, int y, int radius, int dynamicBody);
 	PhysBody* CreateStaticCircle(int x, int y, int radius);
 	PhysBody* CreateRectangle(int x, int y, int width, int height);
 	PhysBody* CreateBouncer(int x, int y, int width, int height);
@@ -57,10 +57,12 @@ public:
 	// b2ContactListener ---
 	void BeginContact(b2Contact* contact);
 
+	b2World* world;
+
 private:
 
 	bool debug;
-	b2World* world;
+	
 	b2Body* body_clicked;
 	b2Body* ground;
 	b2DistanceJoint* BouncerJoint;

@@ -1,50 +1,5 @@
-<<<<<<< HEAD
-﻿  Render.cpp
-  Game.vcxproj -> C:\Users\gerardmg\Desktop\Development1-main\Build\Debug\Game.exe
-=======
-﻿  Main.cpp
-  App.cpp
+﻿  Scene.cpp
 C:\GitHub\Development1\Game\Source\Animation.h(54,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
 C:\GitHub\Development1\Game\Source\Animation.h(56,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-  Audio.cpp
-  Input.cpp
-  Map.cpp
-C:\GitHub\Development1\Game\Source\Map.cpp(110,19): warning C4244: '=': conversion from 'float' to 'TYPE', possible loss of data
-          with
-          [
-              TYPE=int
-          ]
-C:\GitHub\Development1\Game\Source\Map.cpp(111,19): warning C4244: '=': conversion from 'float' to 'TYPE', possible loss of data
-          with
-          [
-              TYPE=int
-          ]
-C:\GitHub\Development1\Game\Source\Map.cpp(132,23): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\GitHub\Development1\Game\Source\Map.cpp(133,98): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-  ModuleFadeToBlack.cpp
-C:\GitHub\Development1\Game\Source\ModuleFadeToBlack.cpp(82,19): warning C4244: '=': conversion from 'float' to 'Uint32', possible loss of data
-  ModulePhysics.cpp
-C:\GitHub\Development1\Game\Source\ModulePhysics.cpp(139,21): warning C4018: '<': signed/unsigned mismatch
-C:\GitHub\Development1\Game\Source\ModulePhysics.cpp(182,23): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\GitHub\Development1\Game\Source\ModulePhysics.cpp(183,25): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\GitHub\Development1\Game\Source\ModulePhysics.cpp(207,23): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\GitHub\Development1\Game\Source\ModulePhysics.cpp(208,25): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\GitHub\Development1\Game\Source\ModulePhysics.cpp(265,21): warning C4018: '<': signed/unsigned mismatch
-C:\GitHub\Development1\Game\Source\ModulePhysics.cpp(436,13): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\GitHub\Development1\Game\Source\ModulePhysics.cpp(437,13): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\GitHub\Development1\Game\Source\ModulePhysics.cpp(443,27): warning C4244: 'return': conversion from 'float32' to 'int', possible loss of data
-  ModulePlayer.cpp
-C:\GitHub\Development1\Game\Source\Animation.h(54,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
-C:\GitHub\Development1\Game\Source\Animation.h(56,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-  Scene.cpp
-C:\GitHub\Development1\Game\Source\Animation.h(54,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
-C:\GitHub\Development1\Game\Source\Animation.h(56,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-  Render.cpp
-  SceneIntro.cpp
-C:\GitHub\Development1\Game\Source\Animation.h(54,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
-C:\GitHub\Development1\Game\Source\Animation.h(56,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-  Textures.cpp
-  Window.cpp
-  Generating Code...
+C:\GitHub\Development1\Game\Source\Scene.cpp(64,120): warning C4244: '=': conversion from 'float32' to 'int', possible loss of data
   Game.vcxproj -> C:\GitHub\Development1\Build\Debug\Game.exe
->>>>>>> 9c6b5952dacc53077a8c4b206fe49b6defa25bd4

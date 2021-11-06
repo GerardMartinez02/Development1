@@ -2,11 +2,7 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-<<<<<<< HEAD
-      <FullPath>C:\Users\gerardmg\Desktop\Development1-main\Build\Debug\Game.exe</FullPath>
-=======
       <FullPath>C:\GitHub\Development1\Build\Debug\Game.exe</FullPath>
->>>>>>> 9c6b5952dacc53077a8c4b206fe49b6defa25bd4
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />

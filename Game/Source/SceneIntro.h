@@ -1,8 +1,11 @@
+/*
+
 #ifndef __INTRO_H__
 #define __INTRO_H__
 
 #include "Module.h"
 #include "Animation.h"
+
 struct SDL_Texture;
 
 class SceneIntro : public Module
@@ -41,3 +44,4 @@ private:
 };
 
 #endif // __SCENE_H__
+*/
