@@ -1,24 +1,12 @@
 <?xml version="1.0"?>
+<!-- L02: TODO 4: Create a simulation xml file to read -->
 <game_state>
-	<window />
 	<input />
+	<window />
 	<textures />
-	<audio>
-		<music value="128" />
-		<fx value="128" />
-	</audio>
-	<:anonymous />
-	<:anonymous />
-	<map />
-	<player>
-		<pos x="33" y="673" />
-		<start value="2" />
-	</player>
-	<intro />
-	<death />
+	<audio />
 	<scene />
-	<scene />
-	<render>
-		<camera x="0" y="-1569" />
-	</render>
+	<renderer>
+		<camera x="0" y="0" />
+	</renderer>
 </game_state>

@@ -117,11 +117,10 @@ iPoint Map::MapToWorld(int x, int y) const
 
 iPoint Map::WorldToMap(int x, int y) const
 {
-	iPoint ret(0, 0);
+	iPoint ret;
 
 	// L05: TODO 2: Add orthographic world to map coordinates
-	iPoint ret(0, 0);
-
+	
 	if (mapData.type == MAPTYPE_ORTHOGONAL)
 	{
 		x = ret.x / mapData.tileWidth;
@@ -460,5 +459,53 @@ bool Map::LoadProperties(pugi::xml_node& node, Properties& properties)
 	}
 	
 	return ret;
+}
+
+void Map::LoadColliders() // Old version
+{
+	if (mapLoaded == false) return;
+
+	// L04: DONE 5: Prepare the loop to draw all tilesets + DrawTexture()
+	ListItem<MapLayer*>* mapLayerItem;
+	mapLayerItem = mapData.layers.start;
+
+	// L06: TODO 4: Make sure we draw all the layers and not just the first one
+	while (mapLayerItem != NULL)
+	{
+
+		if (mapLayerItem->data->properties.GetProperty("Draw") == 0)
+		{
+
+			for (int x = 0; x < mapLayerItem->data->width; x++)
+			{
+				for (int y = 0; y < mapLayerItem->data->height; y++)
+				{
+					// L04: DONE 9: Complete the draw function
+					int gid = mapLayerItem->data->Get(x, y);
+
+					if (gid > 0)
+					{
+
+						//L06: TODO 4: Obtain the tile set using GetTilesetFromTileId
+						//now we always use the firt tileset in the list
+						//TileSet* tileset = mapData.tilesets.start->data;
+						TileSet* tileset = GetTilesetFromTileId(gid);
+
+						SDL_Rect r = tileset->GetTileRect(gid);
+						iPoint pos = MapToWorld(x, y);
+
+						//app->render->DrawTexture(tileset->texture, pos.x, pos.y, &r);
+						if (mapLayerItem->data->properties.GetProperty("Navigation") == 1)
+						{
+							app->physics->CreateRectangle(pos.x + 8, pos.y + 8, 16, 16);
+						}
+					}
+
+				}
+			}
+		}
+
+		mapLayerItem = mapLayerItem->next;
+	}
 }
 
