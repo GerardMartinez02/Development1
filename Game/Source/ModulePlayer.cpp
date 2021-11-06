@@ -11,6 +11,7 @@
 #include <stdio.h>
 #include <time.h>
 #include "ModulePhysics.h"
+#include "Map.h"
 
 
 
@@ -70,8 +71,7 @@ bool ModulePlayer::Start()
 
 	destroyed = false;
 
-	position.x = 0;
-	position.y = 0;
+	//position = app->map->MapToWorld(61, 39);
 
 	//Box2D
 

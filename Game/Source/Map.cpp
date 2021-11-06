@@ -117,9 +117,15 @@ iPoint Map::MapToWorld(int x, int y) const
 
 iPoint Map::WorldToMap(int x, int y) const
 {
-	iPoint ret;
-
 	// L05: TODO 2: Add orthographic world to map coordinates
+
+	iPoint ret(0, 0);
+
+	if (mapData.type == MAPTYPE_ORTHOGONAL)
+	{
+		x = ret.x / mapData.tileWidth;
+		y = ret.y / mapData.tileHeight;
+	}
 
 	// L05: TODO_D 3: Add the case for isometric maps to WorldToMap
 	if (mapData.type == MAPTYPE_ISOMETRIC)
