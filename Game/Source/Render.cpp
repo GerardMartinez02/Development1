@@ -1,7 +1,11 @@
 #include "App.h"
 #include "Window.h"
 #include "Render.h"
-
+#include "Map.h"
+#include "ModulePhysics.h"
+#include "Input.h"
+#include "Scene.h"
+#include "ModulePlayer.h"
 #include "Defs.h"
 #include "Log.h"
 

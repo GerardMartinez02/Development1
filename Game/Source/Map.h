@@ -142,8 +142,8 @@ public:
 
     // Called each loop iteration
     void Draw();
+	void Colliders();
 	void DrawColliders();
-	void LoadColliders();
 	
     // Called before quitting
     bool CleanUp();
@@ -179,6 +179,7 @@ public:
 
     // L03: DONE 1: Add your struct for map info
 	MapData mapData;
+	bool debugColliders = false;
 	
 
 private:
@@ -186,6 +187,7 @@ private:
 	List<PhysBody*> Collisions;
     SString folder;
     bool mapLoaded;
+	List<PhysBody*> colliders;
 };
 
 #endif // __MAP_H__

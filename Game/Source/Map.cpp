@@ -60,35 +60,134 @@ void Map::Draw()
 	while (mapLayerItem != NULL)
 	{
 
-		//if (mapLayerItem->data->properties.GetProperty("Draw") == 0) return;
-
-		for (int x = 0; x < mapLayerItem->data->width; x++)
+		if (mapLayerItem->data->properties.GetProperty("Draw") == 1)
 		{
-			for (int y = 0; y < mapLayerItem->data->height; y++)
+
+			for (int x = 0; x < mapLayerItem->data->width; x++)
 			{
-				// L04: DONE 9: Complete the draw function
-				int gid = mapLayerItem->data->Get(x, y);
-
-				if (gid > 0)
+				for (int y = 0; y < mapLayerItem->data->height; y++)
 				{
+					// L04: DONE 9: Complete the draw function
+					int gid = mapLayerItem->data->Get(x, y);
 
-					//L06: TODO 4: Obtain the tile set using GetTilesetFromTileId
-					//now we always use the firt tileset in the list
-					TileSet* tileset = mapData.tilesets.start->data;
+					if (gid > 0)
+					{
 
-					SDL_Rect r = tileset->GetTileRect(gid);
-					iPoint pos = MapToWorld(x, y);
+						//L06: TODO 4: Obtain the tile set using GetTilesetFromTileId
+						//now we always use the firt tileset in the list
+						TileSet* tileset = mapData.tilesets.start->data;
 
-					app->render->DrawTexture(tileset->texture,
-						pos.x,
-						pos.y,
-						&r);
+						SDL_Rect r = tileset->GetTileRect(gid);
+						iPoint pos = MapToWorld(x, y);
+
+						app->render->DrawTexture(tileset->texture,
+							pos.x,
+							pos.y,
+							&r);
+					}
+
 				}
-
 			}
 		}
 
 		mapLayerItem = mapLayerItem->next;
+	}
+}
+
+void Map::Colliders()
+{
+	ListItem<MapLayer*>* mapLayerItem;
+	mapLayerItem = mapData.layers.start;
+
+	while (mapLayerItem != NULL)
+	{
+		if (mapLayerItem->data->properties.GetProperty("Navigation") == 1)
+		{
+			for (int x = 0; x < mapLayerItem->data->width; x++)
+			{
+				for (int y = 0; y < mapLayerItem->data->height; y++)
+				{
+					int gid = mapLayerItem->data->Get(x, y);
+
+					if (gid > 0)
+					{
+						TileSet* tileset = GetTilesetFromTileId(gid);
+
+						SDL_Rect r = tileset->GetTileRect(gid);
+						iPoint pos = MapToWorld(x, y);
+						PhysBody* col = new PhysBody();
+						col->listener = this;
+						col = app->physics->CreateRectangle(pos.x + 16, pos.y + 16, r.w, r.h, 1);
+						colliders.add(col);
+					}
+
+				}
+			}
+		}
+		else if (mapLayerItem->data->properties.GetProperty("Ladder") == 1)
+		{
+			for (int x = 0; x < mapLayerItem->data->width; x++)
+			{
+				for (int y = 0; y < mapLayerItem->data->height; y++)
+				{
+					int gid = mapLayerItem->data->Get(x, y);
+
+					if (gid > 0)
+					{
+						TileSet* tileset = GetTilesetFromTileId(gid);
+
+						SDL_Rect r = tileset->GetTileRect(gid);
+						iPoint pos = MapToWorld(x, y);
+						PhysBody* col = new PhysBody();
+						col->listener = this;
+						col = app->physics->CreateRectangleSensor(pos.x + 16, pos.y + 16, r.w, r.h, 1);
+						colliders.add(col);
+
+					}
+
+				}
+			}
+		}
+
+		mapLayerItem = mapLayerItem->next;
+	}
+}
+
+void Map::DrawColliders()
+{
+	if (debugColliders == true)
+	{
+		ListItem<MapLayer*>* mapLayerItem;
+		mapLayerItem = mapData.layers.start;
+
+		while (mapLayerItem != NULL)
+		{
+			if (mapLayerItem->data->properties.GetProperty("Debug") == 1)
+			{
+				for (int x = 0; x < mapLayerItem->data->width; x++)
+				{
+					for (int y = 0; y < mapLayerItem->data->height; y++)
+					{
+						int gid = mapLayerItem->data->Get(x, y);
+
+						if (gid > 0) {
+
+							TileSet* tileset = GetTilesetFromTileId(gid);
+
+							SDL_Rect r = tileset->GetTileRect(gid);
+							iPoint pos = MapToWorld(x, y);
+
+							app->render->DrawTexture(tileset->texture,
+								pos.x,
+								pos.y,
+								&r);
+						}
+
+					}
+				}
+			}
+			mapLayerItem = mapLayerItem->next;
+		}
 	}
 }
 
@@ -451,16 +550,18 @@ bool Map::LoadProperties(pugi::xml_node& node, Properties& properties)
 		//add the propertie to the list
 		//properties.list.add();
 
-	for (pugi::xml_node propertieNode = node.child("Properties").child("Property"); propertieNode != NULL; propertieNode = propertieNode.next_sibling())
+	for (pugi::xml_node propertieNode = node.child("properties").child("property"); propertieNode; propertieNode = propertieNode.next_sibling("property"))
 	{
 		Properties::Property* p = new Properties::Property();
 		p->name = propertieNode.attribute("name").as_string();
 		p->value = propertieNode.attribute("value").as_int();
+
+		properties.list.add(p);
 	}
 	
 	return ret;
 }
-
+/*
 void Map::LoadColliders() // Old version
 {
 	if (mapLoaded == false) return;
@@ -508,7 +609,7 @@ void Map::LoadColliders() // Old version
 		mapLayerItem = mapLayerItem->next;
 	}
 }
-
+*/
 /*
 void Map::LoadColliders() //New Version
 {
@@ -570,7 +671,7 @@ void Map::LoadColliders() //New Version
 }
 */
 
-
+/*
 void Map::DrawColliders()
 {
 
@@ -582,11 +683,11 @@ void Map::DrawColliders()
 	{
 
 		if (mapLayerItem->data->properties.GetProperty("Ground")) return;
-	/*	if (mapLayerItem->data->id i= 2)*/
+		if (mapLayerItem->data->id i= 2)
 		{
 			mapLayerItem=mapLayerItem->next;
 		}
-		/*else if(mapLayerItem->data->id == 2)*/
+		else if(mapLayerItem->data->id == 2)
 		{
 			for (int x = 0; x < mapLayerItem->data->width; x++)
 			{
@@ -616,3 +717,4 @@ void Map::DrawColliders()
 
 	}
 }
+*/

@@ -43,10 +43,13 @@ bool Scene::Start()
 
 	app->map->Enable();
 	// L03: DONE: Load map
-	app->map->Load("SonicMap.tmx");
+	app->map->Load("tileMap1.tmx");
 
-	app->render->camera.x = app->map->MapToWorld(0, -15).x;
-	app->render->camera.y = app->map->MapToWorld(0, -15).y;
+	app->player->Enable();
+	app->map->Colliders();
+
+	app->render->camera.x = app->map->MapToWorld(0, 0).x;
+	app->render->camera.y = app->map->MapToWorld(0, 0).y;
 	
 	
 	return true;
@@ -81,6 +84,23 @@ bool Scene::Update(float dt)
 
 	if(app->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
 		app->render->camera.x += 4;
+
+	if (app->input->GetKey(SDL_SCANCODE_F2) == KEY_REPEAT)
+		app->map->debugColliders = true;
+	if (app->input->GetKey(SDL_SCANCODE_F3) == KEY_REPEAT)
+		app->map->debugColliders = !app->map->debugColliders;
+
+	/*if (camera.y <= 0 || camera.h >= -720)
+	{
+		if(camera.y >= 0) camera.y = 0;
+		if (camera.y <= -2319) camera.y = -2319;
+	}
+
+	if (camera.x <= 0 || camera.x >= -1280)
+	{
+		if (camera.x >= 0) camera.x = 0;
+		if (camera.x <= -4476) camera.x = -4476;
+	}*/
 
 	//app->render->DrawTexture(img, 380, 100); // Placeholder not needed any more
 
