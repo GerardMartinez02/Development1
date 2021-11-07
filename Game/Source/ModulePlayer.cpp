@@ -71,7 +71,7 @@ bool ModulePlayer::Start()
 
 	destroyed = false;
 
-	//position = app->map->MapToWorld(61, 39);
+	position = app->map->MapToWorld(0, 71);
 
 	//Box2D
 
