@@ -82,11 +82,11 @@ bool ModulePlayer::Start()
 
 	b = app->physics->world->CreateBody(&body);
 
-	pCircle.m_radius = PIXEL_TO_METERS(14);
+	pCircle.m_radius = PIXEL_TO_METERS(30);
 
 	b2FixtureDef fixture;
 	fixture.shape = &pCircle;
-	fixture.density = 2.0f;
+	fixture.density = 0.5f;
 	fixture.friction = 100.0f;
 
 	b->CreateFixture(&fixture);
