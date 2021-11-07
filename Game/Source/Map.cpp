@@ -473,7 +473,7 @@ void Map::LoadColliders() // Old version
 	while (mapLayerItem != NULL)
 	{
 
-		if (mapLayerItem->data->properties.GetProperty("Draw") == 0)
+		if (mapLayerItem->data->properties.GetProperty("Spikes") == 0)
 		{
 
 			for (int x = 0; x < mapLayerItem->data->width; x++)
@@ -509,3 +509,109 @@ void Map::LoadColliders() // Old version
 	}
 }
 
+
+void Map::LoadColliders() //New Version
+{
+	if (mapLoaded == false)
+	{
+		return;
+	}
+
+	// L04: DONE 5: Prepare the loop to draw all tilesets + DrawTexture()
+	ListItem<MapObjects*>* mapObjectItem;
+	ListItem<MapLayer*>* mapLayerItem;
+	mapObjectItem = mapData.objects.start;
+
+	// L06: TODO 4: Make sure we draw all the layers and not just the first one
+
+	while (mapObjectItem != NULL)
+	{
+
+		if (mapObjectItem->data->properties.GetProperty("Ground") == 1)
+		{
+			
+			for (int x = 0; x < mapLayerItem->data->width; x++)
+			{
+				for (int y = 0; y < mapLayerItem->data->height; y++)
+				{
+					// L04: DONE 9: Complete the draw function
+					int gid = mapLayerItem->data->Get(x, y);
+
+					if (gid >= 0)
+					{
+
+						//L06: TODO 4: Obtain the tile set using GetTilesetFromTileId
+						//now we always use the firt tileset in the list
+						//TileSet* tileset = mapData.tilesets.start->data;
+						TileSet* tileset = GetTilesetFromTileId(gid);
+
+						SDL_Rect r = tileset->GetTileRect(gid);
+						iPoint pos = MapToWorld(x, y);
+
+						//app->render->DrawTexture(tileset->texture, pos.x, pos.y, &r);
+						if (mapLayerItem->data->properties.GetProperty("Navigation") == 1)
+						{
+							app->physics->CreateRectangle(pos.x + 8, pos.y + 8, 16, 16);
+						}
+					}
+				}
+			}
+
+			/*for(mapObjectItem->data->points)
+			{
+				Objet.child(mapObjectItem->data->name.GetString());
+			}*/
+
+		}
+
+		mapObjectItem = mapObjectItem->next;
+	}
+
+}
+
+
+void Map::DrawColliders()
+{
+
+	// L04: DONE 5: Prepare the loop to draw all tilesets + DrawTexture()
+	ListItem<MapLayer*>* mapLayerItem;
+	mapLayerItem = mapData.layers.start;
+
+	while (mapLayerItem != NULL)
+	{
+
+		if (mapLayerItem->data->properties.GetProperty("Ground")) return;
+	/*	if (mapLayerItem->data->id i= 2)*/
+		{
+			mapLayerItem=mapLayerItem->next;
+		}
+		/*else if(mapLayerItem->data->id == 2)*/
+		{
+			for (int x = 0; x < mapLayerItem->data->width; x++)
+			{
+				for (int y = 0; y < mapLayerItem->data->height; y++)
+				{
+					// L04: DONE 9: Complete the draw function
+					int gid = mapLayerItem->data->Get(x, y);
+
+					if (gid > 0)
+					{
+
+						//L06: TODO 4: Obtain the tile set using GetTilesetFromTileId
+						//now we always use the firt tileset in the list
+						TileSet* tileset = mapData.tilesets.start->data;
+
+						SDL_Rect r = tileset->GetTileRect(gid);
+						iPoint pos = MapToWorld(x, y);
+						PhysBody* NewCollision;
+						NewCollision=app->physics->CreateRectangle(pos.x, pos.y, r.w, r.h);
+						Collisions.add(NewCollision);
+						Collisions.start->next;
+					}
+
+				}
+			}
+		}
+
+	}
+}

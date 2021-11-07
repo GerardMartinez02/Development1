@@ -93,6 +93,25 @@ struct MapLayer
 	}
 };
 
+struct MapObjects
+{
+	SString	name;
+	int id;
+	const pugi::char_t* points;
+
+	// L06: DONE 1: Support custom properties
+	Properties properties;
+	
+	MapObjects() : points(NULL)
+	{}
+
+	~MapObjects()
+	{
+		RELEASE(points);
+	}
+
+};
+
 // L03: DONE 1: Create a struct needed to hold the information to Map node
 struct MapData
 {
@@ -106,6 +125,7 @@ struct MapData
 
 	// L04: DONE 2: Add a list/array of layers to the map
 	List<MapLayer*> layers;
+	List<MapObjects*> objects;
 };
 
 class Map : public Module
@@ -159,6 +179,7 @@ public:
 
     // L03: DONE 1: Add your struct for map info
 	MapData mapData;
+	
 
 private:
 
