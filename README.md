@@ -19,7 +19,7 @@ Controls:
 
 · Gamepaly Controls:
 
-Keyboard Player 1:
+Keyboard Player:
 
   - D Key: Move Right
  
@@ -35,5 +35,5 @@ Keyboard:
 
 · Developer Mode:
 
-   - F1: Show coliders
+   - F9: View coliders
 
