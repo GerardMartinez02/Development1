@@ -1,15 +1,1 @@
-﻿  Map.cpp
-C:\Users\user\Desktop\UNI\2n\Desenvolupament de Videojocs\Development1\Game\Source\Map.cpp(110,19): warning C4244: '=': conversion from 'float' to 'TYPE', possible loss of data
-          with
-          [
-              TYPE=int
-          ]
-C:\Users\user\Desktop\UNI\2n\Desenvolupament de Videojocs\Development1\Game\Source\Map.cpp(111,19): warning C4244: '=': conversion from 'float' to 'TYPE', possible loss of data
-          with
-          [
-              TYPE=int
-          ]
-C:\Users\user\Desktop\UNI\2n\Desenvolupament de Videojocs\Development1\Game\Source\Map.cpp(133,23): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\user\Desktop\UNI\2n\Desenvolupament de Videojocs\Development1\Game\Source\Map.cpp(134,98): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\user\Desktop\UNI\2n\Desenvolupament de Videojocs\Development1\Game\Source\Map.cpp(514,1): error C2084: function 'void Map::LoadColliders(void)' already has a body
-C:\Users\user\Desktop\UNI\2n\Desenvolupament de Videojocs\Development1\Game\Source\Map.cpp(464): message : see previous definition of 'LoadColliders'
+﻿  Game.vcxproj -> C:\GitHub\Development1\Build\Debug\Game.exe

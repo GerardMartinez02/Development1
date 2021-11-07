@@ -509,7 +509,7 @@ void Map::LoadColliders() // Old version
 	}
 }
 
-
+/*
 void Map::LoadColliders() //New Version
 {
 	if (mapLoaded == false)
@@ -557,10 +557,10 @@ void Map::LoadColliders() //New Version
 				}
 			}
 
-			/*for(mapObjectItem->data->points)
-			{
-				Objet.child(mapObjectItem->data->name.GetString());
-			}*/
+			//for(mapObjectItem->data->points)
+			//{
+			//	Objet.child(mapObjectItem->data->name.GetString());
+			//}
 
 		}
 
@@ -568,6 +568,7 @@ void Map::LoadColliders() //New Version
 	}
 
 }
+*/
 
 
 void Map::DrawColliders()
