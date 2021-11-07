@@ -99,8 +99,8 @@ bool ModulePlayer::Start()
 
 	//-----
 
-	jump = false;
-
+	jumpCounter = 0;
+	
 	uint winWidth, winHeight;
 
 	app->win->GetWindowSize(winWidth, winHeight);
@@ -110,7 +110,6 @@ bool ModulePlayer::Start()
 
 bool ModulePlayer::Update(float dt)
 {
-	
 	// L10: DONE: Implement gamepad support
 	if (app->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT)
 	{
@@ -132,12 +131,18 @@ bool ModulePlayer::Update(float dt)
 		}
 	}
 
+	
+	
 	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN)
 	{
+		
+		
+
 		pbody->body->ApplyLinearImpulse({ 0,-2 }, { 0,0 }, true);
+		jumpCounter++;
+		
 	}
 
-	
 	if (app->input->GetKey(SDL_SCANCODE_A) == KEY_IDLE && app->input->GetKey(SDL_SCANCODE_D) == KEY_IDLE && app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_IDLE)
 	{
 		if (currentAnimation == &rightAnim)

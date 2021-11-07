@@ -51,9 +51,7 @@ public:
 	b2CircleShape pCircle;
 
 	int speed = 1;
-	bool jump;
-	bool doubleJump;
-
+	int jumpCounter = 0;
 	// The player spritesheet loaded into an SDL_Texture
 	SDL_Texture* texture;
 	
