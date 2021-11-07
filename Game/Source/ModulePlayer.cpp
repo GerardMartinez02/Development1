@@ -135,12 +135,8 @@ bool ModulePlayer::Update(float dt)
 	
 	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN)
 	{
-		
-		
-
 		pbody->body->ApplyLinearImpulse({ 0,-2 }, { 0,0 }, true);
 		jumpCounter++;
-		
 	}
 
 	if (app->input->GetKey(SDL_SCANCODE_A) == KEY_IDLE && app->input->GetKey(SDL_SCANCODE_D) == KEY_IDLE && app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_IDLE)

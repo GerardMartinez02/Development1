@@ -39,7 +39,7 @@ bool Scene::Start()
 	app->render->camera.y = -1200;*/
 
 	app->audio->PlayMusic("Assets/audio/music/GamePlaySEGASonic.ogg");
-	background = app->tex->Load("Assets/maps/background.png");
+	background = app->tex->Load("Assets/maps/backgroundPlatformerGameFinal.png");
 
 	app->map->Enable();
 	// L03: DONE: Load map
@@ -112,7 +112,7 @@ bool Scene::Update(float dt)
 
 	app->win->SetTitle("Platform Game - LEVEL 1");
 
-	app->render->DrawTexture(background, -150, -400, NULL, 0.75f);
+	app->render->DrawTexture(background, -300, 1240, NULL, 0.75f);
 	app->map->Draw();
 
 	return true;
