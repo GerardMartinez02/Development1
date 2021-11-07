@@ -115,20 +115,20 @@ bool ModulePlayer::Update(float dt)
 	if (app->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT)
 	{
 		if (pbody->body->GetLinearVelocity().x >= -2) pbody->body->ApplyLinearImpulse({ -1.0f,0 }, { 0,0 }, true);
-		if (currentAnimation != &leftAnim)
+		if (currentAnimation != &rightAnim)
 		{
-			leftAnim.Reset();
-			currentAnimation = &leftAnim;
+			rightAnim.Reset();
+			currentAnimation = &rightAnim;
 		}
 	}
 
 	if (app->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT)
 	{
 		if (pbody->body->GetLinearVelocity().x <= +2) pbody->body->ApplyLinearImpulse({ 1.0f,0 }, { 0,0 }, true);
-		if (currentAnimation != &rightAnim)
+		if (currentAnimation != &leftAnim)
 		{
-			rightAnim.Reset();
-			currentAnimation = &rightAnim;
+			leftAnim.Reset();
+			currentAnimation = &leftAnim;
 		}
 	}
 

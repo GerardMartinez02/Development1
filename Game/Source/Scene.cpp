@@ -49,7 +49,7 @@ bool Scene::Start()
 	app->map->Colliders();
 
 	app->render->camera.x = app->map->MapToWorld(0, 0).x;
-	app->render->camera.y = app->map->MapToWorld(0, 0).y;
+	app->render->camera.y = app->map->MapToWorld(0, -130).y;
 	
 	
 	return true;
@@ -85,8 +85,6 @@ bool Scene::Update(float dt)
 	if(app->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
 		app->render->camera.x += 4;
 
-	if (app->input->GetKey(SDL_SCANCODE_F2) == KEY_REPEAT)
-		app->map->debugColliders = true;
 	if (app->input->GetKey(SDL_SCANCODE_F3) == KEY_REPEAT)
 		app->map->debugColliders = !app->map->debugColliders;
 
