@@ -124,30 +124,6 @@ void Map::Colliders()
 				}
 			}
 		}
-		else if (mapLayerItem->data->properties.GetProperty("Ladder") == 1)
-		{
-			for (int x = 0; x < mapLayerItem->data->width; x++)
-			{
-				for (int y = 0; y < mapLayerItem->data->height; y++)
-				{
-					int gid = mapLayerItem->data->Get(x, y);
-
-					if (gid > 0)
-					{
-						TileSet* tileset = GetTilesetFromTileId(gid);
-
-						SDL_Rect r = tileset->GetTileRect(gid);
-						iPoint pos = MapToWorld(x, y);
-						PhysBody* col = new PhysBody();
-						col->listener = this;
-						col = app->physics->CreateRectangleSensor(pos.x + 16, pos.y + 16, r.w, r.h, 1);
-						colliders.add(col);
-
-					}
-
-				}
-			}
-		}
 
 		mapLayerItem = mapLayerItem->next;
 	}

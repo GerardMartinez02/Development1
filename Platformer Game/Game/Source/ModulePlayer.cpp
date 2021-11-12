@@ -18,11 +18,16 @@
 
 ModulePlayer::ModulePlayer() : Module()
 {
-	//idleAnim
-	idleAnim.PushBack({ 0, 1, 31, 35 });
-	idleAnim.PushBack({ 138, 1, 31, 37 });
-	idleAnim.loop = true;
-	idleAnim.speed = 0.008f;
+	//idleAnimRight
+	idleAnimRight.PushBack({ 0, 1, 31, 35 });
+	idleAnimRight.PushBack({ 138, 1, 31, 37 });
+	idleAnimRight.loop = true;
+	idleAnimRight.speed = 0.008f;
+
+	//idleAnimLeft
+	idleAnimLeft.PushBack({ 34, 1, 72, 37 });
+	idleAnimLeft.loop = true;
+	idleAnimLeft.speed = 0.008f;
 
 	//rightAnim
 	leftAnim.PushBack({ 1, 40, 31, 34 });
@@ -63,7 +68,8 @@ bool ModulePlayer::Start()
 	bool ret = true;
 
 	texture = app->tex->Load("Assets/textures/playerSprites.png");
-	currentAnimation = &idleAnim;
+	currentAnimation = &idleAnimRight;
+	currentAnimation = &idleAnimLeft;
 
 	//Per fer atacs
 	//laserFx = app->audio->LoadFx("Assets/Fx/laser.wav");
@@ -143,16 +149,20 @@ bool ModulePlayer::Update(float dt)
 	{
 		if (currentAnimation == &rightAnim)
 		{
-			currentAnimation = &idleAnim;
+			currentAnimation = &idleAnimLeft;
 		}
 
-		//Idle anim left
+	}
+	if (app->input->GetKey(SDL_SCANCODE_A) == KEY_IDLE && app->input->GetKey(SDL_SCANCODE_D) == KEY_IDLE && app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_IDLE)
+	{
 		
+		//Idle anim left
+
 		if (currentAnimation == &leftAnim)
 		{
-			currentAnimation = &idleAnim;
+			currentAnimation = &idleAnimRight;
 		}
-		
+
 	}
 
 	currentAnimation->Update();
