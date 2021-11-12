@@ -1,49 +1,53 @@
 ﻿  Main.cpp
-Source\Main.cpp(94,32): warning C4244: '=': conversión de 'Uint64' a 'int'; posible pérdida de datos
+Source\Main.cpp(94,32): warning C4244: '=': conversion from 'Uint64' to 'int', possible loss of data
   App.cpp
-C:\Users\albertrc9\Documents\GitHub\Development1\Platformer Game\Game\Source\Animation.h(54,19): warning C4244: 'inicializando': conversión de 'const float' a 'int'; posible pérdida de datos
-C:\Users\albertrc9\Documents\GitHub\Development1\Platformer Game\Game\Source\Animation.h(56,30): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\GitHub\Development1\Platformer Game\Game\Source\Animation.h(54,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
+C:\GitHub\Development1\Platformer Game\Game\Source\Animation.h(56,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
   Audio.cpp
   Input.cpp
   Map.cpp
-Source\Map.cpp(270,19): warning C4244: '=': conversión de 'float' a 'TYPE'; posible pérdida de datos
+Source\Map.cpp(209,19): warning C4244: '=': conversion from 'float' to 'TYPE', possible loss of data
           with
           [
               TYPE=int
           ]
-Source\Map.cpp(271,19): warning C4244: '=': conversión de 'float' a 'TYPE'; posible pérdida de datos
+Source\Map.cpp(210,19): warning C4244: '=': conversion from 'float' to 'TYPE', possible loss of data
           with
           [
               TYPE=int
           ]
-Source\Map.cpp(293,23): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-Source\Map.cpp(294,98): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+Source\Map.cpp(232,23): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+Source\Map.cpp(233,98): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
   ModuleFadeToBlack.cpp
-Source\ModuleFadeToBlack.cpp(82,19): warning C4244: '=': conversión de 'float' a 'Uint32'; posible pérdida de datos
+Source\ModuleFadeToBlack.cpp(82,19): warning C4244: '=': conversion from 'float' to 'Uint32', possible loss of data
   ModulePhysics.cpp
-Source\ModulePhysics.cpp(229,21): warning C4018: '<': no coinciden signed/unsigned
-Source\ModulePhysics.cpp(285,23): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-Source\ModulePhysics.cpp(286,25): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-Source\ModulePhysics.cpp(310,23): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-Source\ModulePhysics.cpp(311,25): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-Source\ModulePhysics.cpp(382,21): warning C4018: '<': no coinciden signed/unsigned
-Source\ModulePhysics.cpp(469,13): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
-Source\ModulePhysics.cpp(470,13): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
-Source\ModulePhysics.cpp(476,27): warning C4244: 'return': conversión de 'float32' a 'int'; posible pérdida de datos
+Source\ModulePhysics.cpp(229,21): warning C4018: '<': signed/unsigned mismatch
+Source\ModulePhysics.cpp(285,23): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+Source\ModulePhysics.cpp(286,25): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+Source\ModulePhysics.cpp(310,23): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+Source\ModulePhysics.cpp(311,25): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+Source\ModulePhysics.cpp(382,21): warning C4018: '<': signed/unsigned mismatch
+Source\ModulePhysics.cpp(469,13): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+Source\ModulePhysics.cpp(470,13): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+Source\ModulePhysics.cpp(476,27): warning C4244: 'return': conversion from 'float32' to 'int', possible loss of data
   ModulePlayer.cpp
-C:\Users\albertrc9\Documents\GitHub\Development1\Platformer Game\Game\Source\Animation.h(54,19): warning C4244: 'inicializando': conversión de 'const float' a 'int'; posible pérdida de datos
-C:\Users\albertrc9\Documents\GitHub\Development1\Platformer Game\Game\Source\Animation.h(56,30): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-Source\ModulePlayer.cpp(97,40): warning C4244: '=': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\GitHub\Development1\Platformer Game\Game\Source\Animation.h(54,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
+C:\GitHub\Development1\Platformer Game\Game\Source\Animation.h(56,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+Source\ModulePlayer.cpp(97,40): warning C4244: '=': conversion from 'float32' to 'int', possible loss of data
   Scene.cpp
-C:\Users\albertrc9\Documents\GitHub\Development1\Platformer Game\Game\Source\Animation.h(54,19): warning C4244: 'inicializando': conversión de 'const float' a 'int'; posible pérdida de datos
-C:\Users\albertrc9\Documents\GitHub\Development1\Platformer Game\Game\Source\Animation.h(56,30): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
-Source\Scene.cpp(69,78): warning C4244: '=': conversión de 'float32' a 'int'; posible pérdida de datos
+C:\GitHub\Development1\Platformer Game\Game\Source\Animation.h(54,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
+C:\GitHub\Development1\Platformer Game\Game\Source\Animation.h(56,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+Source\Scene.cpp(69,78): warning C4244: '=': conversion from 'float32' to 'int', possible loss of data
   Render.cpp
-C:\Users\albertrc9\Documents\GitHub\Development1\Platformer Game\Game\Source\Animation.h(54,19): warning C4244: 'inicializando': conversión de 'const float' a 'int'; posible pérdida de datos
-C:\Users\albertrc9\Documents\GitHub\Development1\Platformer Game\Game\Source\Animation.h(56,30): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+C:\GitHub\Development1\Platformer Game\Game\Source\Animation.h(54,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
+C:\GitHub\Development1\Platformer Game\Game\Source\Animation.h(56,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
   SceneIntro.cpp
   Textures.cpp
   Window.cpp
   Log.cpp
   pugixml.cpp
-LINK : fatal error LNK1181: no se puede abrir el archivo de entrada 'SDL2.lib'
+  Generating code
+  Previous IPDB not found, fall back to full compilation.
+  All 540 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  Game.vcxproj -> C:\GitHub\Development1\Platformer Game\Build\Release\Game.exe

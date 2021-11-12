@@ -48,91 +48,6 @@ bool Map::Awake(pugi::xml_node& config)
     return ret;
 }
 
-/*
-void Map::ResetPath()
-{
-	frontier.Clear();
-	visited.Clear();
-
-	frontier.Push(iPoint(19, 4));
-	visited.Add(iPoint(19, 4));
-}
-
-void Map::DrawPath()
-{
-	iPoint point;
-
-	// Draw visited
-	ListItem<iPoint>* item = visited.start;
-
-	while (item)
-	{
-		point = item->data;
-		TileSet* tileset = GetTilesetFromTileId(26);
-
-		SDL_Rect rec = tileset->GetTileRect(26);
-		iPoint pos = MapToWorld(point.x, point.y);
-
-		app->render->DrawTexture(tileset->texture, pos.x, pos.y, &rec);
-
-		item = item->next;
-	}
-
-	// Draw frontier
-	for (uint i = 0; i < frontier.Count(); ++i)
-	{
-		point = *(frontier.Peek(i));
-		TileSet* tileset = GetTilesetFromTileId(25);
-
-		SDL_Rect rec = tileset->GetTileRect(25);
-		iPoint pos = MapToWorld(point.x, point.y);
-
-		app->render->DrawTexture(tileset->texture, pos.x, pos.y, &rec);
-	}
-
-}
-
-bool Map::IsWalkable(int x, int y) const
-{
-	bool isWalkable = true;
-	// L10: TODO 3: return true only if x and y are within map limits
-	// and the tile is walkable (tile id 0 in the navigation layer)
-
-	return isWalkable;
-}
-
-void Map::PropagateBFS()
-{
-
-	// L10: DONE 1: If frontier queue contains elements
-	// pop the last one and calculate its 4 neighbors
-
-	// L10: DONE 2: For each neighbor, if not visited, add it
-	// to the frontier queue and visited list
-	iPoint point;
-	if (frontier.Pop(point))
-	{
-		List<iPoint> neighbours;
-		neighbours.Add(iPoint(point.x + 1, point.y));
-		neighbours.Add(iPoint(point.x - 1, point.y));
-		neighbours.Add(iPoint(point.x, point.y + 1));
-		neighbours.Add(iPoint(point.x, point.y - 1));
-
-		ListItem<iPoint>* neighbour = neighbours.start;
-
-		while (neighbour != NULL)
-		{
-			if (visited.Find(neighbour->data) == -1)
-			{
-				frontier.Push(neighbour->data);
-				visited.Add(neighbour->data);
-			}
-			neighbour = neighbour->next;
-		}
-	}
-}
-*/
-
 // Draw the map (all requried layers)
 void Map::Draw()
 {
@@ -209,7 +124,31 @@ void Map::Colliders()
 				}
 			}
 		}
-		
+		else if (mapLayerItem->data->properties.GetProperty("Ladder") == 1)
+		{
+			for (int x = 0; x < mapLayerItem->data->width; x++)
+			{
+				for (int y = 0; y < mapLayerItem->data->height; y++)
+				{
+					int gid = mapLayerItem->data->Get(x, y);
+
+					if (gid > 0)
+					{
+						TileSet* tileset = GetTilesetFromTileId(gid);
+
+						SDL_Rect r = tileset->GetTileRect(gid);
+						iPoint pos = MapToWorld(x, y);
+						PhysBody* col = new PhysBody();
+						col->listener = this;
+						col = app->physics->CreateRectangleSensor(pos.x + 16, pos.y + 16, r.w, r.h, 1);
+						colliders.add(col);
+
+					}
+
+				}
+			}
+		}
+
 		mapLayerItem = mapLayerItem->next;
 	}
 }
