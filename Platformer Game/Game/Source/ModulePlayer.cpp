@@ -102,7 +102,9 @@ bool ModulePlayer::Start()
 	b->SetUserData(pbody);
 	pbody->width = pbody->height = pCircle.m_radius;
 	pbody->listener = this;
-
+	b->SetUserData(pbody);
+	
+	
 	//-----
 
 	uint winWidth, winHeight;
@@ -110,6 +112,9 @@ bool ModulePlayer::Start()
 	app->win->GetWindowSize(winWidth, winHeight);
 
 	return ret;
+
+	//---------------------------------------------------
+
 }
 
 bool ModulePlayer::Update(float dt)

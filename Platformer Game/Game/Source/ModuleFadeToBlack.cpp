@@ -18,12 +18,22 @@ ModuleFadeToBlack::~ModuleFadeToBlack()
 
 bool ModuleFadeToBlack::Awake(pugi::xml_node& conf)
 {
-	
+	uint winWidth, winHeight;
+
+	app->win->GetWindowSize(winWidth, winHeight);
+
+	screenRect = { 0, 0,  (int)winWidth * (int)app->win->GetScale(), (int)winHeight * (int)app->win->GetScale() };
+
 	return true;
 }
 
 bool ModuleFadeToBlack::Start()
 {
+	LOG("Preparing Fade Screen");
+
+	// Enable blending mode for transparency
+	SDL_SetRenderDrawBlendMode(app->render->renderer, SDL_BLENDMODE_BLEND);
+	
 	return true;
 }
 

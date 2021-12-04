@@ -28,7 +28,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	tex = new Textures();
 	audio = new Audio();
 	fadeToBlack = new ModuleFadeToBlack();
-	//sceneIntro = new SceneIntro();
+	intro = new SceneIntro();
 	scene = new Scene();
 	map = new Map();
 	physics = new ModulePhysics();
@@ -44,7 +44,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(tex);
 	AddModule(audio);
 	AddModule(fadeToBlack);
-	//AddModule(sceneIntro);
+	AddModule(intro);
 	AddModule(scene);
 	AddModule(map);
 	

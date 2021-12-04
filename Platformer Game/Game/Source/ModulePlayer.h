@@ -49,6 +49,8 @@ public:
 	b2Body* b;
 
 	b2CircleShape pCircle;
+	b2PolygonShape pBox;
+
 
 	int speed = 1;
 	bool jumpState = false;

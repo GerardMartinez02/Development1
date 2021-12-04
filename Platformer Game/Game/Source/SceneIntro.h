@@ -1,4 +1,4 @@
-/*
+
 
 #ifndef __INTRO_H__
 #define __INTRO_H__
@@ -35,7 +35,8 @@ public:
 	// Called before quitting
 	bool CleanUp();
 
-
+	int sCounter;
+	
 private:
 	SDL_Texture* startButton;
 	SDL_Texture* backgroundIntro;
@@ -44,4 +45,3 @@ private:
 };
 
 #endif // __SCENE_H__
-*/

@@ -1,13 +1,14 @@
-/*
-
 #include "App.h"
+#include "Window.h"
 #include "Input.h"
+#include "Render.h"
 #include "Textures.h"
 #include "Audio.h"
-#include "Render.h"
-#include "Window.h"
-#include "SceneIntro.h"
+#include "Scene.h"
+#include "Map.h"
 #include "ModuleFadeToBlack.h"
+#include "ModulePlayer.h"
+#include "SceneIntro.h"
 
 
 #include "Defs.h"
@@ -35,10 +36,11 @@ bool SceneIntro::Awake(pugi::xml_node& config)
 bool SceneIntro::Start()
 {
 	// L03: DONE: Load map
-	app->audio->PlayMusic("Assets/audio/music/introMusic.ogg");
-	backgroundIntro = app->tex->Load("Assets/maps/backgroundIntro.png");
+	//app->audio->PlayMusic("Assets/audio/music/introMusic.ogg");
+	backgroundIntro = app->tex->Load("Assets/maps/introBg.png");
 	startButton = app->tex->Load("Assets/textures/startButton.png");
 
+	sCounter = 0;
 	delay = 0;
 
 	return true;
@@ -53,10 +55,21 @@ bool SceneIntro::PreUpdate()
 // Called each loop iteration
 bool SceneIntro::Update(float dt)
 {
-	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN)
+	sCounter++;
+
+	app->scene->Disable();
+	app->player->Disable();
+
+	if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN)
 	{
-		app->fadeToBlack->FadeToBlack(this, (Module*)app->scene);
-	}	
+		app->map->Enable();
+		app->scene->Enable();
+		app->player->Enable();
+		//app->physics->Enable();
+
+		app->intro->Disable();
+	}
+
 	return true;
 }
 
@@ -70,11 +83,11 @@ bool SceneIntro::PostUpdate()
 	{
 		ret = false;
 	}
-	app->render->DrawTexture(backgroundIntro, 0, 0, NULL, 1.0f);
+	app->render->DrawTexture(backgroundIntro, 0, 2080, NULL, 1.0f);
 	
 	if ((delay / 30) % 2 == 0)
 	{
-		app->render->DrawTexture(startButton, 0, 0, NULL, 1.0f);
+		app->render->DrawTexture(startButton, 100, 2180, NULL, 1.0f);
 	}
 
 	return ret;
@@ -88,6 +101,6 @@ bool SceneIntro::CleanUp()
 	app->tex->UnLoad(startButton);
 	return true;
 }
-*/
+
 
 

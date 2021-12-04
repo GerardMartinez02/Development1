@@ -16,6 +16,7 @@ class Render;
 class Textures;
 class Audio;
 class Scene;
+class SceneIntro;
 class Map;
 class ModuleFadeToBlack;
 class ModulePhysics;
@@ -91,6 +92,7 @@ public:
 	Textures* tex;
 	Audio* audio;
 	Scene* scene;
+	SceneIntro* intro;
 	Map* map;
 	ModuleFadeToBlack* fadeToBlack;
 	ModulePhysics* physics;
