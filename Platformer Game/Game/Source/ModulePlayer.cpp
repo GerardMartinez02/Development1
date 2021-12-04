@@ -69,7 +69,7 @@ bool ModulePlayer::Start()
 
 	texture = app->tex->Load("Assets/textures/playerSprites.png");
 	currentAnimation = &idleAnimRight;
-	currentAnimation = &idleAnimLeft;
+	
 
 	//Per fer atacs
 	//laserFx = app->audio->LoadFx("Assets/Fx/laser.wav");
