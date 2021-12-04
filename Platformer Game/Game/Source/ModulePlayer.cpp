@@ -105,8 +105,6 @@ bool ModulePlayer::Start()
 
 	//-----
 
-	jumpCounter = 0;
-	
 	uint winWidth, winHeight;
 
 	app->win->GetWindowSize(winWidth, winHeight);
@@ -139,10 +137,20 @@ bool ModulePlayer::Update(float dt)
 
 	
 	
-	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN)
+	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KeyState::KEY_DOWN && jumpState == false && inAir == false)
 	{
 		pbody->body->ApplyLinearImpulse({ 0,-2 }, { 0,0 }, true);
-		jumpCounter++;
+	}
+
+	if (pbody->body->GetLinearVelocity().y < 0 && app->input->GetKey(SDL_SCANCODE_SPACE) == KeyState::KEY_DOWN)
+	{
+		jumpState = true;
+	}
+
+	if (pbody->body->GetLinearVelocity().y == 0 && app->input->GetKey(SDL_SCANCODE_SPACE) == KeyState::KEY_IDLE)
+	{
+		jumpState = false;
+		inAir = false;
 	}
 
 	if (app->input->GetKey(SDL_SCANCODE_A) == KEY_IDLE && app->input->GetKey(SDL_SCANCODE_D) == KEY_IDLE && app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_IDLE)
