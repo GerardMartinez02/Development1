@@ -68,6 +68,10 @@ bool Scene::Update(float dt)
 	{
 		app->render->camera.x = -(app->player->pbody->body->GetPosition().x * 100) + 630;
 	}
+	if (app->player->verticalCamera == false)
+	{
+		app->render->camera.y = -(app->player->pbody->body->GetPosition().y * 100) + 430;
+	}
 
     // L02: DONE 3: Request Load / Save when pressing L/S
 	if(app->input->GetKey(SDL_SCANCODE_F6) == KEY_DOWN)
