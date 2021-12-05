@@ -31,6 +31,8 @@ public:
 	// Called before all Updates
 	bool PostUpdate() override;
 
+	void OnCollision(PhysBody* bodyA, PhysBody* bodyB) override;
+
 	bool loadState(pugi::xml_node&);
 	bool saveState(pugi::xml_node&) const;
 
@@ -55,6 +57,8 @@ public:
 	int speed = 1;
 	bool jumpState = false;
 	bool inAir;
+	
+	bool winCondition = false;
 
 	// The player spritesheet loaded into an SDL_Texture
 	SDL_Texture* texture;

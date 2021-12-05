@@ -115,10 +115,22 @@ void Map::Colliders()
 
 						SDL_Rect r = tileset->GetTileRect(gid);
 						iPoint pos = MapToWorld(x, y);
-						PhysBody* col = new PhysBody();
-						col->listener = this;
-						col = app->physics->CreateRectangle(pos.x , pos.y , r.w, r.h, 1);
-						colliders.add(col);
+						if (mapLayerItem->data->properties.GetProperty("Navigation") == 1)
+						{
+							collider = new PhysBody();
+							collider->listener = this;
+							collider = app->physics->CreateRectangle(pos.x , pos.y , r.w, r.h, 1);
+							collider->typeCollision = typeOfCollision::WALL;
+							colliders.add(collider);
+						}
+						else if (mapLayerItem->data->properties.GetProperty("Win") == 1)
+						{
+							collider = new PhysBody();
+							collider->listener = this;
+							collider = app->physics->CreateRectangleSensor(pos.x , pos.y , r.w, r.h, 1);
+							collider->typeCollision = typeOfCollision::WINFLAG;
+							colliders.add(collider);
+						}
 					}
 
 				}

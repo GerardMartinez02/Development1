@@ -102,7 +102,7 @@ bool ModulePlayer::Start()
 	b->SetUserData(pbody);
 	pbody->width = pbody->height = pCircle.m_radius;
 	pbody->listener = this;
-	//pbody->colType = collisionType::PLAYER;
+	pbody->typeCollision = typeOfCollision::PLAYER;
 	b->SetUserData(pbody);
 	
 	
@@ -207,7 +207,35 @@ bool ModulePlayer::PostUpdate()
 	return true;
 }
 
-bool ModulePlayer::CleanUp() // Implementar???
+void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 {
+	if (bodyA->typeCollision == typeOfCollision::PLAYER && bodyB->typeCollision == typeOfCollision::WINFLAG)
+	{
+		LOG("WIN!");
+		winCondition = true;
+	}
+}
+
+bool ModulePlayer::loadState(pugi::xml_node& data)
+{
+	position.x = data.child("position").attribute("x").as_int();
+	position.y = data.child("position").attribute("y").as_int();
+	pbody->body->SetTransform({ PIXEL_TO_METERS(position.x), PIXEL_TO_METERS(position.y) }, 0.0f);
+	return true;
+}
+
+bool ModulePlayer::saveState(pugi::xml_node& data) const
+{
+	data.child("position").attribute("x").set_value(position.x);
+	data.child("position").attribute("y").set_value(position.y);
+	return true;
+}
+
+bool ModulePlayer::CleanUp()
+{
+	LOG("Cleaning the Player");
+	bool ret = true;
+	app->tex->UnLoad(texture);
+	app->physics->world->DestroyBody(b);
 	return true;
 }
