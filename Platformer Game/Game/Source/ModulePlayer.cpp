@@ -88,11 +88,11 @@ bool ModulePlayer::Start()
 
 	b = app->physics->world->CreateBody(&body);
 
-	pCircle.m_radius = PIXEL_TO_METERS(30);
+	pCircle.m_radius = PIXEL_TO_METERS(14);
 
 	b2FixtureDef fixture;
 	fixture.shape = &pCircle;
-	fixture.density = 0.5f;
+	fixture.density = 1.5f;
 	fixture.friction = 100.0f;
 
 	b->CreateFixture(&fixture);
@@ -102,6 +102,7 @@ bool ModulePlayer::Start()
 	b->SetUserData(pbody);
 	pbody->width = pbody->height = pCircle.m_radius;
 	pbody->listener = this;
+	//pbody->colType = collisionType::PLAYER;
 	b->SetUserData(pbody);
 	
 	
