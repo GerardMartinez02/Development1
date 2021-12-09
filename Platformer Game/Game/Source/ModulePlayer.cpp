@@ -16,7 +16,7 @@
 
 
 
-ModulePlayer::ModulePlayer() : Module()
+ModulePlayer::ModulePlayer(App* app, bool start_enabled) : Module(app, start_enabled)
 {
 	//idleAnimRight
 	idleAnimRight.PushBack({ 0, 1, 31, 35 });

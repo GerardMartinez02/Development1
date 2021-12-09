@@ -22,19 +22,19 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 {
 	frames = 0;
 
-	win = new Window();
+	win = new Window(this, true);
 	input = new Input();
-	render = new Render();
-	tex = new Textures();
-	audio = new Audio();
-	fadeToBlack = new ModuleFadeToBlack();
-	intro = new SceneIntro();
-	scene = new Scene();
+	render = new Render(this, true);
+	tex = new Textures(this, true);
+	audio = new Audio(this, true);
+	fadeToBlack = new ModuleFadeToBlack(this, true);
+	intro = new SceneIntro(this, true);
+	scene = new Scene(this, true);
 	map = new Map();
-	physics = new ModulePhysics();
+	physics = new ModulePhysics(this, true);
 	
 	
-	player = new ModulePlayer();
+	player = new ModulePlayer(this, true);
 
 	// Ordered for awake / Start / Update
 	// Reverse order of CleanUp

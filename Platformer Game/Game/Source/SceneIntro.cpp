@@ -14,9 +14,9 @@
 #include "Defs.h"
 #include "Log.h"
 
-SceneIntro::SceneIntro() : Module()
+SceneIntro::SceneIntro(App* app, bool start_enabled) : Module(app, start_enabled)
 {
-	
+	startButton = NULL;
 }
 
 // Destructor
@@ -36,10 +36,16 @@ bool SceneIntro::Awake(pugi::xml_node& config)
 bool SceneIntro::Start()
 {
 	// L03: DONE: Load map
+	LOG("Loading Intro assets");
+	bool ret = true;
 	//app->audio->PlayMusic("Assets/audio/music/introMusic.ogg");
-	backgroundIntro = app->tex->Load("Assets/maps/introBg.png");
-	startButton = app->tex->Load("Assets/textures/startButton.png");
+	
+	Application->render->camera.x = app->render->camera.y = 0;
 
+	/*introLogo = Application->tex->Load("Assets/textures/introImage.png");
+	startButton = Application->tex->Load("Assets/textures/startButton.png");
+	black = Application->tex->Load("Assets/textures/pinballLoading.png");*/
+	
 	sCounter = 0;
 	delay = 0;
 
@@ -56,9 +62,38 @@ bool SceneIntro::PreUpdate()
 bool SceneIntro::Update(float dt)
 {
 	sCounter++;
+	delay++;
 
 	app->scene->Disable();
 	app->player->Disable();
+
+	
+	SDL_Rect rect;
+
+	Application->render->Blit(introLogo, 0, 0, NULL, 1.0f, NULL, 2147483647, 2147483647);
+
+	Application->render->Blit(introLogo, 0, 0, NULL, 1.0f, NULL, 2147483647, 2147483647);
+
+	if ((delay / 30) % 2 == 0)
+	{
+		Application->render->Blit(startButton, 90, 700, NULL, 1.0f, NULL, 2147483647, 2147483647);
+	}
+
+	if (transition == true)
+	{
+		transitionTimer++;
+		Application->render->Blit(black, 0, 0, NULL, 1.0f, NULL, 2147483647, 2147483647);
+	}
+
+	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN)
+	{
+		
+		if (transition == false)
+		{
+			transition = true;
+		}
+		trackID = 1;
+	}
 
 	if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN)
 	{
@@ -67,9 +102,30 @@ bool SceneIntro::Update(float dt)
 		app->player->Enable();
 		//app->physics->Enable();
 
+		if (transition == false)
+		{
+			transition = true;
+		}
+
+		trackID = 2;
 		app->intro->Disable();
 	}
 
+	if (transitionTimer > 150)
+	{
+		if (Application->scene->IsActive() == false)
+		{
+			Application->scene->Enable();
+		}
+		if (Application->player->IsActive() == false)
+		{
+			Application->player->Enable();
+		}
+		Application->scene->Disable();
+	}
+
+
+	if (transitionTimer > 150) Application->fadeToBlack->FadeToBlack((Module*)Application->intro, (Module*)Application->scene, 90);
 	return true;
 }
 
@@ -97,8 +153,11 @@ bool SceneIntro::PostUpdate()
 bool SceneIntro::CleanUp()
 {
 	LOG("Freeing scene");
-	app->tex->UnLoad(backgroundIntro);
+	app->tex->UnLoad(introLogo);
+	app->tex->UnLoad(black);
 	app->tex->UnLoad(startButton);
+	app->tex->UnLoad(backgroundIntro);
+	
 	return true;
 }
 

@@ -9,7 +9,7 @@ class ModuleFadeToBlack : public Module
 {
 public:
 	//Constructor
-	ModuleFadeToBlack();
+	ModuleFadeToBlack(App* app, bool start_enabled = true);
 
 	//Destructor
 	~ModuleFadeToBlack();

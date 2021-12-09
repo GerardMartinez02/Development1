@@ -6,7 +6,7 @@
 #include "Window.h"
 #include "SDL/include/SDL_render.h"
 
-ModuleFadeToBlack::ModuleFadeToBlack()
+ModuleFadeToBlack::ModuleFadeToBlack(App* app, bool start_enabled) : Module(app, start_enabled)
 {
 	
 }

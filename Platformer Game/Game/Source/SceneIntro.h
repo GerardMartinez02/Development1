@@ -12,7 +12,7 @@ class SceneIntro : public Module
 {
 public:
 
-	SceneIntro();
+	SceneIntro(App* app, bool start_enabled = true);
 
 	// Destructor
 	virtual ~SceneIntro();
@@ -38,10 +38,16 @@ public:
 	int sCounter;
 	
 private:
+	SDL_Texture* introLogo;
 	SDL_Texture* startButton;
+	SDL_Texture* black;
 	SDL_Texture* backgroundIntro;
+
+	int transitionTimer;
+	bool transition;
+
 	int delay;
-	
+	int trackID;
 };
 
 #endif // __SCENE_H__

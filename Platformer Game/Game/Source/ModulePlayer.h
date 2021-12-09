@@ -14,7 +14,7 @@ class ModulePlayer : public Module
 {
 public:
 	// Constructor
-	ModulePlayer();
+	ModulePlayer(App* app, bool start_enabled = true);
 
 	// Destructor
 	~ModulePlayer();

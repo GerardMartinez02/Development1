@@ -19,7 +19,7 @@
 #define RADTODEG 57.295779513082320876f
 
 
-ModulePhysics::ModulePhysics()
+ModulePhysics::ModulePhysics(App* app, bool start_enabled) : Module(app, start_enabled)
 {
 	world = NULL;
 	ground = NULL;

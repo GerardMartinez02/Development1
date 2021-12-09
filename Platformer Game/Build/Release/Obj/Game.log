@@ -1,10 +1,82 @@
-﻿  ModulePlayer.cpp
-C:\GitHub\Development1\Platformer Game\Game\Source\Animation.h(54,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
-C:\GitHub\Development1\Platformer Game\Game\Source\Animation.h(56,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+﻿  App.cpp
+C:\Users\user\Desktop\UNI\2n\Desenvolupament de Videojocs\Development1\Platformer Game\Game\Source\Animation.h(54,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
+C:\Users\user\Desktop\UNI\2n\Desenvolupament de Videojocs\Development1\Platformer Game\Game\Source\Animation.h(56,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+Source\App.cpp(25,18): error C2512: 'Window::Window': no appropriate default constructor available
+Source\App.cpp(27,21): error C2512: 'Render::Render': no appropriate default constructor available
+Source\App.cpp(28,20): error C2512: 'Textures::Textures': no appropriate default constructor available
+Source\App.cpp(29,19): error C2512: 'Audio::Audio': no appropriate default constructor available
+Source\App.cpp(30,37): error C2512: 'ModuleFadeToBlack::ModuleFadeToBlack': no appropriate default constructor available
+Source\App.cpp(31,24): error C2512: 'SceneIntro::SceneIntro': no appropriate default constructor available
+Source\App.cpp(32,19): error C2512: 'Scene::Scene': no appropriate default constructor available
+Source\App.cpp(34,29): error C2512: 'ModulePhysics::ModulePhysics': no appropriate default constructor available
+Source\App.cpp(37,27): error C2512: 'ModulePlayer::ModulePlayer': no appropriate default constructor available
+  Audio.cpp
+  Input.cpp
+Source\Input.cpp(12,44): error C2511: 'Input::Input(App *,bool)': overloaded member function not found in 'Input'
+C:\Users\user\Desktop\UNI\2n\Desenvolupament de Videojocs\Development1\Platformer Game\Game\Source\Input.h(28): message : see declaration of 'Input'
+Source\Input.cpp(13,1): error C2550: 'Input::{ctor}': constructor initializer lists are only allowed on constructor definitions
+Source\Input.cpp(16,2): error C2597: illegal reference to non-static member 'Input::keyboard'
+C:\Users\user\Desktop\UNI\2n\Desenvolupament de Videojocs\Development1\Platformer Game\Game\Source\Input.h(70): message : see declaration of 'Input::keyboard'
+Source\Input.cpp(17,9): error C2597: illegal reference to non-static member 'Input::keyboard'
+C:\Users\user\Desktop\UNI\2n\Desenvolupament de Videojocs\Development1\Platformer Game\Game\Source\Input.h(70): message : see declaration of 'Input::keyboard'
+Source\Input.cpp(18,9): error C2597: illegal reference to non-static member 'Input::mouseButtons'
+C:\Users\user\Desktop\UNI\2n\Desenvolupament de Videojocs\Development1\Platformer Game\Game\Source\Input.h(71): message : see declaration of 'Input::mouseButtons'
+  Main.cpp
+Source\Main.cpp(94,32): warning C4244: '=': conversion from 'Uint64' to 'int', possible loss of data
+  Map.cpp
+Source\Map.cpp(13,40): error C2511: 'Map::Map(App *,bool)': overloaded member function not found in 'Map'
+C:\Users\user\Desktop\UNI\2n\Desenvolupament de Videojocs\Development1\Platformer Game\Game\Source\Map.h(131): message : see declaration of 'Map'
+Source\Map.cpp(14,1): error C2550: 'Map::{ctor}': constructor initializer lists are only allowed on constructor definitions
+Source\Map.cpp(197,19): warning C4244: '=': conversion from 'float' to 'TYPE', possible loss of data
+          with
+          [
+              TYPE=int
+          ]
+Source\Map.cpp(198,19): warning C4244: '=': conversion from 'float' to 'TYPE', possible loss of data
+          with
+          [
+              TYPE=int
+          ]
+Source\Map.cpp(220,23): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+Source\Map.cpp(221,98): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  ModuleFadeToBlack.cpp
+Source\ModuleFadeToBlack.cpp(92,19): warning C4244: '=': conversion from 'float' to 'Uint32', possible loss of data
+  ModulePhysics.cpp
+Source\ModulePhysics.cpp(229,21): warning C4018: '<': signed/unsigned mismatch
+Source\ModulePhysics.cpp(285,23): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+Source\ModulePhysics.cpp(286,25): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+Source\ModulePhysics.cpp(310,23): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+Source\ModulePhysics.cpp(311,25): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+Source\ModulePhysics.cpp(382,21): warning C4018: '<': signed/unsigned mismatch
+Source\ModulePhysics.cpp(469,13): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+Source\ModulePhysics.cpp(470,13): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+Source\ModulePhysics.cpp(476,27): warning C4244: 'return': conversion from 'float32' to 'int', possible loss of data
+  ModulePlayer.cpp
+C:\Users\user\Desktop\UNI\2n\Desenvolupament de Videojocs\Development1\Platformer Game\Game\Source\Animation.h(54,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
+C:\Users\user\Desktop\UNI\2n\Desenvolupament de Videojocs\Development1\Platformer Game\Game\Source\Animation.h(56,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
 Source\ModulePlayer.cpp(103,40): warning C4244: '=': conversion from 'float32' to 'int', possible loss of data
-  Generating code
-  1 of 550 functions ( 0.2%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    37 functions had inline decision re-evaluated but remain unchanged
-  Finished generating code
-  Game.vcxproj -> C:\GitHub\Development1\Platformer Game\Build\Release\Game.exe
+  Render.cpp
+C:\Users\user\Desktop\UNI\2n\Desenvolupament de Videojocs\Development1\Platformer Game\Game\Source\Animation.h(54,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
+C:\Users\user\Desktop\UNI\2n\Desenvolupament de Videojocs\Development1\Platformer Game\Game\Source\Animation.h(56,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  Scene.cpp
+C:\Users\user\Desktop\UNI\2n\Desenvolupament de Videojocs\Development1\Platformer Game\Game\Source\Animation.h(54,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
+C:\Users\user\Desktop\UNI\2n\Desenvolupament de Videojocs\Development1\Platformer Game\Game\Source\Animation.h(56,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+Source\Scene.cpp(15,20): error C2146: syntax error: missing ')' before identifier 'app'
+Source\Scene.cpp(15,30): error C2062: type 'bool' unexpected
+Source\Scene.cpp(15,57): error C2143: syntax error: missing ')' before ','
+Source\Scene.cpp(15,54): error C2040: 'app': 'Module' differs in levels of indirection from 'App *'
+Source\Scene.cpp(15,54): error C2512: 'Module': no appropriate default constructor available
+C:\Users\user\Desktop\UNI\2n\Desenvolupament de Videojocs\Development1\Platformer Game\Game\Source\Module.h(11,7): message : see declaration of 'Module'
+Source\Scene.cpp(15,72): error C2059: syntax error: ')'
+Source\Scene.cpp(17,2): error C2065: 'name': undeclared identifier
+Source\Scene.cpp(17,22): error C2059: syntax error: ';'
+Source\Scene.cpp(18,1): error C2059: syntax error: '}'
+Source\Scene.cpp(18,1): error C2143: syntax error: missing ';' before '}'
+Source\Scene.cpp(22,1): error C2143: syntax error: missing ';' before '{'
+Source\Scene.cpp(22,1): error C2447: '{': missing function header (old-style formal list?)
+  SceneIntro.cpp
+C:\Users\user\Desktop\UNI\2n\Desenvolupament de Videojocs\Development1\Platformer Game\Game\Source\Animation.h(54,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
+C:\Users\user\Desktop\UNI\2n\Desenvolupament de Videojocs\Development1\Platformer Game\Game\Source\Animation.h(56,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+Source\SceneIntro.cpp(47,2): error C2065: 'black': undeclared identifier
+  Textures.cpp
+  Window.cpp

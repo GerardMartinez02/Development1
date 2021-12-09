@@ -10,10 +10,15 @@ class PhysBody;
 
 class Module
 {
-public:
+private:
+	bool enabled;
 
-	Module() : active(false)
+public:
+	App* Application;
+
+	Module(App* parent, bool start_enabled = true) : enabled(start_enabled)
 	{}
+
 
 	void Init()
 	{
@@ -72,6 +77,8 @@ public:
 	{
 		return active;
 	}
+
+	
 	void Enable()
 	{
 		if (active == false)
