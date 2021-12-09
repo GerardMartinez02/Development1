@@ -23,14 +23,14 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	frames = 0;
 
 	win = new Window(this, true);
-	input = new Input();
+	input = new Input(this, true);
 	render = new Render(this, true);
 	tex = new Textures(this, true);
 	audio = new Audio(this, true);
 	fadeToBlack = new ModuleFadeToBlack(this, true);
 	intro = new SceneIntro(this, true);
 	scene = new Scene(this, true);
-	map = new Map();
+	map = new Map(this, true);
 	physics = new ModulePhysics(this, true);
 	
 	

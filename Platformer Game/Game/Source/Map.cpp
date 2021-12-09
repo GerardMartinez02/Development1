@@ -4,11 +4,16 @@
 #include "Textures.h"
 #include "Map.h"
 #include "ModulePhysics.h"
-
+#include "ModuleCollisions.h"
+//#include "Enemies.h"
+#include "ModulePlayer.h"
+#include "Window.h"
 #include "Defs.h"
 #include "Log.h"
 
+#include "SDL/include/SDL.h"
 #include <math.h>
+#include <iostream>
 
 Map::Map(App* app, bool start_enabled) : Module(app, start_enabled), mapLoaded(false)
 {
