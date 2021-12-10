@@ -9,13 +9,8 @@
 #include "ModuleFadeToBlack.h"
 #include "ModulePlayer.h"
 #include "SceneIntro.h"
-
-
 #include "Defs.h"
 #include "Log.h"
-
-#include <iostream>
-using namespace std;
 
 SceneIntro::SceneIntro() : Module()
 {
@@ -83,11 +78,6 @@ bool SceneIntro::Update(float dt)
 // Called each loop iteration
 bool SceneIntro::PostUpdate()
 {
-	cout << app->render->camera.x;
-	cout << endl;
-	cout << app->render->camera.y;
-	cout << endl;
-	cout << endl;
 	bool ret = true;
 	delay++;
 

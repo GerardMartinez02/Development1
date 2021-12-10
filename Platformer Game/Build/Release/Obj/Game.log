@@ -1,8 +1,9 @@
-﻿  SceneIntro.cpp
+﻿  ModulePlayer.cpp
 C:\Users\albertrc9\Documents\GitHub\Development1\Platformer Game\Game\Source\Animation.h(54,19): warning C4244: 'inicializando': conversión de 'const float' a 'int'; posible pérdida de datos
 C:\Users\albertrc9\Documents\GitHub\Development1\Platformer Game\Game\Source\Animation.h(56,30): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
+Source\ModulePlayer.cpp(103,40): warning C4244: '=': conversión de 'float32' a 'int'; posible pérdida de datos
   Generando código
-  1 of 551 functions ( 0.2%) were compiled, the rest were copied from previous compilation.
+  1 of 550 functions ( 0.2%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
     1 functions had inline decision re-evaluated but remain unchanged
   Generación de código finalizada
