@@ -43,7 +43,7 @@ bool Scene::Start()
 
 	app->map->Enable();
 	// L03: DONE: Load map
-	app->map->Load("tileMap1.tmx");
+	app->map->Load("tileMap2.tmx");
 
 	app->player->Enable();
 	app->map->Colliders();

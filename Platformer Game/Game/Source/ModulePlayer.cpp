@@ -12,7 +12,7 @@
 #include <time.h>
 #include "ModulePhysics.h"
 #include "Map.h"
-
+#include "SceneIntro.h"
 
 
 
@@ -213,6 +213,12 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 	{
 		LOG("WIN!");
 		winCondition = true;
+	}
+	if (bodyA->typeCollision == typeOfCollision::PLAYER && bodyB->typeCollision == typeOfCollision::FALL)
+	{
+		app->scene->Disable();
+		//app->player->Disable();
+		app->intro->Enable();
 	}
 }
 

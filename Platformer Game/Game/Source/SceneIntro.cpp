@@ -14,6 +14,9 @@
 #include "Defs.h"
 #include "Log.h"
 
+#include <iostream>
+using namespace std;
+
 SceneIntro::SceneIntro() : Module()
 {
 	
@@ -39,6 +42,10 @@ bool SceneIntro::Start()
 	//app->audio->PlayMusic("Assets/audio/music/introMusic.ogg");
 	backgroundIntro = app->tex->Load("Assets/maps/introBg.png");
 	startButton = app->tex->Load("Assets/textures/startButton.png");
+
+	app->render->camera.x = app->map->MapToWorld(0, -130).x;
+	app->render->camera.y = app->map->MapToWorld(0, -130).y;
+
 
 	sCounter = 0;
 	delay = 0;
@@ -76,6 +83,11 @@ bool SceneIntro::Update(float dt)
 // Called each loop iteration
 bool SceneIntro::PostUpdate()
 {
+	cout << app->render->camera.x;
+	cout << endl;
+	cout << app->render->camera.y;
+	cout << endl;
+	cout << endl;
 	bool ret = true;
 	delay++;
 

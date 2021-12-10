@@ -21,6 +21,7 @@ enum typeOfCollision
 	PLAYER,
 	WALL,
 	WINFLAG,
+	FALL
 };
 
 // Small class to return to other modules to track position and rotation of physics bodies

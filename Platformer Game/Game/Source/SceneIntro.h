@@ -36,6 +36,8 @@ public:
 	bool CleanUp();
 
 	int sCounter;
+
+	iPoint position;
 	
 private:
 	SDL_Texture* startButton;
