@@ -42,6 +42,7 @@ public:
 private:
 	SDL_Texture* startButton;
 	SDL_Texture* backgroundIntro;
+	SDL_Texture* loading;
 	int delay;
 	
 };

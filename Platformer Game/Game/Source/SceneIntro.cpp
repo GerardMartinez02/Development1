@@ -36,7 +36,8 @@ bool SceneIntro::Start()
 	// L03: DONE: Load map
 	//app->audio->PlayMusic("Assets/audio/music/introMusic.ogg");
 	backgroundIntro = app->tex->Load("Assets/maps/introImage.png");
-	startButton = app->tex->Load("Assets/textures/startButton.png");
+	startButton = app->tex->Load("Assets/textures/PressEnterToStartRed.png");
+	loading = app->tex->Load("Assets/maps/loadingScreen.png");
 
 	app->render->camera.x = app->map->MapToWorld(0, -130).x;
 	app->render->camera.y = app->map->MapToWorld(0, -130).y;
@@ -87,7 +88,7 @@ bool SceneIntro::PostUpdate()
 	}
 	app->render->DrawTexture(backgroundIntro, 0, 2080, NULL, 1.0f);
 	
-	if ((delay / 30) % 2 == 0)
+	if ((delay / 40) % 2 == 0)
 	{
 		app->render->DrawTexture(startButton, 100, 2180, NULL, 1.0f);
 	}
