@@ -60,10 +60,10 @@ bool SceneIntro::PreUpdate()
 // Called each loop iteration
 bool SceneIntro::Update(float dt)
 {
-	sCounter++;
-
 	app->scene->Disable();
 	app->player->Disable();
+	
+	sCounter++;
 
 	if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN)
 	{

@@ -56,7 +56,7 @@ public:
 
 	int speed = 1;
 	bool jumpState = false;
-	bool inAir;
+	int jumpsCount;
 	
 	bool winCondition = false;
 
@@ -68,10 +68,15 @@ public:
 	Animation* currentAnimation = nullptr;
 
 	// A set of animations
-	Animation idleAnimRight;
-	Animation idleAnimLeft;
+	Animation idleAnim;
+	Animation lookUpAnim;
+	Animation lookDownAnim;
 	Animation leftAnim;
+	Animation runLeftAnim;
+	Animation jumpLeftAnim;
 	Animation rightAnim;
+	Animation runRightAnim;
+	Animation jumpRightAnim;
 
 	int currentScene;
 	
