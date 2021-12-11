@@ -8,6 +8,8 @@
 #include "Window.h"
 #include "Log.h"
 #include "Scene.h"
+#include <stdio.h>
+#include <time.h>
 #include "ModulePhysics.h"
 #include "Map.h"
 #include "SceneIntro.h"
@@ -16,61 +18,37 @@
 
 ModulePlayer::ModulePlayer() : Module()
 {
-	idleAnim.PushBack({ 2, 1, 30, 37 });
-	idleAnim.PushBack({ 142, 0, 30, 37 });
-	idleAnim.loop = true;
-	idleAnim.speed = 0.008f;
+	//idleAnimRight
+	idleAnimRight.PushBack({ 0, 1, 31, 35 });
+	idleAnimRight.PushBack({ 138, 1, 31, 37 });
+	idleAnimRight.loop = true;
+	idleAnimRight.speed = 0.008f;
 
-	//lookUp
-	lookUpAnim.PushBack({ 2, 1, 30, 37 });
+	//idleAnimLeft
+	idleAnimLeft.PushBack({ 34, 1, 72, 37 });
+	idleAnimLeft.loop = true;
+	idleAnimLeft.speed = 0.008f;
 
-	//lookDown
-	lookDownAnim.PushBack({ 142, 0, 30, 37 });
-
-
-	//leftAnim
-	leftAnim.PushBack({ 162, 82, 31, 35 });
-	leftAnim.PushBack({ 131, 81, 30, 36 });
-	leftAnim.PushBack({ 99, 80, 30, 37 });
-	leftAnim.PushBack({ 67, 82, 30, 35 });
-	leftAnim.PushBack({ 35, 81, 30, 36 });
-	leftAnim.PushBack({ 2, 80, 29, 37 });
+	//rightAnim
+	leftAnim.PushBack({ 1, 40, 31, 34 });
+	leftAnim.PushBack({ 32, 40, 31, 34 });
+	leftAnim.PushBack({ 64, 40, 31, 34 });
+	leftAnim.PushBack({ 96, 40, 31, 34 });
+	leftAnim.PushBack({ 128, 40, 31, 34 });
+	leftAnim.PushBack({ 160, 40, 31, 34 });
 	leftAnim.loop = true;
 	leftAnim.speed = 0.1f;
 
-	//runLeftAnim
-	runLeftAnim.PushBack({ 156, 160, 31, 37 });
-	runLeftAnim.PushBack({ 126, 158, 30, 39 });
-	runLeftAnim.PushBack({ 95, 162, 31, 35 });
-	runLeftAnim.PushBack({ 66, 162, 29, 35 });
-	runLeftAnim.loop = true;
-	runLeftAnim.speed = 0.1f;
 
-	//jumpLeftAnimation
-	jumpLeftAnim.PushBack({ 126, 122, 30, 35 });
-	jumpLeftAnim.PushBack({ 155, 121, 29, 36 });
-
-	//rightAnim
-	rightAnim.PushBack({ 1, 41, 31, 35 });
-	rightAnim.PushBack({ 33, 40, 30, 36 });
-	rightAnim.PushBack({ 65, 39, 30, 37 });
-	rightAnim.PushBack({ 97, 41, 30, 35 });
-	rightAnim.PushBack({ 129, 40, 30, 36 });
-	rightAnim.PushBack({ 163, 39, 29, 37 });
+	//leftAnim
+	rightAnim.PushBack({ 1, 80, 31, 34 });
+	rightAnim.PushBack({ 32, 80, 31, 34 });
+	rightAnim.PushBack({ 64, 80, 31, 34 });
+	rightAnim.PushBack({ 96, 80, 31, 34 });
+	rightAnim.PushBack({ 128, 80, 31, 34 });
+	rightAnim.PushBack({ 160, 80, 31, 34 });
 	rightAnim.loop = true;
 	rightAnim.speed = 0.1f;
-
-	//runRightAnim
-	runRightAnim.PushBack({ 1, 119, 31, 37 });
-	runRightAnim.PushBack({ 31, 117, 30, 39 });
-	runRightAnim.PushBack({ 61, 121, 31, 35 });
-	runRightAnim.PushBack({ 92, 121, 29, 35 });
-	runRightAnim.loop = true;
-	runRightAnim.speed = 0.1f;
-
-	//jumpRightAnim
-	jumpRightAnim.PushBack({ 31, 163, 30, 35 });
-	jumpRightAnim.PushBack({ 3, 162, 29, 36 });
 }
 
 ModulePlayer::~ModulePlayer()
@@ -90,8 +68,8 @@ bool ModulePlayer::Start()
 	bool ret = true;
 
 	texture = app->tex->Load("Assets/textures/playerSprites.png");
-	currentAnimation = &idleAnim;
-	
+	currentAnimation = &idleAnimRight;
+
 
 	//Per fer atacs
 	//laserFx = app->audio->LoadFx("Assets/Fx/laser.wav");
@@ -126,8 +104,8 @@ bool ModulePlayer::Start()
 	pbody->listener = this;
 	pbody->typeCollision = typeOfCollision::PLAYER;
 	b->SetUserData(pbody);
-	
-	
+
+
 	//-----
 
 	uint winWidth, winHeight;
@@ -143,89 +121,70 @@ bool ModulePlayer::Start()
 bool ModulePlayer::Update(float dt)
 {
 	// L10: DONE: Implement gamepad support
-	if (destroyed == false)
+	if (app->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT)
 	{
-		if (app->input->GetKey(SDL_SCANCODE_A) == KeyState::KEY_REPEAT)
+		if (pbody->body->GetLinearVelocity().x >= -2) pbody->body->ApplyLinearImpulse({ -1.0f,0 }, { 0,0 }, true);
+		if (currentAnimation != &rightAnim)
 		{
-			if (pbody->body->GetLinearVelocity().x >= -2) pbody->body->ApplyLinearImpulse({ -1.0f,0 }, { 0,0 }, true);
-			if (currentAnimation != &leftAnim)
-			{
-				leftAnim.Reset();
-				currentAnimation = &leftAnim;
-			}
+			rightAnim.Reset();
+			currentAnimation = &rightAnim;
 		}
-
-		if (app->input->GetKey(SDL_SCANCODE_A) == KeyState::KEY_REPEAT && app->input->GetKey(SDL_SCANCODE_LSHIFT) == KeyState::KEY_REPEAT)
-		{
-			if (pbody->body->GetLinearVelocity().x >= -2) pbody->body->ApplyLinearImpulse({ -1.2f,0 }, { 0,0 }, true);
-			if (currentAnimation != &runLeftAnim)
-			{
-				runLeftAnim.Reset();
-				currentAnimation = &runLeftAnim;
-			}
-		}
-
-		if (app->input->GetKey(SDL_SCANCODE_D) == KeyState::KEY_REPEAT)
-		{
-			if (pbody->body->GetLinearVelocity().x <= +2) pbody->body->ApplyLinearImpulse({ 1.0f,0 }, { 0,0 }, true);
-			if (currentAnimation != &rightAnim)
-			{
-				rightAnim.Reset();
-				currentAnimation = &rightAnim;
-			}
-		}
-
-		if (app->input->GetKey(SDL_SCANCODE_D) == KeyState::KEY_REPEAT && app->input->GetKey(SDL_SCANCODE_LSHIFT) == KeyState::KEY_REPEAT)
-		{
-			if (pbody->body->GetLinearVelocity().x <= +2) pbody->body->ApplyLinearImpulse({ 1.2f,0 }, { 0,0 }, true);
-			if (currentAnimation != &runRightAnim)
-			{
-				runRightAnim.Reset();
-				currentAnimation = &runRightAnim;
-			}
-		}
-
-		if (pbody->body->GetLinearVelocity().y == 0)
-		{
-			jumpsCount = 2;
-			jumpState = false;
-		}
-
-		if (app->input->GetKey(SDL_SCANCODE_SPACE) == KeyState::KEY_DOWN && jumpsCount > 0)
-		{
-			pbody->body->ApplyLinearImpulse({ 0,-1.0f }, { 0,0 }, true);
-			jumpsCount--;
-		}
-		
-		if (pbody->body->GetLinearVelocity().y > 0 && app->input->GetKey(SDL_SCANCODE_SPACE) == KeyState::KEY_DOWN)
-		{
-			jumpState = true;
-		}
-
-		if (app->input->GetKey(SDL_SCANCODE_A) == KeyState::KEY_IDLE && app->input->GetKey(SDL_SCANCODE_D) == KeyState::KEY_IDLE
-			&& app->input->GetKey(SDL_SCANCODE_SPACE) == KeyState::KEY_IDLE && app->input->GetKey(SDL_SCANCODE_W) == KeyState::KEY_IDLE
-			&& app->input->GetKey(SDL_SCANCODE_S) == KeyState::KEY_IDLE && jumpState != true)
-		{
-			if (currentAnimation == &rightAnim)
-			{
-				currentAnimation = &idleAnim;
-			}
-
-			//Idle anim left
-
-			if (currentAnimation == &leftAnim)
-			{
-				currentAnimation = &idleAnim;
-			}
-
-		}
-
-		currentAnimation->Update();
-
-		pbody->GetPosition(position.x, position.y);
-
-		return true;
 	}
+
+	if (app->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT)
+	{
+		if (pbody->body->GetLinearVelocity().x <= +2) pbody->body->ApplyLinearImpulse({ 1.0f,0 }, { 0,0 }, true);
+		if (currentAnimation != &leftAnim)
+		{
+			leftAnim.Reset();
+			currentAnimation = &leftAnim;
+		}
+	}
+
+
+
+	if (pbody->body->GetLinearVelocity().y == 0)
+	{
+		jumpsCount = 2;
+		jumpState = false;
+	}
+
+	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KeyState::KEY_DOWN && jumpsCount > 0)
+	{
+		pbody->body->ApplyLinearImpulse({ 0,-1.4f }, { 0,0 }, true);
+		jumpsCount--;
+	}
+
+	if (pbody->body->GetLinearVelocity().y > 0 && app->input->GetKey(SDL_SCANCODE_SPACE) == KeyState::KEY_DOWN)
+	{
+		jumpState = true;
+	}
+
+	if (app->input->GetKey(SDL_SCANCODE_A) == KEY_IDLE && app->input->GetKey(SDL_SCANCODE_D) == KEY_IDLE && app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_IDLE)
+	{
+		if (currentAnimation == &rightAnim)
+		{
+			currentAnimation = &idleAnimLeft;
+		}
+
+	}
+	if (app->input->GetKey(SDL_SCANCODE_A) == KEY_IDLE && app->input->GetKey(SDL_SCANCODE_D) == KEY_IDLE && app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_IDLE)
+	{
+
+		//Idle anim left
+
+		if (currentAnimation == &leftAnim)
+		{
+			currentAnimation = &idleAnimRight;
+		}
+
+	}
+
+	currentAnimation->Update();
+
+	pbody->GetPosition(position.x, position.y);
+
+	return true;
 }
 
 bool ModulePlayer::PostUpdate()

@@ -40,7 +40,7 @@ public:
 	bool CleanUp();
 
 	// Collision callback, called when the player intersects with another collider
-	
+
 
 public:
 	// Position of the player in the map
@@ -57,32 +57,27 @@ public:
 	int speed = 1;
 	bool jumpState = false;
 	int jumpsCount;
-	bool death;
-	
+
+
 	bool winCondition = false;
 
 	// The player spritesheet loaded into an SDL_Texture
 	SDL_Texture* texture;
-	
+
 	// The pointer to the current player animation
 	// It will be switched depending on the player's movement direction
 	Animation* currentAnimation = nullptr;
 
 	// A set of animations
-	Animation idleAnim;
-	Animation lookUpAnim;
-	Animation lookDownAnim;
+	Animation idleAnimRight;
+	Animation idleAnimLeft;
 	Animation leftAnim;
-	Animation runLeftAnim;
-	Animation jumpLeftAnim;
 	Animation rightAnim;
-	Animation runRightAnim;
-	Animation jumpRightAnim;
 
 	int currentScene;
-	
+
 	// The player's collider
-	
+
 
 	// A flag to detect when the player has been destroyed
 	bool destroyed = false;
