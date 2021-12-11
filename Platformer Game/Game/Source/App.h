@@ -21,7 +21,8 @@ class Map;
 class ModuleFadeToBlack;
 class ModulePhysics;
 class ModulePlayer;
-//class SceneIntro;
+class SceneIntro;
+class GameOver;
 
 class App
 {
@@ -93,11 +94,12 @@ public:
 	Audio* audio;
 	Scene* scene;
 	SceneIntro* intro;
+	GameOver* gameOver;
 	Map* map;
 	ModuleFadeToBlack* fadeToBlack;
 	ModulePhysics* physics;
 	ModulePlayer* player;
-	//SceneIntro* sceneIntro;
+	SceneIntro* sceneIntro;
 	
 
 private:

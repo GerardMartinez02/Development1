@@ -15,7 +15,7 @@
 
 SceneIntro::SceneIntro() : Module()
 {
-	
+	name.Create("sceneIntro");
 }
 
 // Destructor
@@ -68,6 +68,7 @@ bool SceneIntro::Update(float dt)
 	if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN)
 	{
 		nextImage = true;
+		app->fadeToBlack->FadeToBlack(this, (Module*)app->scene);
 	}
 
 	if (nextImage == true) delay++;

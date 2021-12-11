@@ -26,6 +26,8 @@
       <Filter>Physics</Filter>
     </ClCompile>
     <ClCompile Include="Source\SceneIntro.cpp" />
+    <ClCompile Include="Source\GameOver.cpp" />
+    <ClCompile Include="Source\Enemies.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Window.h" />
@@ -74,6 +76,7 @@
       <Filter>Physics</Filter>
     </ClInclude>
     <ClInclude Include="Source\SceneIntro.h" />
+    <ClInclude Include="Source\GameOver.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="External">

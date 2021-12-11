@@ -8,8 +8,6 @@
 #include "Window.h"
 #include "Log.h"
 #include "Scene.h"
-#include <stdio.h>
-#include <time.h>
 #include "ModulePhysics.h"
 #include "Map.h"
 #include "SceneIntro.h"
