@@ -4,6 +4,7 @@
 #include "Textures.h"
 #include "Map.h"
 #include "ModulePhysics.h"
+#include "Pathfinding.h"
 
 #include "Defs.h"
 #include "Log.h"

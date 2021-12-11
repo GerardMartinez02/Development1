@@ -9,6 +9,7 @@
 #include "ModuleFadeToBlack.h"
 #include "ModulePlayer.h"
 #include "SceneIntro.h"
+#include "Pathfinding.h"
 //#include "GameOver.h"
 
 #include "Defs.h"
@@ -31,8 +32,10 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	fadeToBlack = new ModuleFadeToBlack();
 	intro = new SceneIntro();
 	scene = new Scene();
+	pathfinding = new PathFinding();
 	//gameOver = new GameOver();
 	map = new Map();
+	
 	physics = new ModulePhysics();
 	
 	
@@ -48,8 +51,10 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(fadeToBlack);
 	AddModule(intro);
 	AddModule(scene);
+	AddModule(pathfinding);
 	/*AddModule(gameOver);*/
 	AddModule(map);
+	
 	
 	
 	AddModule(player);

@@ -16,8 +16,10 @@ class Render;
 class Textures;
 class Audio;
 class Scene;
+class PathFinding;
 class SceneIntro;
 class Map;
+
 class ModuleFadeToBlack;
 class ModulePhysics;
 class ModulePlayer;
@@ -94,8 +96,10 @@ public:
 	Audio* audio;
 	Scene* scene;
 	SceneIntro* intro;
+	PathFinding* pathfinding;
 	GameOver* gameOver;
 	Map* map;
+	
 	ModuleFadeToBlack* fadeToBlack;
 	ModulePhysics* physics;
 	ModulePlayer* player;

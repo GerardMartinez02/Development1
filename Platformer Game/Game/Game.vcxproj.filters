@@ -27,7 +27,8 @@
     </ClCompile>
     <ClCompile Include="Source\SceneIntro.cpp" />
     <ClCompile Include="Source\GameOver.cpp" />
-    <ClCompile Include="Source\Enemies.cpp" />
+    <ClCompile Include="Source\Pathfinding.cpp" />
+    <ClCompile Include="Source\enemyBird.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Window.h" />
@@ -77,6 +78,8 @@
     </ClInclude>
     <ClInclude Include="Source\SceneIntro.h" />
     <ClInclude Include="Source\GameOver.h" />
+    <ClInclude Include="Source\Pathfinding.h" />
+    <ClInclude Include="Source\enemyBird.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="External">
