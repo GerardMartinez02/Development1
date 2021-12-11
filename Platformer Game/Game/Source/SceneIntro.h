@@ -36,6 +36,8 @@ public:
 	bool CleanUp();
 
 	int sCounter;
+	int delay;
+	bool nextImage;
 
 	iPoint position;
 	
@@ -43,7 +45,7 @@ private:
 	SDL_Texture* startButton;
 	SDL_Texture* backgroundIntro;
 	SDL_Texture* loading;
-	int delay;
+	
 	
 };
 

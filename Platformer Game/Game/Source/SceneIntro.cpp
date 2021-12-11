@@ -7,6 +7,7 @@
 #include "Scene.h"
 #include "Map.h"
 #include "ModuleFadeToBlack.h"
+#include "ModulePhysics.h"
 #include "ModulePlayer.h"
 #include "SceneIntro.h"
 #include "Defs.h"
@@ -45,6 +46,7 @@ bool SceneIntro::Start()
 
 	sCounter = 0;
 	delay = 0;
+	nextImage = false;
 
 	return true;
 }
@@ -65,9 +67,17 @@ bool SceneIntro::Update(float dt)
 
 	if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN)
 	{
+		nextImage = true;
+	}
+
+	if (nextImage == true) delay++;
+
+	if (delay > 90 && delay <= 91)
+	{
 		app->map->Enable();
 		app->scene->Enable();
 		app->player->Enable();
+		/*app->enemies->Enable();*/
 		//app->physics->Enable();
 
 		app->intro->Disable();
@@ -80,18 +90,19 @@ bool SceneIntro::Update(float dt)
 bool SceneIntro::PostUpdate()
 {
 	bool ret = true;
-	delay++;
-
+	
 	if (app->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN)
 	{
 		ret = false;
 	}
 	app->render->DrawTexture(backgroundIntro, 0, 2080, NULL, 1.0f);
 	
-	if ((delay / 40) % 2 == 0)
+	if ((sCounter / 40) % 2 == 0)
 	{
 		app->render->DrawTexture(startButton, 100, 2180, NULL, 1.0f);
 	}
+
+	if(nextImage == true) app->render->DrawTexture(loading, 0, 2080, NULL);
 
 	return ret;
 }
@@ -102,6 +113,7 @@ bool SceneIntro::CleanUp()
 	LOG("Freeing scene");
 	app->tex->UnLoad(backgroundIntro);
 	app->tex->UnLoad(startButton);
+	app->tex->UnLoad(loading);
 	return true;
 }
 
