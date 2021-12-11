@@ -41,12 +41,12 @@ ModulePlayer::ModulePlayer() : Module()
 
 
 	//leftAnim
-	rightAnim.PushBack({ 1, 80, 31, 34 });
-	rightAnim.PushBack({ 32, 80, 31, 34 });
-	rightAnim.PushBack({ 64, 80, 31, 34 });
-	rightAnim.PushBack({ 96, 80, 31, 34 });
-	rightAnim.PushBack({ 128, 80, 31, 34 });
-	rightAnim.PushBack({ 160, 80, 31, 34 });
+	rightAnim.PushBack({ 162, 82, 31, 35 });
+	rightAnim.PushBack({ 131, 81, 30, 36 });
+	rightAnim.PushBack({ 99, 80, 30, 37 });
+	rightAnim.PushBack({ 67, 82, 30, 35 });
+	rightAnim.PushBack({ 35, 81, 30, 36 });
+	rightAnim.PushBack({ 2, 80, 29, 37 });
 	rightAnim.loop = true;
 	rightAnim.speed = 0.1f;
 }
