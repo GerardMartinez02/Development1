@@ -27,8 +27,29 @@
     </ClCompile>
     <ClCompile Include="Source\SceneIntro.cpp" />
     <ClCompile Include="Source\GameOver.cpp" />
+<<<<<<< Updated upstream
     <ClCompile Include="Source\Pathfinding.cpp" />
     <ClCompile Include="Source\enemyBird.cpp" />
+=======
+    <ClCompile Include="Source\ModuleEnemies.cpp">
+      <Filter>importedModules</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ModuleEnemy.cpp">
+      <Filter>importedModules</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\DragonEnemy.cpp" />
+    <ClCompile Include="Source\Collider.cpp">
+      <Filter>importedModules</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ModuleParticles.cpp">
+      <Filter>importedModules</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Particles.cpp" />
+    <ClCompile Include="Source\ModuleCollisions.cpp">
+      <Filter>importedModules</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Path.cpp" />
+>>>>>>> Stashed changes
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Window.h" />
@@ -78,8 +99,29 @@
     </ClInclude>
     <ClInclude Include="Source\SceneIntro.h" />
     <ClInclude Include="Source\GameOver.h" />
+<<<<<<< Updated upstream
     <ClInclude Include="Source\Pathfinding.h" />
     <ClInclude Include="Source\enemyBird.h" />
+=======
+    <ClInclude Include="Source\ModuleEnemies.h">
+      <Filter>importedModules</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ModuleEnemy.h">
+      <Filter>importedModules</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\DragonEnemy.h" />
+    <ClInclude Include="Source\Collider.h">
+      <Filter>importedModules</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ModuleParticles.h">
+      <Filter>importedModules</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Particles.h" />
+    <ClInclude Include="Source\ModuleCollisions.h">
+      <Filter>importedModules</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Path.h" />
+>>>>>>> Stashed changes
   </ItemGroup>
   <ItemGroup>
     <Filter Include="External">

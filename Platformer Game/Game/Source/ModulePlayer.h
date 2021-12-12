@@ -6,6 +6,8 @@
 #include "Point.h"
 #include "Box2D/Box2D/Box2D.h"
 #include "ModuleFadeToBlack.h"
+#include "ModuleCollisions.h"
+#include "Collider.h"
 
 struct SDL_Texture;
 struct Collider;
@@ -31,7 +33,8 @@ public:
 	// Called before all Updates
 	bool PostUpdate() override;
 
-	void OnCollision(PhysBody* bodyA, PhysBody* bodyB) override;
+	// Collision callback, called when the player intersects with another collider
+	void OnCollision(Collider* bodyA, Collider* bodyB) override;
 
 	bool loadState(pugi::xml_node&);
 	bool saveState(pugi::xml_node&) const;
@@ -39,9 +42,12 @@ public:
 	// Called before quitting
 	bool CleanUp();
 
+<<<<<<< Updated upstream
 	// Collision callback, called when the player intersects with another collider
 
 
+=======
+>>>>>>> Stashed changes
 public:
 	// Position of the player in the map
 	iPoint position;
@@ -49,6 +55,7 @@ public:
 	// The speed in which we move the player (pixels per frame)
 	PhysBody* pbody;
 	b2Body* b;
+	
 
 	b2CircleShape pCircle;
 	b2PolygonShape pBox;
@@ -57,8 +64,14 @@ public:
 	int speed = 1;
 	bool jumpState = false;
 	int jumpsCount;
+<<<<<<< Updated upstream
 
 
+=======
+	bool running = false;
+	bool death;
+	
+>>>>>>> Stashed changes
 	bool winCondition = false;
 
 	// The player spritesheet loaded into an SDL_Texture
@@ -77,7 +90,11 @@ public:
 	int currentScene;
 
 	// The player's collider
+<<<<<<< Updated upstream
 
+=======
+	Collider* collider = nullptr;
+>>>>>>> Stashed changes
 
 	// A flag to detect when the player has been destroyed
 	bool destroyed = false;

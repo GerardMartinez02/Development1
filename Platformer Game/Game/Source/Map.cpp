@@ -1,15 +1,25 @@
+#include "Map.h"
 
 #include "App.h"
 #include "Render.h"
 #include "Textures.h"
 #include "Map.h"
+#include "ModuleCollisions.h"
+#include "Path.h"
+//#include "GameOver.h"
 #include "ModulePhysics.h"
+<<<<<<< Updated upstream
 #include "Pathfinding.h"
+=======
+#include "Point.h"
+>>>>>>> Stashed changes
 
 #include "Defs.h"
 #include "Log.h"
 
 #include <math.h>
+#include <iostream>
+#include <sstream>
 
 Map::Map() : Module(), mapLoaded(false)
 {
@@ -117,20 +127,12 @@ void Map::Colliders()
 						SDL_Rect r = tileset->GetTileRect(gid);
 						iPoint pos = MapToWorld(x, y);
 						if (mapLayerItem->data->properties.GetProperty("Navigation") == 1)
-						{
-							collider = new PhysBody();
-							collider->listener = this;
-							collider = app->physics->CreateRectangle(pos.x , pos.y , r.w, r.h, 1);
-							collider->typeCollision = typeOfCollision::WALL;
-							colliders.add(collider);
+						{	
+							collider = app->collisions->AddCollider({ position.x + 5, position.y + 3, 28, 28 }, Collider::Type::PLAYER, this);
 						}
 						else if (mapLayerItem->data->properties.GetProperty("Win") == 1)
 						{
-							collider = new PhysBody();
-							collider->listener = this;
-							collider = app->physics->CreateRectangleSensor(pos.x , pos.y , r.w, r.h, 1);
-							collider->typeCollision = typeOfCollision::WINFLAG;
-							colliders.add(collider);
+							collider = app->collisions->AddCollider({ position.x + 5, position.y + 3, 28, 28 }, Collider::Type::WINFLAG, this);
 						}
 					}
 
@@ -154,13 +156,7 @@ void Map::Colliders()
 						iPoint pos = MapToWorld(x, y);
 						if (mapLayerItem->data->properties.GetProperty("Fall") == 1)
 						{
-							collider = new PhysBody();
-							collider->listener = this;
-							collider = app->physics->CreateRectangle(pos.x, pos.y, r.w, r.h, 1);
-							collider->typeCollision = typeOfCollision::FALL;
-							colliders.add(collider);
-							
-
+							collider = app->collisions->AddCollider({ position.x + 5, position.y + 3, 28, 28 }, Collider::Type::FALL, this);							
 						}
 					}
 
@@ -278,7 +274,7 @@ TileSet* Map::GetTilesetFromTileId(int id) const
 }
 
 // Get relative Tile rectangle
-SDL_Rect TileSet::GetTileRect(int id) const
+SDL_Rect TileSet::GetTileRect(int id) 
 {
 	SDL_Rect rect = { 0 };
 
@@ -288,7 +284,7 @@ SDL_Rect TileSet::GetTileRect(int id) const
 	rect.h = tileHeight;
 	rect.x = margin + ((rect.w + spacing) * (relativeId % columns));
 	rect.y = margin + ((rect.h + spacing) * (relativeId / columns));
-	
+
 	return rect;
 }
 

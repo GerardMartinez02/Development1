@@ -13,8 +13,11 @@
 #include "ModulePhysics.h"
 #include "Map.h"
 #include "SceneIntro.h"
+#include "ModuleCollisions.h"
+#include "Collider.h"
 
 
+struct Type;
 
 ModulePlayer::ModulePlayer() : Module()
 {
@@ -39,6 +42,20 @@ ModulePlayer::ModulePlayer() : Module()
 	leftAnim.loop = true;
 	leftAnim.speed = 0.1f;
 
+<<<<<<< Updated upstream
+=======
+	//runLeftAnim
+	runLeftAnim.PushBack({ 156, 160, 31, 37 });
+	runLeftAnim.PushBack({ 126, 158, 30, 39 });
+	runLeftAnim.PushBack({ 95, 162, 31, 35 });
+	runLeftAnim.PushBack({ 66, 162, 29, 35 });
+	runLeftAnim.loop = true;
+	runLeftAnim.speed = 0.8f;
+
+	//jumpLeftAnimation
+	jumpLeftAnim.PushBack({ 126, 122, 30, 35 });
+	jumpLeftAnim.PushBack({ 155, 121, 29, 36 });
+>>>>>>> Stashed changes
 
 	//leftAnim
 	rightAnim.PushBack({ 162, 82, 31, 35 });
@@ -49,6 +66,21 @@ ModulePlayer::ModulePlayer() : Module()
 	rightAnim.PushBack({ 2, 80, 29, 37 });
 	rightAnim.loop = true;
 	rightAnim.speed = 0.1f;
+<<<<<<< Updated upstream
+=======
+
+	//runRightAnim
+	runRightAnim.PushBack({ 1, 119, 31, 37 });
+	runRightAnim.PushBack({ 31, 117, 30, 39 });
+	runRightAnim.PushBack({ 61, 121, 31, 35 });
+	runRightAnim.PushBack({ 92, 121, 29, 35 });
+	runRightAnim.loop = true;
+	runRightAnim.speed = 0.8f;
+
+	//jumpRightAnim
+	jumpRightAnim.PushBack({ 31, 163, 30, 35 });
+	jumpRightAnim.PushBack({ 3, 162, 29, 36 });
+>>>>>>> Stashed changes
 }
 
 ModulePlayer::~ModulePlayer()
@@ -102,7 +134,7 @@ bool ModulePlayer::Start()
 	b->SetUserData(pbody);
 	pbody->width = pbody->height = pCircle.m_radius;
 	pbody->listener = this;
-	pbody->typeCollision = typeOfCollision::PLAYER;
+	collider = app->collisions->AddCollider({ position.x + 5, position.y + 3, 28, 28 }, Collider::Type::PLAYER, this);
 	b->SetUserData(pbody);
 
 
@@ -123,25 +155,66 @@ bool ModulePlayer::Update(float dt)
 	// L10: DONE: Implement gamepad support
 	if (app->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT)
 	{
+<<<<<<< Updated upstream
 		if (pbody->body->GetLinearVelocity().x >= -2) pbody->body->ApplyLinearImpulse({ -1.0f,0 }, { 0,0 }, true);
 		if (currentAnimation != &rightAnim)
+=======
+		if (app->input->GetKey(SDL_SCANCODE_LSHIFT) == KeyState::KEY_REPEAT)
+		{
+			running = true;
+		}
+
+		if (app->input->GetKey(SDL_SCANCODE_LSHIFT) == KeyState::KEY_IDLE)
+		{
+			running = false;
+		}
+		
+		if (app->input->GetKey(SDL_SCANCODE_A) == KeyState::KEY_REPEAT)
+>>>>>>> Stashed changes
 		{
 			rightAnim.Reset();
 			currentAnimation = &rightAnim;
 		}
 	}
 
+<<<<<<< Updated upstream
 	if (app->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT)
 	{
 		if (pbody->body->GetLinearVelocity().x <= +2) pbody->body->ApplyLinearImpulse({ 1.0f,0 }, { 0,0 }, true);
 		if (currentAnimation != &leftAnim)
+=======
+		if (app->input->GetKey(SDL_SCANCODE_A) == KeyState::KEY_REPEAT && running == true)
+>>>>>>> Stashed changes
 		{
 			leftAnim.Reset();
 			currentAnimation = &leftAnim;
 		}
+<<<<<<< Updated upstream
 	}
 
 
+=======
+		
+		if (app->input->GetKey(SDL_SCANCODE_D) == KeyState::KEY_REPEAT)
+		{
+			if (pbody->body->GetLinearVelocity().x <= +2) pbody->body->ApplyLinearImpulse({ 1.0f,0 }, { 0,0 }, true);
+			if (currentAnimation != &rightAnim)
+			{
+				rightAnim.Reset();
+				currentAnimation = &rightAnim;
+			}
+		}
+
+		if (app->input->GetKey(SDL_SCANCODE_D) == KeyState::KEY_REPEAT && running == true)
+		{
+			if (pbody->body->GetLinearVelocity().x <= +2) pbody->body->ApplyLinearImpulse({ 1.2f,0 }, { 0,0 }, true);
+			if (currentAnimation != &runRightAnim)
+			{
+				runRightAnim.Reset();
+				currentAnimation = &runRightAnim;
+			}
+		}
+>>>>>>> Stashed changes
 
 	if (pbody->body->GetLinearVelocity().y == 0)
 	{
@@ -208,14 +281,14 @@ bool ModulePlayer::PostUpdate()
 	return true;
 }
 
-void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
+void ModulePlayer::OnCollision(Collider* bodyA, Collider* bodyB)
 {
-	if (bodyA->typeCollision == typeOfCollision::PLAYER && bodyB->typeCollision == typeOfCollision::WINFLAG)
+	if (bodyA->type == Collider::Type::PLAYER && bodyB->type == Collider::Type::WINFLAG)
 	{
 		LOG("WIN!");
 		winCondition = true;
 	}
-	if (bodyA->typeCollision == typeOfCollision::PLAYER && bodyB->typeCollision == typeOfCollision::FALL)
+	if (bodyA->type == Collider::Type::PLAYER && bodyB->type == Collider::Type::FALL)
 	{
 		app->scene->Disable();
 		//app->player->Disable();

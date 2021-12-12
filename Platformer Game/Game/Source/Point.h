@@ -12,7 +12,7 @@ public:
 
 	TYPE x, y;
 
-	Point()
+	Point() : x(0), y(0)
 	{}
 
 	Point(const Point<TYPE>& v)
@@ -46,7 +46,7 @@ public:
 		return(r);
 	}
 
-	Point operator + (const Point &v) const
+	Point operator + (const Point& v) const
 	{
 		p2Vector2 r;
 

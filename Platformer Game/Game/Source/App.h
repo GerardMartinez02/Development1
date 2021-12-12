@@ -25,6 +25,12 @@ class ModulePhysics;
 class ModulePlayer;
 class SceneIntro;
 class GameOver;
+class DragonEnemy;
+class ModuleEnemies;
+class ModuleParticles;
+class Particles;
+class ModuleCollisions;
+class Path;
 
 class App
 {
@@ -89,6 +95,7 @@ private:
 public:
 
 	// Modules
+<<<<<<< Updated upstream
 	Window* win;
 	Input* input;
 	Render* render;
@@ -105,6 +112,26 @@ public:
 	ModulePlayer* player;
 	SceneIntro* sceneIntro;
 	
+=======
+	Window* win = nullptr;
+	Input* input = nullptr;
+	Render* render = nullptr;
+	Textures* tex = nullptr;
+	Audio* audio = nullptr;
+	Scene* scene = nullptr;
+	SceneIntro* intro = nullptr;
+	/*GameOver* gameOver;*/
+	Map* map = nullptr;
+	ModuleFadeToBlack* fadeToBlack = nullptr;
+	ModulePhysics* physics = nullptr;
+	ModulePlayer* player = nullptr;
+	ModuleEnemies* enemies = nullptr;
+	SceneIntro* sceneIntro = nullptr;
+	ModuleParticles* particles = nullptr;
+	ModuleCollisions* collisions = nullptr;
+	Path* path = nullptr;
+		
+>>>>>>> Stashed changes
 
 private:
 

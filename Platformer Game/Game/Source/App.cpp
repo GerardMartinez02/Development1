@@ -7,17 +7,25 @@
 #include "Scene.h"
 #include "Map.h"
 #include "ModuleFadeToBlack.h"
-#include "ModulePlayer.h"
 #include "SceneIntro.h"
+<<<<<<< Updated upstream
 #include "Pathfinding.h"
+=======
+#include "ModulePlayer.h"
+#include "ModuleEnemies.h"
+#include "ModuleParticles.h"
+#include "ModuleCollisions.h"
+#include "Path.h"
+>>>>>>> Stashed changes
 //#include "GameOver.h"
+#include "ModulePhysics.h"
 
 #include "Defs.h"
 #include "Log.h"
 
 #include <iostream>
 #include <sstream>
-#include "ModulePhysics.h"
+
 
 // Constructor
 App::App(int argc, char* args[]) : argc(argc), args(args)
@@ -37,9 +45,11 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	map = new Map();
 	
 	physics = new ModulePhysics();
-	
+	path = new Path();
 	
 	player = new ModulePlayer();
+	enemies = new ModuleEnemies();
+	particles = new ModuleParticles();
 
 	// Ordered for awake / Start / Update
 	// Reverse order of CleanUp
@@ -54,10 +64,12 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(pathfinding);
 	/*AddModule(gameOver);*/
 	AddModule(map);
-	
+		
 	
 	
 	AddModule(player);
+	AddModule(enemies);
+	AddModule(particles);
 
 	// Render last to swap buffer
 	AddModule(render);

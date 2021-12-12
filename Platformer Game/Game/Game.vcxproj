@@ -89,32 +89,60 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+<<<<<<< Updated upstream
     <ClCompile Include="Source\enemyBird.cpp" />
+=======
+    <ClCompile Include="Source\Collider.cpp" />
+    <ClCompile Include="Source\DragonEnemy.cpp" />
+>>>>>>> Stashed changes
     <ClCompile Include="Source\GameOver.cpp" />
     <ClCompile Include="Source\Main.cpp" />
     <ClCompile Include="Source\App.cpp" />
     <ClCompile Include="Source\Audio.cpp" />
     <ClCompile Include="Source\Input.cpp" />
     <ClCompile Include="Source\Map.cpp" />
+    <ClCompile Include="Source\ModuleCollisions.cpp" />
+    <ClCompile Include="Source\ModuleEnemies.cpp" />
+    <ClCompile Include="Source\ModuleEnemy.cpp" />
     <ClCompile Include="Source\ModuleFadeToBlack.cpp" />
+    <ClCompile Include="Source\ModuleParticles.cpp" />
     <ClCompile Include="Source\ModulePhysics.cpp">
       <SDLCheck Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</SDLCheck>
     </ClCompile>
     <ClCompile Include="Source\ModulePlayer.cpp" />
+<<<<<<< Updated upstream
     <ClCompile Include="Source\Pathfinding.cpp" />
+=======
+    <ClCompile Include="Source\Particles.cpp" />
+    <ClCompile Include="Source\Path.cpp" />
+>>>>>>> Stashed changes
     <ClCompile Include="Source\Scene.cpp" />
     <ClCompile Include="Source\Render.cpp" />
     <ClCompile Include="Source\SceneIntro.cpp" />
     <ClCompile Include="Source\Textures.cpp" />
     <ClCompile Include="Source\Window.cpp" />
     <ClInclude Include="Source\Animation.h" />
+<<<<<<< Updated upstream
     <ClInclude Include="Source\enemyBird.h" />
+=======
+    <ClInclude Include="Source\Collider.h" />
+    <ClInclude Include="Source\DragonEnemy.h" />
+>>>>>>> Stashed changes
     <ClInclude Include="Source\GameOver.h" />
     <ClInclude Include="Source\Map.h" />
+    <ClInclude Include="Source\ModuleCollisions.h" />
+    <ClInclude Include="Source\ModuleEnemies.h" />
+    <ClInclude Include="Source\ModuleEnemy.h" />
     <ClInclude Include="Source\ModuleFadeToBlack.h" />
+    <ClInclude Include="Source\ModuleParticles.h" />
     <ClInclude Include="Source\ModulePhysics.h" />
     <ClInclude Include="Source\ModulePlayer.h" />
+<<<<<<< Updated upstream
     <ClInclude Include="Source\Pathfinding.h" />
+=======
+    <ClInclude Include="Source\Particles.h" />
+    <ClInclude Include="Source\Path.h" />
+>>>>>>> Stashed changes
     <ClInclude Include="Source\Scene.h" />
     <ClInclude Include="Source\Audio.h" />
     <ClInclude Include="Source\Input.h" />

@@ -7,6 +7,7 @@
 
 class App;
 class PhysBody;
+struct Collider;
 
 class Module
 {
@@ -89,9 +90,14 @@ public:
 		}
 	}
 
-	virtual void OnCollision(PhysBody* bodyA, PhysBody* bodyB)
+	virtual void BOnCollision(PhysBody* bodyA, PhysBody* bodyB)
 	{
 	}
+
+	virtual void OnCollision(Collider* bodyA, Collider* bodyB)
+	{
+	}
+
 public:
 
 	SString name;

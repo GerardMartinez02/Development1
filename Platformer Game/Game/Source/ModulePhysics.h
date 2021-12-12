@@ -2,6 +2,7 @@
 #include "Module.h"
 #include "App.h"
 #include "Box2D/Box2D/Box2D.h"
+#include "Collider.h"
 
 #define GRAVITY_X 0.0f
 #define GRAVITY_Y -6.0f
@@ -14,15 +15,7 @@
 
 #define METERS_TO_PIXELS(m) ((int) floor(PIXELS_PER_METER * m))
 #define PIXEL_TO_METERS(p)  ((float) METER_PER_PIXEL * p)
-
-enum typeOfCollision 
-{
-	NONE = -1,
-	PLAYER,
-	WALL,
-	WINFLAG,
-	FALL
-};
+struct Type;
 
 // Small class to return to other modules to track position and rotation of physics bodies
 class PhysBody
@@ -40,7 +33,7 @@ public:
 	int width, height;
 	b2Body* body;
 	Module* listener;
-	typeOfCollision typeCollision;
+	Type* type;
 };
 
 // Module --------------------------------------
@@ -63,6 +56,10 @@ public:
 	PhysBody* CreateRectangleSensor(int x, int y, int width, int height, int dynamicBody);
 	PhysBody* CreateChain(int x, int y, int* points, int size);
 	PhysBody* CreateFlipper(int x, int y, int* points, int size);
+
+	PhysBody* CreatePlayer(int x, int y, int width, int height);
+	PhysBody* CreateDragon(int x, int y, int width, int height);
+
 	void CreateFlipperJoints();
 	void CreateBouncerJoint();
 

@@ -4,9 +4,15 @@
 #include "Module.h"
 #include "List.h"
 #include "Point.h"
+<<<<<<< Updated upstream
 #include "Pathfinding.h"
+=======
+#include "Textures.h"
+#include "DynArray.h"
+>>>>>>> Stashed changes
 
 #include "PugiXml\src\pugixml.hpp"
+
 
 // L03: DONE 2: Create a struct to hold information for a TileSet
 // Ignore Terrain Types and Tile Types for now, but we want the image!
@@ -26,7 +32,7 @@ struct TileSet
 	int	columns;
 
 	// L04: DONE 7: Create a method that receives a tile id and returns it's Rectfind the Rect associated with a specific tile id
-	SDL_Rect GetTileRect(int id) const;
+	SDL_Rect GetTileRect(int id);
 };
 
 // L03: DONE 1: We create an enum for map type, just for convenience,
@@ -120,7 +126,7 @@ struct MapData
 	int	height;
 	int	tileWidth;
 	int	tileHeight;
-	SDL_Color backgroundColor;
+	
 	MapTypes type;
 	List<TileSet*> tilesets;
 
@@ -179,9 +185,11 @@ private:
 public:
 
     // L03: DONE 1: Add your struct for map info
+	iPoint position;
+
 	MapData mapData;
 	bool debugColliders = false;
-	PhysBody* collider;
+	Collider* collider;
 	
 
 private:

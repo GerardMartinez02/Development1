@@ -63,7 +63,7 @@ bool ModulePhysics::PreUpdate()
 			PhysBody* pb1 = (PhysBody*)c->GetFixtureA()->GetBody()->GetUserData();
 			PhysBody* pb2 = (PhysBody*)c->GetFixtureA()->GetBody()->GetUserData();
 			if (pb1 && pb2 && pb1->listener)
-				pb1->listener->OnCollision(pb1, pb2);
+				pb1->listener->BOnCollision(pb1, pb2);
 		}
 	}
 
@@ -215,6 +215,7 @@ PhysBody* ModulePhysics::CreateStaticCircle(int x, int y, int radius)
 
 	return pbody;
 }
+
 PhysBody* ModulePhysics::CreateFlipper(int x, int y, int* points, int size)
 {
 	b2BodyDef body;
@@ -405,7 +406,65 @@ PhysBody* ModulePhysics::CreateChain(int x, int y, int* points, int size)
 }
 
 // 
+PhysBody* ModulePhysics::CreatePlayer(int x, int y, int width, int height)
+{
+	b2BodyDef body;
+	body.type = b2_dynamicBody;
+	body.position.Set(PIXEL_TO_METERS(x), PIXEL_TO_METERS(y));
 
+	b2Body* b = world->CreateBody(&body);
+	b2PolygonShape box;
+	box.SetAsBox(PIXEL_TO_METERS(width) * 0.5f, PIXEL_TO_METERS(height) * 0.5f);
+
+	b2FixtureDef fixture;
+	fixture.shape = &box;
+	fixture.density = 1.0f;
+
+	b->CreateFixture(&fixture);
+
+	b2Vec2 colliderPosPoint;
+	colliderPosPoint.x = 0;
+	colliderPosPoint.y = 0;
+
+	PhysBody* pbody = new PhysBody();
+	pbody->body = b;
+	b->SetUserData(pbody);
+	pbody->width = width * 0.5f;
+	pbody->height = height * 0.5f;
+	pbody->body->SetFixedRotation(true);
+
+	return pbody;
+}
+
+PhysBody* ModulePhysics::CreateDragon(int x, int y, int width, int height)
+{
+	b2BodyDef body;
+	body.type = b2_dynamicBody;
+	body.position.Set(PIXEL_TO_METERS(x), PIXEL_TO_METERS(y));
+
+	b2Body* b = world->CreateBody(&body);
+	b2PolygonShape box;
+	box.SetAsBox(PIXEL_TO_METERS(width) * 0.5f, PIXEL_TO_METERS(height) * 0.5f);
+
+	b2FixtureDef fixture;
+	fixture.shape = &box;
+	fixture.density = 1.5f;
+
+	b->CreateFixture(&fixture);
+
+	b2Vec2 colliderPosPoint;
+	colliderPosPoint.x = 0;
+	colliderPosPoint.y = 0;
+
+	PhysBody* pbody = new PhysBody();
+	pbody->body = b;
+	b->SetUserData(pbody);
+	pbody->width = width * 0.5f;
+	pbody->height = height * 0.5f;
+	pbody->body->SetFixedRotation(true);
+
+	return pbody;
+}
 
 
 // Called before quitting
@@ -487,8 +546,8 @@ void ModulePhysics::BeginContact(b2Contact* contact)
 	PhysBody* physB = (PhysBody*)contact->GetFixtureB()->GetBody()->GetUserData();
 
 	if (physA && physA->listener != NULL)
-		physA->listener->OnCollision(physA, physB);
+		physA->listener->BOnCollision(physA, physB);
 
 	if (physB && physB->listener != NULL)
-		physB->listener->OnCollision(physB, physA);
+		physB->listener->BOnCollision(physB, physA);
 }
