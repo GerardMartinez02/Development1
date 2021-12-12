@@ -71,8 +71,14 @@ public:
 	// A set of animations
 	Animation idleAnimRight;
 	Animation idleAnimLeft;
+	Animation lookUpAnim;
+	Animation lookDownAnim;
 	Animation leftAnim;
+	Animation runLeftAnim;
+	Animation jumpLeftAnim;
 	Animation rightAnim;
+	Animation runRightAnim;
+	Animation jumpRightAnim;
 
 	int currentScene;
 
