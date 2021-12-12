@@ -13,15 +13,29 @@
 //{
 //	name.Create("Enemy");
 //
-//	//Idle Enemy Bird
-//	idleBird.PushBack({ 0, 192, 64, 64 });
-//	currentAnim = &idleBird;
+//	//Bird Animations
 //
-//	//Left Enemy Bird
-//	leftBird.PushBack({ 64, 192, 64, 64 });
-//	leftBird.PushBack({ 128, 192, 64, 64 });
-//	leftBird.PushBack({ 192, 192, 64, 64 });
-//	leftBird.loop = true;
-//	leftBird.speed = 0.05f;
+//	//idleAnimRight
+//	idleAnimLeft.PushBack({ 0, 35, 40, 40 });
+//
+//	//idleAnimLeft
+//	idleAnimRight.PushBack({ 115, 114, 40, 40 });
+//
+//	//rightAnim
+//	leftAnim.PushBack({ 0, 3, 31, 34 });
+//	leftAnim.PushBack({ 32, 3, 31, 32 });
+//	leftAnim.PushBack({ 64, 3, 38, 38 });
+//	leftAnim.PushBack({ 102, 3, 38, 38 });
+//	leftAnim.loop = true;
+//	leftAnim.speed = 0.1f;
+//
+//
+//	//leftAnim
+//	rightAnim.PushBack({ 18, 77, 36, 31 });
+//	rightAnim.PushBack({ 54, 77, 36, 31 });
+//	rightAnim.PushBack({ 92, 80, 31, 31 });
+//	rightAnim.PushBack({ 124, 81, 31, 31 });
+//	rightAnim.loop = true;
+//	rightAnim.speed = 0.1f;
 //
 //}
