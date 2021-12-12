@@ -2,6 +2,7 @@
 #define __SCENE_H__
 
 #include "Module.h"
+#include "ModulePhysics.h"
 
 struct SDL_Texture;
 
@@ -36,6 +37,8 @@ private:
 	SDL_Texture* img;
 	SDL_Texture* background;
 	SString bgFile;
+
+	List <Module*> enemies;
 };
 
 #endif // __SCENE_H__

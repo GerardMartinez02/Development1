@@ -21,7 +21,8 @@ enum typeOfCollision
 	PLAYER,
 	WALL,
 	WINFLAG,
-	FALL
+	FALL,
+	BIRD
 };
 
 // Small class to return to other modules to track position and rotation of physics bodies
@@ -71,11 +72,10 @@ public:
 	void BeginContact(b2Contact* contact);
 
 	b2World* world;
+	bool debug;
 
 private:
 
-	bool debug;
-	
 	b2Body* body_clicked;
 	b2Body* ground;
 	b2DistanceJoint* BouncerJoint;

@@ -5,6 +5,7 @@
 #include "List.h"
 #include "Point.h"
 #include "Pathfinding.h"
+#include "Textures.h"
 
 #include "PugiXml\src\pugixml.hpp"
 
@@ -13,13 +14,12 @@
 struct TileSet
 {
 	SString	name;
+	SDL_Texture* texture;
 	int	firstgid;
 	int margin;
 	int	spacing;
 	int	tileWidth;
 	int	tileHeight;
-
-	SDL_Texture* texture;
 	int	texWidth;
 	int	texHeight;
 	int	tilecount;
@@ -157,6 +157,8 @@ public:
 
 	// L05: DONE 2: Add orthographic world to map coordinates
 	iPoint WorldToMap(int x, int y) const;
+
+	bool WalkablePath(int& width, int& height, uchar** buffer) const;
 
 private:
 

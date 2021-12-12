@@ -11,6 +11,7 @@
 #include "ModuleFadeToBlack.h"
 #include "Defs.h"
 #include "Log.h"
+#include "enemyBird.h"
 
 Scene::Scene() : Module()
 {
@@ -46,12 +47,20 @@ bool Scene::Start()
 	app->map->Load("tileMap2.tmx");
 
 	app->player->Enable();
+	app->enemyBird->Enable();
 	app->map->Colliders();
 
 	app->render->camera.x = app->map->MapToWorld(0, 0).x;
 	app->render->camera.y = app->map->MapToWorld(0, -130).y;
+
+	app->map->MapToWorld(5, 69);
+
 	
-	
+	//for (ListItem<Module*>* item = enemies.start; item; item = item->next)
+	//{
+	//	//item->data->Awake();
+	//	item->data->Start();
+	//}
 	return true;
 }
 

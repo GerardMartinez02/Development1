@@ -62,6 +62,7 @@ bool SceneIntro::Update(float dt)
 {
 	app->scene->Disable();
 	app->player->Disable();
+	app->enemyBird->Disable();
 	
 	sCounter++;
 
@@ -78,6 +79,7 @@ bool SceneIntro::Update(float dt)
 		app->map->Enable();
 		app->scene->Enable();
 		app->player->Enable();
+		app->enemyBird->Enable();
 		/*app->enemies->Enable();*/
 		//app->physics->Enable();
 

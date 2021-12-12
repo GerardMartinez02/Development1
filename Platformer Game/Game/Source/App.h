@@ -3,6 +3,7 @@
 
 #include "Module.h"
 #include "List.h"
+#include "enemyBird.h"
 
 #include "PugiXml/src/pugixml.hpp"
 
@@ -25,6 +26,13 @@ class ModulePhysics;
 class ModulePlayer;
 class SceneIntro;
 class GameOver;
+class EnemyBird;
+
+enum sceneEnum
+{
+	TITLE,
+	SCENE
+};
 
 class App
 {
@@ -104,6 +112,7 @@ public:
 	ModulePhysics* physics;
 	ModulePlayer* player;
 	SceneIntro* sceneIntro;
+	EnemyBird* enemyBird;
 	
 
 private:
