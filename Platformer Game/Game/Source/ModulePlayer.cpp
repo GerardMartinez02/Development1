@@ -47,10 +47,12 @@ ModulePlayer::ModulePlayer() : Module()
 	leftAnim.speed = 0.1f;
 
 	//runLeftAnim
-	runLeftAnim.PushBack({ 156, 160, 31, 37 });
-	runLeftAnim.PushBack({ 126, 158, 30, 39 });
-	runLeftAnim.PushBack({ 95, 162, 31, 35 });
-	runLeftAnim.PushBack({ 66, 162, 29, 35 });
+	runLeftAnim.PushBack({ 162, 82, 31, 35 });
+	runLeftAnim.PushBack({ 131, 81, 30, 36 });
+	runLeftAnim.PushBack({ 99, 80, 30, 37 });
+	runLeftAnim.PushBack({ 67, 82, 30, 35 });
+	runLeftAnim.PushBack({ 35, 81, 30, 36 });
+	runLeftAnim.PushBack({ 2, 80, 29, 37 });
 	runLeftAnim.loop = true;
 	runLeftAnim.speed = 0.15f;
 
@@ -69,10 +71,12 @@ ModulePlayer::ModulePlayer() : Module()
 	rightAnim.speed = 0.1f;
 
 	//runRightAnim
-	runRightAnim.PushBack({ 1, 119, 31, 37 });
-	runRightAnim.PushBack({ 31, 117, 30, 39 });
-	runRightAnim.PushBack({ 61, 121, 31, 35 });
-	runRightAnim.PushBack({ 92, 121, 29, 35 });
+	runRightAnim.PushBack({ 1, 41, 31, 35 });
+	runRightAnim.PushBack({ 33, 40, 30, 36 });
+	runRightAnim.PushBack({ 65, 39, 30, 37 });
+	runRightAnim.PushBack({ 97, 41, 30, 35 });
+	runRightAnim.PushBack({ 129, 40, 30, 36 });
+	runRightAnim.PushBack({ 163, 39, 29, 37 });
 	runRightAnim.loop = true;
 	runRightAnim.speed = 0.15f;
 
