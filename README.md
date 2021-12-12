@@ -26,6 +26,8 @@ Keyboard Player:
   - A Key: Move Left
  
   - SPACE Key: Jump
+  
+  - SPACE Key: Double Jump
  
   · General controls:
 
