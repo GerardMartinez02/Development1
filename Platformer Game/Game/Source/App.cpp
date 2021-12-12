@@ -9,13 +9,19 @@
 #include "ModuleFadeToBlack.h"
 #include "SceneIntro.h"
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 #include "Pathfinding.h"
 =======
+=======
+>>>>>>> Stashed changes
 #include "ModulePlayer.h"
 #include "ModuleEnemies.h"
 #include "ModuleParticles.h"
 #include "ModuleCollisions.h"
 #include "Path.h"
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 //#include "GameOver.h"
 #include "ModulePhysics.h"
@@ -43,7 +49,10 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	pathfinding = new PathFinding();
 	//gameOver = new GameOver();
 	map = new Map();
+<<<<<<< Updated upstream
 	
+=======
+>>>>>>> Stashed changes
 	physics = new ModulePhysics();
 	path = new Path();
 	
@@ -65,7 +74,10 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	/*AddModule(gameOver);*/
 	AddModule(map);
 		
+<<<<<<< Updated upstream
 	
+=======
+>>>>>>> Stashed changes
 	
 	AddModule(player);
 	AddModule(enemies);

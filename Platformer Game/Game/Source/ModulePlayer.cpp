@@ -156,9 +156,12 @@ bool ModulePlayer::Update(float dt)
 	if (app->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT)
 	{
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 		if (pbody->body->GetLinearVelocity().x >= -2) pbody->body->ApplyLinearImpulse({ -1.0f,0 }, { 0,0 }, true);
 		if (currentAnimation != &rightAnim)
 =======
+=======
+>>>>>>> Stashed changes
 		if (app->input->GetKey(SDL_SCANCODE_LSHIFT) == KeyState::KEY_REPEAT)
 		{
 			running = true;
@@ -178,10 +181,14 @@ bool ModulePlayer::Update(float dt)
 	}
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 	if (app->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT)
 	{
 		if (pbody->body->GetLinearVelocity().x <= +2) pbody->body->ApplyLinearImpulse({ 1.0f,0 }, { 0,0 }, true);
 		if (currentAnimation != &leftAnim)
+=======
+		if (app->input->GetKey(SDL_SCANCODE_A) == KeyState::KEY_REPEAT && running == true)
+>>>>>>> Stashed changes
 =======
 		if (app->input->GetKey(SDL_SCANCODE_A) == KeyState::KEY_REPEAT && running == true)
 >>>>>>> Stashed changes
@@ -190,10 +197,13 @@ bool ModulePlayer::Update(float dt)
 			currentAnimation = &leftAnim;
 		}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 	}
 
 
 =======
+=======
+>>>>>>> Stashed changes
 		
 		if (app->input->GetKey(SDL_SCANCODE_D) == KeyState::KEY_REPEAT)
 		{

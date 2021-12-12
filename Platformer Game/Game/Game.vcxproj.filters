@@ -28,9 +28,12 @@
     <ClCompile Include="Source\SceneIntro.cpp" />
     <ClCompile Include="Source\GameOver.cpp" />
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     <ClCompile Include="Source\Pathfinding.cpp" />
     <ClCompile Include="Source\enemyBird.cpp" />
 =======
+=======
+>>>>>>> Stashed changes
     <ClCompile Include="Source\ModuleEnemies.cpp">
       <Filter>importedModules</Filter>
     </ClCompile>
@@ -49,6 +52,9 @@
       <Filter>importedModules</Filter>
     </ClCompile>
     <ClCompile Include="Source\Path.cpp" />
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
   </ItemGroup>
   <ItemGroup>
@@ -100,9 +106,12 @@
     <ClInclude Include="Source\SceneIntro.h" />
     <ClInclude Include="Source\GameOver.h" />
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     <ClInclude Include="Source\Pathfinding.h" />
     <ClInclude Include="Source\enemyBird.h" />
 =======
+=======
+>>>>>>> Stashed changes
     <ClInclude Include="Source\ModuleEnemies.h">
       <Filter>importedModules</Filter>
     </ClInclude>
@@ -121,6 +130,9 @@
       <Filter>importedModules</Filter>
     </ClInclude>
     <ClInclude Include="Source\Path.h" />
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
   </ItemGroup>
   <ItemGroup>

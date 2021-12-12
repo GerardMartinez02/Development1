@@ -96,6 +96,7 @@ public:
 
 	// Modules
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 	Window* win;
 	Input* input;
 	Render* render;
@@ -113,6 +114,8 @@ public:
 	SceneIntro* sceneIntro;
 	
 =======
+=======
+>>>>>>> Stashed changes
 	Window* win = nullptr;
 	Input* input = nullptr;
 	Render* render = nullptr;
@@ -131,6 +134,9 @@ public:
 	ModuleCollisions* collisions = nullptr;
 	Path* path = nullptr;
 		
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
 private:

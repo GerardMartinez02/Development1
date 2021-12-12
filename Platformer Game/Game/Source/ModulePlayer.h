@@ -43,9 +43,12 @@ public:
 	bool CleanUp();
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 	// Collision callback, called when the player intersects with another collider
 
 
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 public:
@@ -65,9 +68,12 @@ public:
 	bool jumpState = false;
 	int jumpsCount;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
 
 =======
+=======
+>>>>>>> Stashed changes
 	bool running = false;
 	bool death;
 	
@@ -91,7 +97,11 @@ public:
 
 	// The player's collider
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
+=======
+	Collider* collider = nullptr;
+>>>>>>> Stashed changes
 =======
 	Collider* collider = nullptr;
 >>>>>>> Stashed changes

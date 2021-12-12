@@ -1,6 +1,9 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 ﻿  Game.vcxproj -> C:\GitHub\Development1\Platformer Game\Build\Release\Game.exe
 =======
+=======
+>>>>>>> Stashed changes
 ﻿  DragonEnemy.cpp
 C:\Users\user\Desktop\UNI\2n\Desenvolupament de Videojocs\Development1\Platformer Game\Game\Source\Animation.h(54,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
 C:\Users\user\Desktop\UNI\2n\Desenvolupament de Videojocs\Development1\Platformer Game\Game\Source\Animation.h(56,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
@@ -50,4 +53,7 @@ Source\Map.cpp(281,56): error C2065: 'columns': undeclared identifier
 Source\Map.cpp(282,11): error C2065: 'margin': undeclared identifier
 Source\Map.cpp(282,31): error C2065: 'spacing': undeclared identifier
 Source\Map.cpp(282,56): error C2065: 'columns': undeclared identifier
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes

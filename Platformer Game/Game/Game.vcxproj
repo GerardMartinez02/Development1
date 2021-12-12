@@ -90,7 +90,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     <ClCompile Include="Source\enemyBird.cpp" />
+=======
+    <ClCompile Include="Source\Collider.cpp" />
+    <ClCompile Include="Source\DragonEnemy.cpp" />
+>>>>>>> Stashed changes
 =======
     <ClCompile Include="Source\Collider.cpp" />
     <ClCompile Include="Source\DragonEnemy.cpp" />
@@ -111,7 +116,12 @@
     </ClCompile>
     <ClCompile Include="Source\ModulePlayer.cpp" />
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     <ClCompile Include="Source\Pathfinding.cpp" />
+=======
+    <ClCompile Include="Source\Particles.cpp" />
+    <ClCompile Include="Source\Path.cpp" />
+>>>>>>> Stashed changes
 =======
     <ClCompile Include="Source\Particles.cpp" />
     <ClCompile Include="Source\Path.cpp" />
@@ -123,7 +133,12 @@
     <ClCompile Include="Source\Window.cpp" />
     <ClInclude Include="Source\Animation.h" />
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     <ClInclude Include="Source\enemyBird.h" />
+=======
+    <ClInclude Include="Source\Collider.h" />
+    <ClInclude Include="Source\DragonEnemy.h" />
+>>>>>>> Stashed changes
 =======
     <ClInclude Include="Source\Collider.h" />
     <ClInclude Include="Source\DragonEnemy.h" />
@@ -138,7 +153,12 @@
     <ClInclude Include="Source\ModulePhysics.h" />
     <ClInclude Include="Source\ModulePlayer.h" />
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     <ClInclude Include="Source\Pathfinding.h" />
+=======
+    <ClInclude Include="Source\Particles.h" />
+    <ClInclude Include="Source\Path.h" />
+>>>>>>> Stashed changes
 =======
     <ClInclude Include="Source\Particles.h" />
     <ClInclude Include="Source\Path.h" />
