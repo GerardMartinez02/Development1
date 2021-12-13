@@ -6,25 +6,23 @@
 #include "Point.h"
 #include "Box2D/Box2D/Box2D.h"
 #include "List.h"
-#include "Map.h"
 #include "ModulePhysics.h"
-#include "App.h"
 
 struct SDL_Texture;
 struct Collider;
 
-class EnemyDragon : public Module, public b2ContactListener
+class EnemyDragon : public Module
 {
 public:
-	iPoint position;
 	// Constructor
+	// Saves the spawn position for later movement calculations
 	EnemyDragon();
-
-	EnemyDragon(int x, int y);
 
 	// Destructor
 	~EnemyDragon();
 
+	// Collision response
+	// Triggers an animation and a sound fx
 	// Collision callback, called when the player intersects with another collider
 	void OnCollision(PhysBody* bodyA, PhysBody* bodyB) override;
 
@@ -44,47 +42,33 @@ public:
 	// Called before all Updates
 	bool PostUpdate();
 
+	// Save and load the position of the enemies
+	bool LoadState(pugi::xml_node&);
+	bool SaveState(pugi::xml_node&);
+
 	// Called before quitting
 	bool CleanUp();
 
-	bool LoadState(pugi::xml_node&);
-	bool SaveState(pugi::xml_node&);
-	void DragonDies();
-
 private:
-	PathFinding* pathfinding;
-	b2Fixture* enemySensor;
 
-	SDL_Texture* Dragon;
+	SDL_Texture* bird;
+
 	SString textureDragon;
-	SDL_Rect enemyRec;
-	SDL_Texture* navigationPath;
 
-	Animation* currentAnimation = nullptr;
 
-	Animation idleLeftDragon;
-	Animation idleRightDragon;
 	Animation leftDragon;
 	Animation rightDragon;
-	Animation* currentDragonAnim = nullptr;
-	b2Vec2 DragonVelocity;
+	Animation idleRightDragon;
+	Animation idleLeftDragon;
 
-	bool DragonBoundsRight = false;
-	bool DragonBoundsLeft = true;
+	Animation* currentDragonAnimation = nullptr;
 
-	void enemyDragonMove();
-	void enemyDragonPath();
-	bool CheckAggro();
-	bool aggro;
-	int aggroDistance = 8;
-	bool setToDestroy = false;
-	bool isAlive = true;
-	b2Vec2 speed = { 2.0f, -2.0f };
-
+	b2Vec2 dragonVelocity;
 public:
 
 	// The current position in the world
-	iPoint DragonPosition;
+
+	iPoint dragonPosition;
 
 	// The enemy's texture
 	SDL_Texture* texture = nullptr;
@@ -95,29 +79,27 @@ public:
 	// A flag for the enemy removal. Important! We do not delete objects instantly
 	bool pendingToDelete = false;
 
-	iPoint positionDragon;
-	iPoint startPosDragond;
+	bool dragonDead = false;
+
+	/*iPoint direction = { 0, 0 };*/
+	// Position of the player in the map
+
+	iPoint intitialDragonPosition;
 
 	b2Vec2* velocity;
 
+	// player's body
+
 	PhysBody* dragonBody;
 	b2Body* bDragon;
-	b2CircleShape DragonCircle;
-	const DynArray<iPoint>* currentPath;
+
+	//add a shape
+	b2CircleShape dragonCircle;
+
 	// The speed in which we move the player (pixels per frame)
+	int speed;
 
-	typeOfCollision* type;
-
-protected:
-	// A ptr to the current animation
-	Animation* currentAnim = nullptr;
-
-	// The enemy's collider
-	Collider* collider = nullptr;
-
-	// Original spawn position. Stored for movement calculations
-	iPoint spawnPos;
+	bool onGround;
 };
 
-#endif;
-
+#endif // __ENEMY_H__

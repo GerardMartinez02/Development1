@@ -252,7 +252,7 @@ bool ModulePlayer::PostUpdate()
 	}
 
 	SDL_Rect rect = currentAnimation->GetCurrentFrame();
-	app->render->DrawTexture(texture, position.x, position.y, &rect);
+	app->render->DrawTexture(texture, position.x -16, position.y -16, &rect);
 
 	// Draw UI (score) --------------------------------------
 	sprintf_s(scoreText, 10, "%7d", score);
@@ -279,6 +279,12 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 		app->intro->Enable();
 	}
 	if (bodyA->type == PLAYER && bodyB->type == BIRD)
+	{
+		app->scene->Disable();
+		//app->player->Disable();
+		app->intro->Enable();
+	}
+	if (bodyA->type == PLAYER && bodyB->type == DRAGON)
 	{
 		app->scene->Disable();
 		//app->player->Disable();

@@ -63,9 +63,10 @@ public:
 	PhysBody* CreateRectangle(int x, int y, int width, int height, int dynamicBody);
 	PhysBody* CreateBouncer(int x, int y, int width, int height);
 	PhysBody* CreateRectangleSensor(int x, int y, int width, int height, int dynamicBody);
-	PhysBody* CreateChain(int x, int y, int* points, int size);
+	PhysBody* CreateChain(int x, int y, int* points, int size, int dynamic);
 	PhysBody* CreateFlipper(int x, int y, int* points, int size);
 	PhysBody* CreateEnemyBird(int x, int y, int* points, int size, int dynamic);
+	PhysBody* CreateEnemyDragon(int x, int y, int* points, int size, int dynamic);
 	void CreateFlipperJoints();
 	void CreateBouncerJoint();
 

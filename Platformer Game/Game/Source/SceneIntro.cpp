@@ -83,6 +83,7 @@ bool SceneIntro::Update(float dt)
 		app->scene->Enable();
 		app->player->Enable();
 		app->enemyBird->Enable();
+		app->enemyDragon->Enable();
 		/*app->enemies->Enable();*/
 		//app->physics->Enable();
 

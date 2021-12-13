@@ -118,59 +118,55 @@ bool EnemyBird::Update(float dt)
 
 	if (birdDead == false)
 	{
-		if (app->input->GetKey(SDL_SCANCODE_F3) == KEY_DOWN)
-		{
-			birdBody->body->SetTransform({ PIXEL_TO_METERS(birdPosition.x), PIXEL_TO_METERS(birdPosition.y) }, 0.0f);
-		}
 
 		BirdVelocity = birdBody->body->GetLinearVelocity();
 
 		birdBody->body->SetLinearVelocity(BirdVelocity);
 
-		if (birdPosition.DistanceTo(app->player->position) < 300)
+		if (birdPosition.DistanceTo(app->player->position) < 400)
 		{
 			if (birdPosition.x < app->player->position.x)
 			{
 				currentBirdAnimation = &leftBird;
-				birdBody->body->SetLinearVelocity({ 0.7f,0.0f });
+				birdBody->body->SetLinearVelocity({ 0.85f,0.0f });
 
 			}
 			if (birdPosition.x > app->player->position.x)
 			{
 				currentBirdAnimation = &rightBird;
-				birdBody->body->SetLinearVelocity({ -0.7f,0.0f });
+				birdBody->body->SetLinearVelocity({ -0.85f,0.0f });
 
 			}
 			if (birdPosition.y > app->player->position.y)
 			{
-				birdBody->body->SetLinearVelocity({ 0.0f,-0.5f });
+				birdBody->body->SetLinearVelocity({ 0.0f,-0.6f });
 			}
 			if (birdPosition.y < app->player->position.y)
 			{
-				birdBody->body->SetLinearVelocity({ 0.0f,0.5f });
+				birdBody->body->SetLinearVelocity({ 0.0f,0.6f });
 			}
 			if (birdPosition.x < app->player->position.x && birdPosition.y > app->player->position.y)
 			{
 				currentBirdAnimation = &leftBird;
-				birdBody->body->SetLinearVelocity({ 0.7f,-0.5f });
+				birdBody->body->SetLinearVelocity({ 0.85f,-0.6f });
 
 			}
 			if (birdPosition.x > app->player->position.x && birdPosition.y > app->player->position.y)
 			{
 				currentBirdAnimation = &rightBird;
-				birdBody->body->SetLinearVelocity({ -0.7f,-0.5f });
+				birdBody->body->SetLinearVelocity({ -0.85f,-0.6f });
 
 			}
 			if (birdPosition.x < app->player->position.x && birdPosition.y < app->player->position.y)
 			{
 				currentBirdAnimation = &leftBird;
-				birdBody->body->SetLinearVelocity({ 0.7f,0.5f });
+				birdBody->body->SetLinearVelocity({ 0.85f,0.6f });
 
 			}
 			if (birdPosition.x > app->player->position.x && birdPosition.y < app->player->position.y)
 			{
 				currentBirdAnimation = &rightBird;
-				birdBody->body->SetLinearVelocity({ -0.7f,0.5f });
+				birdBody->body->SetLinearVelocity({ -0.85f,0.6f });
 
 			}
 		}
@@ -192,44 +188,44 @@ bool EnemyBird::Update(float dt)
 			if (birdPosition.x < startPosBird.x)
 			{
 				currentBirdAnimation = &leftBird;
-				birdBody->body->SetLinearVelocity({ 0.7f,0.0f });
+				birdBody->body->SetLinearVelocity({ 0.85f,0.0f });
 			}
 			if (birdPosition.x > startPosBird.x)
 			{
 				currentBirdAnimation = &rightBird;
-				birdBody->body->SetLinearVelocity({ -0.7f,0.0f });
+				birdBody->body->SetLinearVelocity({ -0.85f,0.0f });
 
 			}
 			if (birdPosition.y > startPosBird.y)
 			{
-				birdBody->body->SetLinearVelocity({ 0.0f,-0.5f });
+				birdBody->body->SetLinearVelocity({ 0.0f,-0.6f });
 			}
 			if (birdPosition.y < startPosBird.y)
 			{
-				birdBody->body->SetLinearVelocity({ 0.0f,0.5f });
+				birdBody->body->SetLinearVelocity({ 0.0f,0.6f });
 			}
 			if (birdPosition.x < startPosBird.x && birdPosition.y >  startPosBird.y)
 			{
 				currentBirdAnimation = &leftBird;
-				birdBody->body->SetLinearVelocity({ 0.7f,-0.5f });
+				birdBody->body->SetLinearVelocity({ 0.85f,-0.6f });
 
 			}
 			if (birdPosition.x > startPosBird.x && birdPosition.y > startPosBird.y)
 			{
 				currentBirdAnimation = &rightBird;
-				birdBody->body->SetLinearVelocity({ -0.7f,-0.5f });
+				birdBody->body->SetLinearVelocity({ -0.85f,-0.6f });
 
 			}
 			if (birdPosition.x < startPosBird.x && birdPosition.y < startPosBird.y)
 			{
 				currentBirdAnimation = &leftBird;
-				birdBody->body->SetLinearVelocity({ 0.7f,0.5f });
+				birdBody->body->SetLinearVelocity({ 0.85f,0.6f });
 
 			}
 			if (birdPosition.x > startPosBird.x && birdPosition.y < startPosBird.y)
 			{
 				currentBirdAnimation = &rightBird;
-				birdBody->body->SetLinearVelocity({ -0.7f,0.5f });
+				birdBody->body->SetLinearVelocity({ -0.85f,0.6f });
 
 			}
 		}

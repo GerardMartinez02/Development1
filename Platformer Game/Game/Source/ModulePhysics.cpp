@@ -368,39 +368,57 @@ PhysBody* ModulePhysics::CreateRectangleSensor(int x, int y, int width, int heig
 	return pbody;
 }
 
-PhysBody* ModulePhysics::CreateChain(int x, int y, int* points, int size)
+PhysBody* ModulePhysics::CreateChain(int x, int y, int* points, int size, int dynamic = 0)
 {
+	// Create BODY at position x,y
 	b2BodyDef body;
-	body.type = b2_staticBody;
+	switch (dynamic)
+	{
+	case 0:
+		body.type = b2_dynamicBody;
+		break;
+
+	case 1:
+		body.type = b2_staticBody;
+		break;
+
+	case 2:
+		body.type = b2_kinematicBody;
+		break;
+	}
 	body.position.Set(PIXEL_TO_METERS(x), PIXEL_TO_METERS(y));
 
+	// Add BODY to the world
 	b2Body* b = world->CreateBody(&body);
 
+	// Create SHAPE
 	b2ChainShape shape;
 	b2Vec2* p = new b2Vec2[size / 2];
-
 	for (uint i = 0; i < size / 2; ++i)
 	{
 		p[i].x = PIXEL_TO_METERS(points[i * 2 + 0]);
 		p[i].y = PIXEL_TO_METERS(points[i * 2 + 1]);
 	}
-
 	shape.CreateLoop(p, size / 2);
 
+	// Create FIXTURE
 	b2FixtureDef fixture;
 	fixture.shape = &shape;
+	fixture.density = 1.5f;
+	fixture.friction = 100.0f;
 
+	// Add fixture to the BODY
 	b->CreateFixture(&fixture);
 
+	// Clean-up temp array
 	delete p;
 
+	// Create our custom PhysBody class
 	PhysBody* pbody = new PhysBody();
 	pbody->body = b;
-	b->SetUserData(pbody);
 	pbody->width = pbody->height = 0;
-
-
-
+	b->SetUserData(pbody);
+	// Return our PhysBody class
 	return pbody;
 }
 
@@ -442,7 +460,62 @@ PhysBody* ModulePhysics::CreateEnemyBird(int x, int y, int* points, int size, in
 	b2FixtureDef fixture;
 	fixture.shape = &shape;
 	fixture.density = 1.5f;
-	fixture.friction = 100.0f;
+	fixture.friction = 0.0f;
+
+	// Add fixture to the BODY
+	b->CreateFixture(&fixture);
+
+	// Clean-up temp array
+	delete p;
+
+	// Create our custom PhysBody class
+	PhysBody* pbody = new PhysBody();
+	pbody->body = b;
+	pbody->width = pbody->height = 0;
+	b->SetUserData(pbody);
+	// Return our PhysBody class
+	return pbody;
+}
+
+PhysBody* ModulePhysics::CreateEnemyDragon(int x, int y, int* points, int size, int dynamic = 0)
+{
+	// Create BODY at position x,y
+	b2BodyDef body;
+	switch (dynamic)
+	{
+	case 0:
+		body.type = b2_dynamicBody;
+		break;
+
+	case 1:
+		body.type = b2_staticBody;
+		break;
+
+	case 2:
+		body.type = b2_kinematicBody;
+		break;
+	}
+	body.position.Set(PIXEL_TO_METERS(x), PIXEL_TO_METERS(y));
+	body.gravityScale = 10.0f;
+
+	// Add BODY to the world
+	b2Body* b = world->CreateBody(&body);
+
+	// Create SHAPE
+	b2ChainShape shape;
+	b2Vec2* p = new b2Vec2[size / 2];
+	for (uint i = 0; i < size / 2; ++i)
+	{
+		p[i].x = PIXEL_TO_METERS(points[i * 2 + 0]);
+		p[i].y = PIXEL_TO_METERS(points[i * 2 + 1]);
+	}
+	shape.CreateLoop(p, size / 2);
+
+	// Create FIXTURE
+	b2FixtureDef fixture;
+	fixture.shape = &shape;
+	fixture.density = 1.5f;
+	fixture.friction = 0.0f;
 
 	// Add fixture to the BODY
 	b->CreateFixture(&fixture);

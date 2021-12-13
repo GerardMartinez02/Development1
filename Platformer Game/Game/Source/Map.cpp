@@ -120,7 +120,7 @@ void Map::Colliders()
 						{
 							collider = new PhysBody();
 							collider->listener = this;
-							collider = app->physics->CreateRectangle(pos.x , pos.y , r.w, r.h, 1);
+							collider = app->physics->CreateRectangle(pos.x + 16, pos.y +16, r.w, r.h, 1);
 							collider->type = WALL;
 							colliders.add(collider);
 						}

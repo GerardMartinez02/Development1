@@ -65,9 +65,6 @@ private:
 
 	b2Vec2 BirdVelocity;
 
-	bool birdLimitRight = false;
-	bool birdLimitLeft = true;
-
 public:
 
 	// The current position in the world
@@ -83,16 +80,11 @@ public:
 	// A flag for the enemy removal. Important! We do not delete objects instantly
 	bool pendingToDelete = false;
 
-	int health;
-	bool invincible = false;
-	bool dogDead = false;
-	bool catDead = false;
 	bool birdDead = false;
 
 	/*iPoint direction = { 0, 0 };*/
 	// Position of the player in the map
 
-	iPoint positionBird;
 	iPoint startPosBird;
 
 	b2Vec2* velocity;
