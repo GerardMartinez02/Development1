@@ -13,6 +13,7 @@
 #include "ModulePhysics.h"
 #include "Map.h"
 #include "SceneIntro.h"
+#include "Coins.h"
 
 
 
@@ -292,6 +293,13 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 		app->scene->Disable();
 		//app->player->Disable();
 		app->intro->Enable();
+	}
+	if (bodyA->type == PLAYER && bodyB->type == COIN)
+	{
+		//app->scene->Disable();
+		//app->player->Disable();
+		//app->intro->Enable();
+		app->coins->Disable();
 	}
 }
 

@@ -29,6 +29,7 @@ class SceneIntro;
 class GameOver;
 class EnemyBird;
 class EnemyDragon;
+class Coins;
 class Timer;
 class AuxTimer;
 
@@ -118,6 +119,7 @@ public:
 	SceneIntro* sceneIntro;
 	EnemyBird* enemyBird;
 	EnemyDragon* enemyDragon;
+	Coins* coins;
 	
 	bool fpsCap = false;
 	float dt = 0.0f;

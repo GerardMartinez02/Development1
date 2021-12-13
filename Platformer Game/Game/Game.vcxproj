@@ -90,6 +90,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Source\AuxTimer.cpp" />
+    <ClCompile Include="Source\Coins.cpp" />
     <ClCompile Include="Source\enemyBird.cpp" />
     <ClCompile Include="Source\enemyDragon.cpp" />
     <ClCompile Include="Source\GameOver.cpp" />
@@ -112,6 +113,7 @@
     <ClCompile Include="Source\Window.cpp" />
     <ClInclude Include="Source\Animation.h" />
     <ClInclude Include="Source\AuxTimer.h" />
+    <ClInclude Include="Source\Coins.h" />
     <ClInclude Include="Source\enemyBird.h" />
     <ClInclude Include="Source\enemyDragon.h" />
     <ClInclude Include="Source\GameOver.h" />

@@ -15,6 +15,7 @@
 #include "enemyDragon.h"
 #include "Timer.h"
 #include "AuxTimer.h"
+#include "Coins.h"
 
 
 #include "Defs.h"
@@ -47,6 +48,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	player = new ModulePlayer();
 	enemyBird = new EnemyBird();
 	enemyDragon = new EnemyDragon();
+	coins = new Coins();
 
 	// Ordered for awake / Start / Update
 	// Reverse order of CleanUp
@@ -64,6 +66,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(player);
 	AddModule(enemyBird);
 	AddModule(enemyDragon);
+	AddModule(coins);
 
 	// Render last to swap buffer
 	AddModule(render);
