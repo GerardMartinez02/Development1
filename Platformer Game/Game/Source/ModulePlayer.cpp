@@ -278,6 +278,12 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 		//app->player->Disable();
 		app->intro->Enable();
 	}
+	if (bodyA->type == PLAYER && bodyB->type == BIRD)
+	{
+		app->scene->Disable();
+		//app->player->Disable();
+		app->intro->Enable();
+	}
 }
 
 bool ModulePlayer::loadState(pugi::xml_node& data)

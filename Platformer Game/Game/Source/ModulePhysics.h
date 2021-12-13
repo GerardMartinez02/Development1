@@ -65,6 +65,7 @@ public:
 	PhysBody* CreateRectangleSensor(int x, int y, int width, int height, int dynamicBody);
 	PhysBody* CreateChain(int x, int y, int* points, int size);
 	PhysBody* CreateFlipper(int x, int y, int* points, int size);
+	PhysBody* CreateEnemyBird(int x, int y, int* points, int size, int dynamic);
 	void CreateFlipperJoints();
 	void CreateBouncerJoint();
 

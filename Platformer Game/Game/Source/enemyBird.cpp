@@ -16,7 +16,7 @@
 #include "Defs.h"
 #include "Log.h"
 
-EnemyBird::EnemyBird() : Module()
+EnemyBird::EnemyBird()
 {
 	name.Create("Enemy");
 
@@ -45,11 +45,7 @@ EnemyBird::EnemyBird() : Module()
 	rightBird.loop = true;
 	rightBird.speed = 0.1f;
 
-	pathfinding = new PathFinding();
-	name.Create("flying_enemy");
-
 }
-
 EnemyBird::~EnemyBird()
 {
 
@@ -57,164 +53,206 @@ EnemyBird::~EnemyBird()
 
 bool EnemyBird::Awake(pugi::xml_node& config)
 {
-
-	birdPosition.x = config.child("position").attribute("x").as_int();
-	birdPosition.y = config.child("position").attribute("y").as_int();
-
-	return true;
-}
-
-bool EnemyBird::Start()
-{
-	currentAnim = &idleLeftBird;
-	position = app->map->MapToWorld(10, 69);
-
-	birdPosition.x = position.x;
-	birdPosition.y = position.y;
-
+	LOG("Loading Enemy");
 	bool ret = true;
+	//textureBird.Create(config.child("textureBird").child_value());
 
-	texture = app->tex->Load("Assets/textures/enemyBird.png");
+	//startPosBird.x = config.child("startPositionBird").attribute("x").as_int();
+	//startPosBird.y = config.child("startPositionBird").attribute("y").as_int();
 
-	b2BodyDef birdBody1;
-	birdBody1.type = b2_dynamicBody;
-	birdBody1.position.Set(PIXEL_TO_METERS(birdPosition.x), PIXEL_TO_METERS(birdPosition.y));
-	birdBody1.fixedRotation = true;
-	//create the body in  the world
-	bBird = app->physics->world->CreateBody(&birdBody1);
-	//add a shape
-	birdCircle.m_radius = PIXEL_TO_METERS(12);;
-	//add fixture
-	b2FixtureDef birdFixture;
-	birdFixture.shape = &birdCircle;
-	birdFixture.density = 1.5f;
-	birdFixture.friction = 100.0f;
-	//add fixture to body
-	bBird->CreateFixture(&birdFixture);
-	// Create our custom PhysBody class
-	birdBody = new PhysBody();
-	birdBody->body = bBird;
-	birdBody->width = birdBody->height = birdCircle.m_radius;
-	birdBody->listener = this;
-	birdBody->type = BIRD;
-	bBird->SetUserData(birdBody);
-
-	int w, h;
-	uchar* data = NULL;
-
-	if (app->map->WalkablePath(w, h, &data)) pathfinding->SetMap(w, h, data);
-
-	RELEASE_ARRAY(data);
-
-	navigationPath = app->tex->Load("Assets/maps/navegationBox.png");
-
+	// Enemy's speed
+	speed = config.child("speed").attribute("value").as_int();
 	return ret;
 }
 
+// Called before the first frame
+bool EnemyBird::Start()
+{
+	// Load enemies
+
+	bird = app->tex->Load("Assets/textures/enemyBird.png");
+
+	// stating animation
+
+	currentBirdAnimation = &idleLeftBird;
+
+	startPosBird = app->map->MapToWorld(25, 65);
+
+	//startPosBird.x = 5;
+	//startPosBird.y = 69;
+
+	birdPosition.x = startPosBird.x;
+	birdPosition.y = startPosBird.y;
+
+	int  Hitbox[16] =
+	{
+		0, 2,
+		0, 24,
+		2, 26,
+		24, 26,
+		26, 24,
+		26, 2,
+		24, 0,
+		2, 0
+	};
+
+
+	birdBody = app->physics->CreateEnemyBird(birdPosition.x, birdPosition.y, Hitbox, 16, 0);
+	birdBody->listener = this;
+	birdBody->type = typeOfCollision::BIRD;
+	birdDead = false;
+
+	return true;
+}
+
+// Called each loop iteration
 bool EnemyBird::PreUpdate()
 {
-	aggro = CheckAggro();
-
+	/*OPTICK_CATEGORY("lvl1 PreUpdate", Optick::Category::Scene);*/
 	return true;
 }
+
+// Called each loop iteration
 bool EnemyBird::Update(float dt)
 {
-	
-	enemyBirdPath();
-	enemyBirdMove();
 
-	
+	if (birdDead == false)
+	{
+		if (app->input->GetKey(SDL_SCANCODE_F3) == KEY_DOWN)
+		{
+			birdBody->body->SetTransform({ PIXEL_TO_METERS(birdPosition.x), PIXEL_TO_METERS(birdPosition.y) }, 0.0f);
+		}
+
+		BirdVelocity = birdBody->body->GetLinearVelocity();
+
+		birdBody->body->SetLinearVelocity(BirdVelocity);
+
+		if (birdPosition.DistanceTo(app->player->position) < 300)
+		{
+			if (birdPosition.x < app->player->position.x)
+			{
+				currentBirdAnimation = &leftBird;
+				birdBody->body->SetLinearVelocity({ 0.7f,0.0f });
+
+			}
+			if (birdPosition.x > app->player->position.x)
+			{
+				currentBirdAnimation = &rightBird;
+				birdBody->body->SetLinearVelocity({ -0.7f,0.0f });
+
+			}
+			if (birdPosition.y > app->player->position.y)
+			{
+				birdBody->body->SetLinearVelocity({ 0.0f,-0.5f });
+			}
+			if (birdPosition.y < app->player->position.y)
+			{
+				birdBody->body->SetLinearVelocity({ 0.0f,0.5f });
+			}
+			if (birdPosition.x < app->player->position.x && birdPosition.y > app->player->position.y)
+			{
+				currentBirdAnimation = &leftBird;
+				birdBody->body->SetLinearVelocity({ 0.7f,-0.5f });
+
+			}
+			if (birdPosition.x > app->player->position.x && birdPosition.y > app->player->position.y)
+			{
+				currentBirdAnimation = &rightBird;
+				birdBody->body->SetLinearVelocity({ -0.7f,-0.5f });
+
+			}
+			if (birdPosition.x < app->player->position.x && birdPosition.y < app->player->position.y)
+			{
+				currentBirdAnimation = &leftBird;
+				birdBody->body->SetLinearVelocity({ 0.7f,0.5f });
+
+			}
+			if (birdPosition.x > app->player->position.x && birdPosition.y < app->player->position.y)
+			{
+				currentBirdAnimation = &rightBird;
+				birdBody->body->SetLinearVelocity({ -0.7f,0.5f });
+
+			}
+		}
+		else
+		{
+			if (birdPosition.x == startPosBird.x && birdPosition.y == startPosBird.y)
+			{
+				if (currentBirdAnimation == &leftBird)
+				{
+					currentBirdAnimation = &idleRightBird;
+					birdBody->body->SetLinearVelocity({ 0.0f,0.0f });
+				}
+				if (currentBirdAnimation == &rightBird)
+				{
+					currentBirdAnimation = &idleLeftBird;
+					birdBody->body->SetLinearVelocity({ 0.0f,0.0f });
+				}
+			}
+			if (birdPosition.x < startPosBird.x)
+			{
+				currentBirdAnimation = &leftBird;
+				birdBody->body->SetLinearVelocity({ 0.7f,0.0f });
+			}
+			if (birdPosition.x > startPosBird.x)
+			{
+				currentBirdAnimation = &rightBird;
+				birdBody->body->SetLinearVelocity({ -0.7f,0.0f });
+
+			}
+			if (birdPosition.y > startPosBird.y)
+			{
+				birdBody->body->SetLinearVelocity({ 0.0f,-0.5f });
+			}
+			if (birdPosition.y < startPosBird.y)
+			{
+				birdBody->body->SetLinearVelocity({ 0.0f,0.5f });
+			}
+			if (birdPosition.x < startPosBird.x && birdPosition.y >  startPosBird.y)
+			{
+				currentBirdAnimation = &leftBird;
+				birdBody->body->SetLinearVelocity({ 0.7f,-0.5f });
+
+			}
+			if (birdPosition.x > startPosBird.x && birdPosition.y > startPosBird.y)
+			{
+				currentBirdAnimation = &rightBird;
+				birdBody->body->SetLinearVelocity({ -0.7f,-0.5f });
+
+			}
+			if (birdPosition.x < startPosBird.x && birdPosition.y < startPosBird.y)
+			{
+				currentBirdAnimation = &leftBird;
+				birdBody->body->SetLinearVelocity({ 0.7f,0.5f });
+
+			}
+			if (birdPosition.x > startPosBird.x && birdPosition.y < startPosBird.y)
+			{
+				currentBirdAnimation = &rightBird;
+				birdBody->body->SetLinearVelocity({ -0.7f,0.5f });
+
+			}
+		}
+	}
+
+
+	currentBirdAnimation->Update();
+
 	return true;
-
-	currentAnim->Update();
-
-	birdBody->GetPosition(birdPosition.x, birdPosition.y);
 }
 
+// Called each loop iteration
 bool EnemyBird::PostUpdate()
 {
-	
-	
-	SDL_Rect rect = currentAnim->GetCurrentFrame();
-	app->render->DrawTexture(texture, birdPosition.x, birdPosition.y, &rect);
 
-	if (aggro && app->physics->debug)
-	{
-		for (uint i = 0; i < currentPath->Count(); ++i)
-		{
-			iPoint pos = app->map->MapToWorld(currentPath->At(i)->x, currentPath->At(i)->y);
-			app->render->DrawTexture(navigationPath, pos.x, pos.y);
-		}
-	}
+	bool ret = true;
 
-	return true;
-}
+	//Bird
+	SDL_Rect rectBird = currentBirdAnimation->GetCurrentFrame();
+	birdBody->GetPosition(birdPosition.x, birdPosition.y);
+	app->render->DrawTexture(bird, birdPosition.x, birdPosition.y, &rectBird);
 
-void EnemyBird::enemyBirdPath()
-{
-	iPoint origin = { (int)METERS_TO_PIXELS((int)birdBody->body->GetPosition().x), (int)METERS_TO_PIXELS((int)birdBody->body->GetPosition().y) };
-	iPoint destination = { (int)METERS_TO_PIXELS((int)app->player->pbody->body->GetPosition().x), (int)METERS_TO_PIXELS((int)app->player->pbody->body->GetPosition().y) };
-
-	origin = app->map->WorldToMap(origin.x, origin.y);
-	destination = app->map->WorldToMap(destination.x, destination.y);
-
-	pathfinding->CreatePath(origin, destination);
-	currentPath = pathfinding->GetLastPath();
-}
-
-void EnemyBird::enemyBirdMove()
-{
-	//collider->SetPos(position.x, position.y);
-	//Flying_Enemy_2_List.end->data->GetPosition(position.x, position.y);
-
-	if (position.DistanceTo(app->player->position) < 200)
-	{
-		if (position.x < app->player->position.x)
-		{
-			currentAnim = &leftBird;
-			birdBody->body->SetLinearVelocity({ 0.7f,0.0f });
-
-		}
-		if (position.x > app->player->position.x)
-		{
-			currentAnim = &rightBird;
-			birdBody->body->SetLinearVelocity({ -0.7f,0.0f });
-
-		}
-		if (position.y > app->player->position.y)
-		{
-			birdBody->body->SetLinearVelocity({ 0.0f,-0.5f });
-		}
-		if (position.y < app->player->position.y)
-		{
-			birdBody->body->SetLinearVelocity({ 0.0f,0.5f });
-		}
-		if (position.x < app->player->position.x && position.y > app->player->position.y)
-		{
-			currentAnim = &leftBird;
-			birdBody->body->SetLinearVelocity({ 0.7f,-0.5f });
-
-		}
-		if (position.x > app->player->position.x && position.y > app->player->position.y)
-		{
-			currentAnim = &rightBird;
-			birdBody->body->SetLinearVelocity({ -0.7f,-0.5f });
-
-		}
-		if (position.x < app->player->position.x && position.y < app->player->position.y)
-		{
-			currentAnim = &leftBird;
-			birdBody->body->SetLinearVelocity({ 0.7f,0.5f });
-
-		}
-		if (position.x > app->player->position.x && position.y < app->player->position.y)
-		{
-			currentAnim = &rightBird;
-			birdBody->body->SetLinearVelocity({ -0.7f,0.5f });
-
-		}
-	}
-
+	return ret;
 }
 
 void EnemyBird::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
@@ -222,27 +260,32 @@ void EnemyBird::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 
 }
 
-bool EnemyBird::CheckAggro()
+bool EnemyBird::LoadState(pugi::xml_node& data)
 {
-	uint dist = abs(sqrt(pow(birdBody->body->GetPosition().x - app->player->pbody->body->GetPosition().x, 2) +
-		pow(birdBody->body->GetPosition().y - app->player->pbody->body->GetPosition().y, 2)));
-	if (dist < aggroDistance) return true;
-	if (dist > aggroDistance) return false;
-}
 
-bool EnemyBird::LoadState(pugi::xml_node& node)
-{
+	birdPosition.x = data.child("birdPosition").attribute("x").as_int();
+	birdPosition.y = data.child("birdPosition").attribute("y").as_int();
+	birdBody->body->SetTransform({ PIXEL_TO_METERS(birdPosition.x), PIXEL_TO_METERS(birdPosition.y) }, 0.0f);
+
 	return true;
 }
 
-bool EnemyBird::SaveState(pugi::xml_node& node)
+bool EnemyBird::SaveState(pugi::xml_node& data)
 {
+
+	data.child("birdPosition").attribute("x").set_value(birdPosition.x);
+	data.child("birdPosition").attribute("y").set_value(birdPosition.y);
+
 	return true;
 }
 
 bool EnemyBird::CleanUp()
 {
-	return true;
+	LOG("Destroying Enemy");
+	bool ret = true;
+	app->tex->UnLoad(texture);
+	app->physics->world->DestroyBody(birdBody->body);
+	app->tex->UnLoad(bird);
+	return ret;
 }
-
 

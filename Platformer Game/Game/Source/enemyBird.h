@@ -6,25 +6,23 @@
 #include "Point.h"
 #include "Box2D/Box2D/Box2D.h"
 #include "List.h"
-#include "Map.h"
 #include "ModulePhysics.h"
-#include "ModulePhysics.h"
-#include "App.h"
 
 struct SDL_Texture;
 struct Collider;
 
-class EnemyBird : public Module,public b2ContactListener
+class EnemyBird : public Module
 {
 public:
-	iPoint position;
 	// Constructor
+	// Saves the spawn position for later movement calculations
 	EnemyBird();
-	EnemyBird(int x, int y);
 
 	// Destructor
 	~EnemyBird();
 
+	// Collision response
+	// Triggers an animation and a sound fx
 	// Collision callback, called when the player intersects with another collider
 	void OnCollision(PhysBody* bodyA, PhysBody* bodyB) override;
 
@@ -44,44 +42,36 @@ public:
 	// Called before all Updates
 	bool PostUpdate();
 
+	// Save and load the position of the enemies
+	bool LoadState(pugi::xml_node&);
+	bool SaveState(pugi::xml_node&);
+
 	// Called before quitting
 	bool CleanUp();
 
-	bool LoadState(pugi::xml_node&);
-	bool SaveState(pugi::xml_node&);
-	void BirdDies();
-
 private:
-	PathFinding* pathfinding;
-	b2Fixture* enemySensor;
 
 	SDL_Texture* bird;
+
 	SString textureBird;
-	SDL_Rect enemyRec;
-	SDL_Texture* navigationPath;
-	
-	Animation idleLeftBird;
-	Animation idleRightBird;
+
+
 	Animation leftBird;
 	Animation rightBird;
-	Animation* currentBirdAnim = nullptr;
+	Animation idleRightBird;
+	Animation idleLeftBird;
+
+	Animation* currentBirdAnimation = nullptr;
+
 	b2Vec2 BirdVelocity;
 
-	bool birdBoundsRight = false;
-	bool birdBoundsLeft = true;
+	bool birdLimitRight = false;
+	bool birdLimitLeft = true;
 
-	void enemyBirdMove();
-	void enemyBirdPath();
-	bool CheckAggro();
-	bool aggro;
-	int aggroDistance = 8;
-	bool setToDestroy = false;
-	bool isAlive = true;
-	b2Vec2 speed = { 2.0f, -2.0f };
-	
 public:
 
 	// The current position in the world
+
 	iPoint birdPosition;
 
 	// The enemy's texture
@@ -93,27 +83,32 @@ public:
 	// A flag for the enemy removal. Important! We do not delete objects instantly
 	bool pendingToDelete = false;
 
+	int health;
+	bool invincible = false;
+	bool dogDead = false;
+	bool catDead = false;
+	bool birdDead = false;
+
+	/*iPoint direction = { 0, 0 };*/
+	// Position of the player in the map
+
 	iPoint positionBird;
 	iPoint startPosBird;
-	
+
 	b2Vec2* velocity;
 
+	// player's body
+
 	PhysBody* birdBody;
-	b2Body* bBird;
+	b2Body* bbird;
+
+	//add a shape
 	b2CircleShape birdCircle;
-	const DynArray<iPoint>* currentPath;
+
 	// The speed in which we move the player (pixels per frame)
-	
-	typeOfCollision* type;
-protected:
-	// A ptr to the current animation
-	Animation* currentAnim = nullptr;
+	int speed;
 
-	// The enemy's collider
-	Collider* collider = nullptr;
-
-	// Original spawn position. Stored for movement calculations
-	/*iPoint spawnPos;*/
+	bool onGround;
 };
 
-#endif;
+#endif // __ENEMY_H__
