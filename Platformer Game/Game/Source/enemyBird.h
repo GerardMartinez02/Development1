@@ -9,6 +9,7 @@
 #include "Map.h"
 #include "ModulePhysics.h"
 #include "ModulePhysics.h"
+#include "App.h"
 
 struct SDL_Texture;
 struct Collider;
@@ -103,6 +104,7 @@ public:
 	const DynArray<iPoint>* currentPath;
 	// The speed in which we move the player (pixels per frame)
 	
+	typeOfCollision* type;
 protected:
 	// A ptr to the current animation
 	Animation* currentAnim = nullptr;

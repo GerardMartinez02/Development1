@@ -22,7 +22,8 @@ enum typeOfCollision
 	WALL,
 	WINFLAG,
 	FALL,
-	BIRD
+	BIRD,
+	DRAGON
 };
 
 // Small class to return to other modules to track position and rotation of physics bodies
@@ -41,7 +42,7 @@ public:
 	int width, height;
 	b2Body* body;
 	Module* listener;
-	typeOfCollision typeCollision;
+	typeOfCollision type;
 };
 
 // Module --------------------------------------

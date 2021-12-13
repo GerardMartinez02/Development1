@@ -12,6 +12,7 @@
 #include "Defs.h"
 #include "Log.h"
 #include "enemyBird.h"
+#include "enemyDragon.h"
 
 Scene::Scene() : Module()
 {
@@ -48,6 +49,7 @@ bool Scene::Start()
 
 	app->player->Enable();
 	app->enemyBird->Enable();
+	app->enemyDragon->Enable();
 	app->map->Colliders();
 
 	app->render->camera.x = app->map->MapToWorld(0, 0).x;

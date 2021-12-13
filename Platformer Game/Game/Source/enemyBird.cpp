@@ -16,7 +16,7 @@
 #include "Defs.h"
 #include "Log.h"
 
-EnemyBird::EnemyBird()
+EnemyBird::EnemyBird() : Module()
 {
 	name.Create("Enemy");
 
@@ -96,7 +96,7 @@ bool EnemyBird::Start()
 	birdBody->body = bBird;
 	birdBody->width = birdBody->height = birdCircle.m_radius;
 	birdBody->listener = this;
-	birdBody->typeCollision = typeOfCollision::BIRD;
+	birdBody->type = BIRD;
 	bBird->SetUserData(birdBody);
 
 	int w, h;

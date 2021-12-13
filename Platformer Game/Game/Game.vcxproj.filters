@@ -29,6 +29,7 @@
     <ClCompile Include="Source\GameOver.cpp" />
     <ClCompile Include="Source\Pathfinding.cpp" />
     <ClCompile Include="Source\enemyBird.cpp" />
+    <ClCompile Include="Source\enemyDragon.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Window.h" />
@@ -80,6 +81,7 @@
     <ClInclude Include="Source\GameOver.h" />
     <ClInclude Include="Source\Pathfinding.h" />
     <ClInclude Include="Source\enemyBird.h" />
+    <ClInclude Include="Source\enemyDragon.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="External">

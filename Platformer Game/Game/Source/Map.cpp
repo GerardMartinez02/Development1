@@ -121,7 +121,7 @@ void Map::Colliders()
 							collider = new PhysBody();
 							collider->listener = this;
 							collider = app->physics->CreateRectangle(pos.x , pos.y , r.w, r.h, 1);
-							collider->typeCollision = typeOfCollision::WALL;
+							collider->type = WALL;
 							colliders.add(collider);
 						}
 						else if (mapLayerItem->data->properties.GetProperty("Win") == 1)
@@ -129,7 +129,7 @@ void Map::Colliders()
 							collider = new PhysBody();
 							collider->listener = this;
 							collider = app->physics->CreateRectangleSensor(pos.x , pos.y , r.w, r.h, 1);
-							collider->typeCollision = typeOfCollision::WINFLAG;
+							collider->type = WINFLAG;
 							colliders.add(collider);
 						}
 					}
@@ -157,7 +157,7 @@ void Map::Colliders()
 							collider = new PhysBody();
 							collider->listener = this;
 							collider = app->physics->CreateRectangle(pos.x, pos.y, r.w, r.h, 1);
-							collider->typeCollision = typeOfCollision::FALL;
+							collider->type = FALL;
 							colliders.add(collider);
 							
 
@@ -211,7 +211,7 @@ void Map::DrawColliders()
 }
 
 // L04: DONE 8: Create a method that translates x,y coordinates from map positions to world positions
-iPoint Map::MapToWorld(int x, int y) const
+iPoint Map::MapToWorld(float x, float y) const
 {
 	iPoint ret;
 

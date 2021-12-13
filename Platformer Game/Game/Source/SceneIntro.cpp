@@ -12,6 +12,8 @@
 #include "SceneIntro.h"
 #include "Defs.h"
 #include "Log.h"
+#include "enemyBird.h"
+#include "enemyDragon.h"
 
 SceneIntro::SceneIntro() : Module()
 {
@@ -63,6 +65,7 @@ bool SceneIntro::Update(float dt)
 	app->scene->Disable();
 	app->player->Disable();
 	app->enemyBird->Disable();
+	app->enemyDragon->Disable();
 	
 	sCounter++;
 

@@ -12,6 +12,8 @@
 #include "Pathfinding.h"
 //#include "GameOver.h"
 #include "enemyBird.h"
+#include "enemyDragon.h"
+
 
 #include "Defs.h"
 #include "Log.h"
@@ -42,6 +44,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	
 	player = new ModulePlayer();
 	enemyBird = new EnemyBird();
+	enemyDragon = new EnemyDragon();
 
 	// Ordered for awake / Start / Update
 	// Reverse order of CleanUp
@@ -58,6 +61,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(map);
 	AddModule(player);
 	AddModule(enemyBird);
+	AddModule(enemyDragon);
 
 	// Render last to swap buffer
 	AddModule(render);

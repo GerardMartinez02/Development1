@@ -136,7 +136,7 @@ bool ModulePlayer::Start()
 	b->SetUserData(pbody);
 	pbody->width = pbody->height = pCircle.m_radius;
 	pbody->listener = this;
-	pbody->typeCollision = typeOfCollision::PLAYER;
+	pbody->type = PLAYER;
 	b->SetUserData(pbody);
 
 
@@ -267,12 +267,12 @@ bool ModulePlayer::PostUpdate()
 
 void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 {
-	if (bodyA->typeCollision == typeOfCollision::PLAYER && bodyB->typeCollision == typeOfCollision::WINFLAG)
+	if (bodyA->type == PLAYER && bodyB->type == WINFLAG)
 	{
 		LOG("WIN!");
 		winCondition = true;
 	}
-	if (bodyA->typeCollision == typeOfCollision::PLAYER && bodyB->typeCollision == typeOfCollision::FALL)
+	if (bodyA->type == PLAYER && bodyB->type == FALL)
 	{
 		app->scene->Disable();
 		//app->player->Disable();

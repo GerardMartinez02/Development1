@@ -153,7 +153,7 @@ public:
     bool Load(const char* path);
 
 	// L04: DONE 8: Create a method that translates x,y coordinates from map positions to world positions
-	iPoint MapToWorld(int x, int y) const;
+	iPoint MapToWorld(float x, float y) const;
 
 	// L05: DONE 2: Add orthographic world to map coordinates
 	iPoint WorldToMap(int x, int y) const;
