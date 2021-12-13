@@ -23,7 +23,9 @@ enum typeOfCollision
 	WINFLAG,
 	FALL,
 	BIRD,
-	DRAGON
+	DRAGON,
+	COIN,
+	PIZZA
 };
 
 // Small class to return to other modules to track position and rotation of physics bodies

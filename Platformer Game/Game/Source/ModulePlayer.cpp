@@ -271,6 +271,9 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 	{
 		LOG("WIN!");
 		winCondition = true;
+		app->scene->Disable();
+		//app->player->Disable();
+		app->intro->Enable();
 	}
 	if (bodyA->type == PLAYER && bodyB->type == FALL)
 	{
