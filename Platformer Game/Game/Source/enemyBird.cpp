@@ -99,7 +99,7 @@ bool EnemyBird::Start()
 
 	birdBody = app->physics->CreateEnemyBird(birdPosition.x, birdPosition.y, Hitbox, 16, 0);
 	birdBody->listener = this;
-	birdBody->type = typeOfCollision::BIRD;
+	birdBody->type = BIRD;
 	birdDead = false;
 
 	return true;

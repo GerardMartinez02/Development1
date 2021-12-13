@@ -3,6 +3,8 @@
 
 #include "Module.h"
 #include "List.h"
+#include "Timer.h"
+#include "AuxTimer.h"
 
 #include "PugiXml/src/pugixml.hpp"
 
@@ -27,6 +29,8 @@ class SceneIntro;
 class GameOver;
 class EnemyBird;
 class EnemyDragon;
+class Timer;
+class AuxTimer;
 
 enum sceneEnum
 {
@@ -115,6 +119,9 @@ public:
 	EnemyBird* enemyBird;
 	EnemyDragon* enemyDragon;
 	
+	bool fpsCap = false;
+	float dt = 0.0f;
+	uint32 FPS = 0;
 
 private:
 
@@ -133,10 +140,21 @@ private:
 	pugi::xml_node configApp;
 
 	uint frames;
-	float dt;
 
 	mutable bool saveGameRequested;
 	bool loadGameRequested;
+
+	AuxTimer* frameDuration;
+	AuxTimer* ptimer;
+
+	Timer startupTime;
+	Timer lastSecFrameTime;
+
+	uint64 frameCount = 0;
+	uint32 lastSecFrameCount = 0;
+	uint32 maxFR = 0;
+
+	float average = 0.0f;
 };
 
 extern App* app;

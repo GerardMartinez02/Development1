@@ -1,12 +1,12 @@
 ﻿  enemyBird.cpp
-C:\GitHub\Development1\Platformer Game\Game\Source\Animation.h(54,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
-C:\GitHub\Development1\Platformer Game\Game\Source\Animation.h(56,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\GitHub\Development1\Platformer Game\Game\Source\Point.h(111,24): warning C4244: 'argument': conversion from 'TYPE' to 'float', possible loss of data
+C:\Users\user\Desktop\UNI\2n\Desenvolupament de Videojocs\Development1\Platformer Game\Game\Source\Animation.h(54,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
+C:\Users\user\Desktop\UNI\2n\Desenvolupament de Videojocs\Development1\Platformer Game\Game\Source\Animation.h(56,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\user\Desktop\UNI\2n\Desenvolupament de Videojocs\Development1\Platformer Game\Game\Source\Point.h(111,24): warning C4244: 'argument': conversion from 'TYPE' to 'float', possible loss of data
           with
           [
               TYPE=int
           ]
-C:\GitHub\Development1\Platformer Game\Game\Source\Point.h(107): message : while compiling class template member function 'TYPE Point<TYPE>::DistanceTo(const Point<TYPE> &) const'
+C:\Users\user\Desktop\UNI\2n\Desenvolupament de Videojocs\Development1\Platformer Game\Game\Source\Point.h(107): message : while compiling class template member function 'TYPE Point<TYPE>::DistanceTo(const Point<TYPE> &) const'
           with
           [
               TYPE=int
@@ -16,15 +16,15 @@ Source\enemyBird.cpp(130): message : see reference to function template instanti
           [
               TYPE=int
           ]
-C:\GitHub\Development1\Platformer Game\Game\Source\enemyBird.h(75): message : see reference to class template instantiation 'Point<int>' being compiled
-C:\GitHub\Development1\Platformer Game\Game\Source\Point.h(111,15): warning C4244: 'return': conversion from 'float' to 'TYPE', possible loss of data
+C:\Users\user\Desktop\UNI\2n\Desenvolupament de Videojocs\Development1\Platformer Game\Game\Source\enemyBird.h(75): message : see reference to class template instantiation 'Point<int>' being compiled
+C:\Users\user\Desktop\UNI\2n\Desenvolupament de Videojocs\Development1\Platformer Game\Game\Source\Point.h(111,15): warning C4244: 'return': conversion from 'float' to 'TYPE', possible loss of data
           with
           [
               TYPE=int
           ]
   enemyDragon.cpp
-C:\GitHub\Development1\Platformer Game\Game\Source\Animation.h(54,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
-C:\GitHub\Development1\Platformer Game\Game\Source\Animation.h(56,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\user\Desktop\UNI\2n\Desenvolupament de Videojocs\Development1\Platformer Game\Game\Source\Animation.h(54,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
+C:\Users\user\Desktop\UNI\2n\Desenvolupament de Videojocs\Development1\Platformer Game\Game\Source\Animation.h(56,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
 Source\enemyDragon.cpp(74,43): warning C4305: 'argument': truncation from 'double' to 'float'
 Source\enemyDragon.cpp(101,55): warning C4244: '=': conversion from 'float32' to 'int', possible loss of data
 Source\enemyDragon.cpp(149,79): warning C4244: 'argument': conversion from 'const TYPE' to 'float', possible loss of data
@@ -40,12 +40,12 @@ Source\enemyDragon.cpp(149,56): warning C4244: 'argument': conversion from 'cons
 Source\enemyDragon.cpp(234,12): warning C4244: 'initializing': conversion from 'double' to 'uint', possible loss of data
 Source\enemyDragon.cpp(236,11): warning C4018: '<': signed/unsigned mismatch
 Source\enemyDragon.cpp(237,11): warning C4018: '>': signed/unsigned mismatch
-C:\GitHub\Development1\Platformer Game\Game\Source\Point.h(111,24): warning C4244: 'argument': conversion from 'TYPE' to 'float', possible loss of data
+C:\Users\user\Desktop\UNI\2n\Desenvolupament de Videojocs\Development1\Platformer Game\Game\Source\Point.h(111,24): warning C4244: 'argument': conversion from 'TYPE' to 'float', possible loss of data
           with
           [
               TYPE=int
           ]
-C:\GitHub\Development1\Platformer Game\Game\Source\Point.h(107): message : while compiling class template member function 'TYPE Point<TYPE>::DistanceTo(const Point<TYPE> &) const'
+C:\Users\user\Desktop\UNI\2n\Desenvolupament de Videojocs\Development1\Platformer Game\Game\Source\Point.h(107): message : while compiling class template member function 'TYPE Point<TYPE>::DistanceTo(const Point<TYPE> &) const'
           with
           [
               TYPE=int
@@ -55,18 +55,20 @@ Source\enemyDragon.cpp(174): message : see reference to function template instan
           [
               TYPE=int
           ]
-C:\GitHub\Development1\Platformer Game\Game\Source\Pathfinding.h(67): message : see reference to class template instantiation 'Point<int>' being compiled
-C:\GitHub\Development1\Platformer Game\Game\Source\Point.h(111,15): warning C4244: 'return': conversion from 'float' to 'TYPE', possible loss of data
+C:\Users\user\Desktop\UNI\2n\Desenvolupament de Videojocs\Development1\Platformer Game\Game\Source\Pathfinding.h(67): message : see reference to class template instantiation 'Point<int>' being compiled
+C:\Users\user\Desktop\UNI\2n\Desenvolupament de Videojocs\Development1\Platformer Game\Game\Source\Point.h(111,15): warning C4244: 'return': conversion from 'float' to 'TYPE', possible loss of data
           with
           [
               TYPE=int
           ]
-  GameOver.cpp
   Main.cpp
 Source\Main.cpp(94,32): warning C4244: '=': conversion from 'Uint64' to 'int', possible loss of data
   App.cpp
-C:\GitHub\Development1\Platformer Game\Game\Source\Animation.h(54,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
-C:\GitHub\Development1\Platformer Game\Game\Source\Animation.h(56,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\user\Desktop\UNI\2n\Desenvolupament de Videojocs\Development1\Platformer Game\Game\Source\Animation.h(54,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
+C:\Users\user\Desktop\UNI\2n\Desenvolupament de Videojocs\Development1\Platformer Game\Game\Source\Animation.h(56,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+Source\App.cpp(198,28): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+Source\App.cpp(228,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+Source\App.cpp(234,40): warning C4244: 'argument': conversion from 'float' to 'Uint32', possible loss of data
   Audio.cpp
   Input.cpp
   Map.cpp
@@ -114,16 +116,16 @@ Source\ModulePhysics.cpp(524,13): warning C4244: 'initializing': conversion from
 Source\ModulePhysics.cpp(525,13): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
 Source\ModulePhysics.cpp(531,27): warning C4244: 'return': conversion from 'float32' to 'int', possible loss of data
   ModulePlayer.cpp
-C:\GitHub\Development1\Platformer Game\Game\Source\Animation.h(54,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
-C:\GitHub\Development1\Platformer Game\Game\Source\Animation.h(56,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\user\Desktop\UNI\2n\Desenvolupament de Videojocs\Development1\Platformer Game\Game\Source\Animation.h(54,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
+C:\Users\user\Desktop\UNI\2n\Desenvolupament de Videojocs\Development1\Platformer Game\Game\Source\Animation.h(56,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
 Source\ModulePlayer.cpp(137,40): warning C4244: '=': conversion from 'float32' to 'int', possible loss of data
   Pathfinding.cpp
-C:\GitHub\Development1\Platformer Game\Game\Source\Point.h(111,24): warning C4244: 'argument': conversion from 'TYPE' to 'float', possible loss of data
+C:\Users\user\Desktop\UNI\2n\Desenvolupament de Videojocs\Development1\Platformer Game\Game\Source\Point.h(111,24): warning C4244: 'argument': conversion from 'TYPE' to 'float', possible loss of data
           with
           [
               TYPE=int
           ]
-C:\GitHub\Development1\Platformer Game\Game\Source\Point.h(107): message : while compiling class template member function 'TYPE Point<TYPE>::DistanceTo(const Point<TYPE> &) const'
+C:\Users\user\Desktop\UNI\2n\Desenvolupament de Videojocs\Development1\Platformer Game\Game\Source\Point.h(107): message : while compiling class template member function 'TYPE Point<TYPE>::DistanceTo(const Point<TYPE> &) const'
           with
           [
               TYPE=int
@@ -133,30 +135,28 @@ Source\Pathfinding.cpp(162): message : see reference to function template instan
           [
               TYPE=int
           ]
-C:\GitHub\Development1\Platformer Game\Game\Source\PathFinding.h(67): message : see reference to class template instantiation 'Point<int>' being compiled
-C:\GitHub\Development1\Platformer Game\Game\Source\Point.h(111,15): warning C4244: 'return': conversion from 'float' to 'TYPE', possible loss of data
+C:\Users\user\Desktop\UNI\2n\Desenvolupament de Videojocs\Development1\Platformer Game\Game\Source\PathFinding.h(67): message : see reference to class template instantiation 'Point<int>' being compiled
+C:\Users\user\Desktop\UNI\2n\Desenvolupament de Videojocs\Development1\Platformer Game\Game\Source\Point.h(111,15): warning C4244: 'return': conversion from 'float' to 'TYPE', possible loss of data
           with
           [
               TYPE=int
           ]
   Scene.cpp
-C:\GitHub\Development1\Platformer Game\Game\Source\Animation.h(54,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
-C:\GitHub\Development1\Platformer Game\Game\Source\Animation.h(56,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\user\Desktop\UNI\2n\Desenvolupament de Videojocs\Development1\Platformer Game\Game\Source\Animation.h(54,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
+C:\Users\user\Desktop\UNI\2n\Desenvolupament de Videojocs\Development1\Platformer Game\Game\Source\Animation.h(56,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
 Source\Scene.cpp(80,78): warning C4244: '=': conversion from 'float32' to 'int', possible loss of data
 Source\Scene.cpp(84,78): warning C4244: '=': conversion from 'float32' to 'int', possible loss of data
   Render.cpp
-C:\GitHub\Development1\Platformer Game\Game\Source\Animation.h(54,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
-C:\GitHub\Development1\Platformer Game\Game\Source\Animation.h(56,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\user\Desktop\UNI\2n\Desenvolupament de Videojocs\Development1\Platformer Game\Game\Source\Animation.h(54,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
+C:\Users\user\Desktop\UNI\2n\Desenvolupament de Videojocs\Development1\Platformer Game\Game\Source\Animation.h(56,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
   SceneIntro.cpp
-C:\GitHub\Development1\Platformer Game\Game\Source\Animation.h(54,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
-C:\GitHub\Development1\Platformer Game\Game\Source\Animation.h(56,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\user\Desktop\UNI\2n\Desenvolupament de Videojocs\Development1\Platformer Game\Game\Source\Animation.h(54,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
+C:\Users\user\Desktop\UNI\2n\Desenvolupament de Videojocs\Development1\Platformer Game\Game\Source\Animation.h(56,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
   Textures.cpp
   Window.cpp
-  Log.cpp
-  pugixml.cpp
   Generating code
-  Compiler switch has changed, fall back to full compilation.
-C:\GitHub\Development1\Platformer Game\Game\Source\enemyDragon.cpp(238): warning C4715: 'EnemyDragon::CheckAggro': not all control paths return a value
-  All 621 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  22 of 628 functions ( 3.5%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    10 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
-  Game.vcxproj -> C:\GitHub\Development1\Platformer Game\Build\Release\Game.exe
+  Game.vcxproj -> C:\Users\user\Desktop\UNI\2n\Desenvolupament de Videojocs\Development1\Platformer Game\Build\Release\Game.exe

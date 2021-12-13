@@ -89,6 +89,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\AuxTimer.cpp" />
     <ClCompile Include="Source\enemyBird.cpp" />
     <ClCompile Include="Source\enemyDragon.cpp" />
     <ClCompile Include="Source\GameOver.cpp" />
@@ -107,8 +108,10 @@
     <ClCompile Include="Source\Render.cpp" />
     <ClCompile Include="Source\SceneIntro.cpp" />
     <ClCompile Include="Source\Textures.cpp" />
+    <ClCompile Include="Source\Timer.cpp" />
     <ClCompile Include="Source\Window.cpp" />
     <ClInclude Include="Source\Animation.h" />
+    <ClInclude Include="Source\AuxTimer.h" />
     <ClInclude Include="Source\enemyBird.h" />
     <ClInclude Include="Source\enemyDragon.h" />
     <ClInclude Include="Source\GameOver.h" />
@@ -125,6 +128,7 @@
     <ClInclude Include="Source\Render.h" />
     <ClInclude Include="Source\SceneIntro.h" />
     <ClInclude Include="Source\Textures.h" />
+    <ClInclude Include="Source\Timer.h" />
     <ClInclude Include="Source\Window.h" />
     <ClInclude Include="Source\Defs.h" />
     <ClInclude Include="Source\List.h" />

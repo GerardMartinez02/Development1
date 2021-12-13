@@ -53,6 +53,7 @@ public:
 	SDL_Rect viewport;
 	SDL_Color background;
 
+	bool vsync;
 
 };
 

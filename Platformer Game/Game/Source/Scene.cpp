@@ -128,8 +128,7 @@ bool Scene::Update(float dt)
 				   app->map->mapData.tileWidth, app->map->mapData.tileHeight,
 				   app->map->mapData.tilesets.count());
 
-	app->win->SetTitle("Platform Game - LEVEL 1");
-
+	
 	app->render->DrawTexture(background, -300, 1240, NULL, 0.75f);
 	app->map->Draw();
 
