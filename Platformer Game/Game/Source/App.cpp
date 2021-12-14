@@ -10,7 +10,7 @@
 #include "ModulePlayer.h"
 #include "SceneIntro.h"
 #include "Pathfinding.h"
-//#include "GameOver.h"
+#include "GameOver.h"
 #include "enemyBird.h"
 #include "enemyDragon.h"
 #include "Timer.h"
@@ -39,7 +39,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	intro = new SceneIntro();
 	scene = new Scene();
 	pathfinding = new PathFinding();
-	//gameOver = new GameOver();
+	gameOver = new GameOver();
 	map = new Map();
 	
 	physics = new ModulePhysics();
@@ -61,7 +61,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(intro);
 	AddModule(scene);
 	AddModule(pathfinding);
-	/*AddModule(gameOver);*/
+	AddModule(gameOver);
 	AddModule(map);
 	AddModule(player);
 	AddModule(enemyBird);
@@ -221,6 +221,20 @@ void App::FinishUpdate()
 		FPS = lastSecFrameCount;
 		lastSecFrameCount = 0;
 		average = (average + FPS) / 2;
+	}
+
+	if (app->enemyBird->destroyedBird == true)
+	{
+		app->enemyBird->birdBody->body->DestroyFixture(app->enemyBird->birdBody->body->GetFixtureList());
+
+		app->enemyBird->destroyedBird = false;
+	}
+
+	if (app->enemyDragon->destroyedDragon == true)
+	{
+		app->enemyDragon->dragonBody->body->DestroyFixture(app->enemyDragon->dragonBody->body->GetFixtureList());
+
+		app->enemyDragon->destroyedDragon = false;
 	}
 
 	static char title[256];

@@ -70,6 +70,7 @@ bool EnemyDragon::Awake(pugi::xml_node& config)
 bool EnemyDragon::Start()
 {
 	// Load enemies
+	destroyedDragon = false;
 
 	bird = app->tex->Load("Assets/textures/DragonEnemy.png");
 
@@ -285,7 +286,8 @@ bool EnemyDragon::CleanUp()
 	LOG("Destroying Enemy");
 	bool ret = true;
 	app->tex->UnLoad(texture);
-	app->physics->world->DestroyBody(dragonBody->body);
+	//app->physics->world->DestroyBody(dragonBody->body);
+	app->enemyDragon->destroyedDragon = true;
 	app->tex->UnLoad(bird);
 	return ret;
 }

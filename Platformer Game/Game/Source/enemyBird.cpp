@@ -68,6 +68,7 @@ bool EnemyBird::Awake(pugi::xml_node& config)
 // Called before the first frame
 bool EnemyBird::Start()
 {
+	destroyedBird = false;
 	// Load enemies
 
 	bird = app->tex->Load("Assets/textures/enemyBird.png");
@@ -280,7 +281,8 @@ bool EnemyBird::CleanUp()
 	LOG("Destroying Enemy");
 	bool ret = true;
 	app->tex->UnLoad(texture);
-	app->physics->world->DestroyBody(birdBody->body);
+	//app->physics->world->DestroyBody(birdBody->body);
+	app->enemyBird->destroyedBird = true;
 	app->tex->UnLoad(bird);
 	return ret;
 }

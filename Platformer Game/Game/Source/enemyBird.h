@@ -100,6 +100,8 @@ public:
 	// The speed in which we move the player (pixels per frame)
 	int speed;
 
+	bool destroyedBird;
+
 	bool onGround;
 };
 

@@ -15,6 +15,7 @@
 #include "enemyBird.h"
 #include "enemyDragon.h"
 #include "Coins.h"
+#include "GameOver.h"
 
 SceneIntro::SceneIntro() : Module()
 {
@@ -63,11 +64,14 @@ bool SceneIntro::PreUpdate()
 // Called each loop iteration
 bool SceneIntro::Update(float dt)
 {
+	//->sceneIntro->Enable();
+	//app->intro->Enable();
 	app->scene->Disable();
 	app->player->Disable();
 	app->enemyBird->Disable();
 	app->enemyDragon->Disable();
 	app->coins->Disable();
+	app->gameOver->Disable();
 	
 	sCounter++;
 

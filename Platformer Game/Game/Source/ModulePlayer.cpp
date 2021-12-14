@@ -14,6 +14,9 @@
 #include "Map.h"
 #include "SceneIntro.h"
 #include "Coins.h"
+#include "enemyBird.h"
+#include "enemyDragon.h"
+#include "GameOver.h"
 
 
 
@@ -279,20 +282,29 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 	if (bodyA->type == PLAYER && bodyB->type == FALL)
 	{
 		app->scene->Disable();
+		app->coins->Disable();
+		app->enemyBird->Disable();
+		app->enemyDragon->Disable();
 		//app->player->Disable();
-		app->intro->Enable();
+		app->gameOver->Enable();
 	}
 	if (bodyA->type == PLAYER && bodyB->type == BIRD)
 	{
 		app->scene->Disable();
+		app->coins->Disable();
+		app->enemyBird->Disable();
+		app->enemyDragon->Disable();
 		//app->player->Disable();
-		app->intro->Enable();
+		app->gameOver->Enable();
 	}
 	if (bodyA->type == PLAYER && bodyB->type == DRAGON)
 	{
 		app->scene->Disable();
+		app->coins->Disable();
+		app->enemyBird->Disable();
+		app->enemyDragon->Disable();
 		//app->player->Disable();
-		app->intro->Enable();
+		app->gameOver->Enable();
 	}
 	if (bodyA->type == PLAYER && bodyB->type == COIN)
 	{
