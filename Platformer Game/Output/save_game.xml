@@ -1,11 +1,24 @@
 <?xml version="1.0"?>
-<game_state>
-	<input />
+<save_state>
 	<window />
+	<:anonymous />
+	<input />
 	<textures />
 	<audio />
+	<:anonymous />
+	<sceneIntro />
 	<scene />
+	<pathfinding />
+	<gameOver />
+	<map />
+	<player>
+		<position x="530" y="2289" />
+		<atributes />
+	</player>
+	<Enemy />
+	<Enemy />
+	<:anonymous />
 	<renderer>
-		<camera x="0" y="0" />
+		<camera x="-431" y="-4149" />
 	</renderer>
-</game_state>
+</save_state>

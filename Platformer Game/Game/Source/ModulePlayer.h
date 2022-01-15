@@ -33,8 +33,8 @@ public:
 
 	void OnCollision(PhysBody* bodyA, PhysBody* bodyB) override;
 
-	bool loadState(pugi::xml_node&);
-	bool saveState(pugi::xml_node&) const;
+	bool LoadState(pugi::xml_node&);
+	bool SaveState(pugi::xml_node&) const;
 
 	// Called before quitting
 	bool CleanUp();

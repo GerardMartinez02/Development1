@@ -22,6 +22,8 @@
 
 ModulePlayer::ModulePlayer() : Module()
 {
+	name.Create("player");
+
 	//idleAnimRight
 	idleAnimRight.PushBack({ 0, 1, 31, 35 });
 	idleAnimRight.PushBack({ 138, 1, 31, 37 });
@@ -315,18 +317,26 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 	}
 }
 
-bool ModulePlayer::loadState(pugi::xml_node& data)
+bool ModulePlayer::LoadState(pugi::xml_node& data)
 {
 	position.x = data.child("position").attribute("x").as_int();
 	position.y = data.child("position").attribute("y").as_int();
+
+	/*score = data.child("atrib.").attributes("score").as_int();*/
+
+
 	pbody->body->SetTransform({ PIXEL_TO_METERS(position.x), PIXEL_TO_METERS(position.y) }, 0.0f);
 	return true;
 }
 
-bool ModulePlayer::saveState(pugi::xml_node& data) const
+bool ModulePlayer::SaveState(pugi::xml_node& data) const
 {
-	data.child("position").attribute("x").set_value(position.x);
-	data.child("position").attribute("y").set_value(position.y);
+	pugi::xml_node playerPosition = data.append_child("position");
+	pugi::xml_node atributes = data.append_child("atributes");
+
+	playerPosition.append_attribute("x") = position.x;
+	playerPosition.append_attribute("y") = position.y;
+
 	return true;
 }
 
