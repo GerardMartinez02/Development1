@@ -43,6 +43,7 @@ public:
 	
 private:
 	SDL_Texture* startButton;
+	SDL_Texture* titleIntro;
 	SDL_Texture* backgroundIntro;
 	SDL_Texture* loading;
 	

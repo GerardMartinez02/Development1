@@ -40,8 +40,9 @@ bool SceneIntro::Start()
 {
 	// L03: DONE: Load map
 	//app->audio->PlayMusic("Assets/audio/music/introMusic.ogg");
+	titleIntro = app->tex->Load("Assets/scenes/titleImage.png");
 	backgroundIntro = app->tex->Load("Assets/scenes/introImage.png");
-	startButton = app->tex->Load("Assets/textures/ui/PressEnterToStartRed.png");
+	startButton = app->tex->Load("Assets/textures/ui/PressEnterToStartBlue.png");
 	loading = app->tex->Load("Assets/scenes/loadingScreen.png");
 
 	app->render->camera.x = app->map->MapToWorld(0, -130).x;
@@ -109,11 +110,13 @@ bool SceneIntro::PostUpdate()
 	{
 		ret = false;
 	}
-	app->render->DrawTexture(backgroundIntro, 0, 2080, NULL, 1.0f);
+	/*app->render->DrawTexture(backgroundIntro, 0, 2080, NULL, 1.0f);*/
 	
-	if ((sCounter / 40) % 2 == 0)
+	app->render->DrawTexture(titleIntro, 0, 2080, NULL, 1.0f);
+
+	if ((sCounter / 60) % 2 == 0)
 	{
-		app->render->DrawTexture(startButton, 100, 2180, NULL, 1.0f);
+		app->render->DrawTexture(startButton, -40, 2200, NULL, 1.0f);
 	}
 
 	if(nextImage == true) app->render->DrawTexture(loading, 0, 2080, NULL);
@@ -125,6 +128,7 @@ bool SceneIntro::PostUpdate()
 bool SceneIntro::CleanUp()
 {
 	LOG("Freeing scene");
+	app->tex->UnLoad(titleIntro);
 	app->tex->UnLoad(backgroundIntro);
 	app->tex->UnLoad(startButton);
 	app->tex->UnLoad(loading);
