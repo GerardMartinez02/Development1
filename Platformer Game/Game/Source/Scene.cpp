@@ -14,6 +14,7 @@
 #include "enemyBird.h"
 #include "enemyDragon.h"
 #include "Coins.h"
+#include "SceneIntro.h"
 
 Scene::Scene() : Module()
 {
@@ -87,6 +88,12 @@ bool Scene::Update(float dt)
 	}
 
     // L02: DONE 3: Request Load / Save when pressing L/S
+
+	if (app->input->GetKey(SDL_SCANCODE_F3) == KeyState::KEY_REPEAT)
+	{
+		app->intro->Enable();
+	}
+
 	if(app->input->GetKey(SDL_SCANCODE_F6) == KEY_DOWN)
 		app->LoadGameRequest();
 
@@ -107,6 +114,8 @@ bool Scene::Update(float dt)
 
 	if (app->input->GetKey(SDL_SCANCODE_F9) == KEY_DOWN)
 		app->map->debugColliders = !app->map->debugColliders;
+
+	
 
 	/*if (camera.y <= 0 || camera.h >= -720)
 	{
