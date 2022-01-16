@@ -71,7 +71,7 @@ bool EnemyBird::Start()
 	destroyedBird = false;
 	// Load enemies
 
-	bird = app->tex->Load("Assets/textures/enemyBird.png");
+	bird = app->tex->Load("Assets/textures/enemies/enemyBird.png");
 
 	// stating animation
 

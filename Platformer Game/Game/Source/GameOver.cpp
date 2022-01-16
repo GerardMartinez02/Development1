@@ -41,7 +41,7 @@ bool GameOver::Awake(pugi::xml_node& config)
 // Called before the first frame
 bool GameOver::Start()
 {
-	gameOverImg = app->tex->Load("Assets/maps/gameOver.png");
+	gameOverImg = app->tex->Load("Assets/scenes/gameOver.png");
 
 	/*app->map->Disable();
 	app->sceneIntro->Disable();

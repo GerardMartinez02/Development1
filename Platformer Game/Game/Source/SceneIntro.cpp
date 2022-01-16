@@ -40,9 +40,9 @@ bool SceneIntro::Start()
 {
 	// L03: DONE: Load map
 	//app->audio->PlayMusic("Assets/audio/music/introMusic.ogg");
-	backgroundIntro = app->tex->Load("Assets/maps/introImage.png");
-	startButton = app->tex->Load("Assets/textures/PressEnterToStartRed.png");
-	loading = app->tex->Load("Assets/maps/loadingScreen.png");
+	backgroundIntro = app->tex->Load("Assets/scenes/introImage.png");
+	startButton = app->tex->Load("Assets/textures/ui/PressEnterToStartRed.png");
+	loading = app->tex->Load("Assets/scenes/loadingScreen.png");
 
 	app->render->camera.x = app->map->MapToWorld(0, -130).x;
 	app->render->camera.y = app->map->MapToWorld(0, -130).y;

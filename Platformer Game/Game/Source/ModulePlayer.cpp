@@ -107,7 +107,7 @@ bool ModulePlayer::Start()
 
 	bool ret = true;
 
-	texture = app->tex->Load("Assets/textures/playerSprites.png");
+	texture = app->tex->Load("Assets/textures/player/playerSprites.png");
 	currentAnimation = &idleAnimRight;
 
 

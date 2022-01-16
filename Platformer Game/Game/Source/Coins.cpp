@@ -40,7 +40,7 @@ bool Coins::Start()
 
 	bool ret = true;
 
-	coin = app->tex->Load("Assets/textures/CoinSprites.png");
+	coin = app->tex->Load("Assets/textures/items/CoinSprites.png");
 	currentCoinAnimation = &anim;
 
 	destroyed = false;
