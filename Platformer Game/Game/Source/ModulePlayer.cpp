@@ -292,21 +292,37 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 	}
 	if (bodyA->type == PLAYER && bodyB->type == BIRD)
 	{
-		app->scene->Disable();
-		app->coins->Disable();
-		app->enemyBird->Disable();
-		app->enemyDragon->Disable();
-		//app->player->Disable();
-		app->gameOver->Enable();
+		if (jumpsCount > 0)
+		{
+			app->scene->Disable();
+			app->coins->Disable();
+			app->enemyBird->Disable();
+			app->enemyDragon->Disable();
+			//app->player->Disable();
+			app->gameOver->Enable();
+		}
+
+		else if (jumpState == false)
+		{
+			app->enemyBird->Disable();
+		}
 	}
 	if (bodyA->type == PLAYER && bodyB->type == DRAGON)
 	{
-		app->scene->Disable();
-		app->coins->Disable();
-		app->enemyBird->Disable();
-		app->enemyDragon->Disable();
-		//app->player->Disable();
-		app->gameOver->Enable();
+		if (jumpsCount > 0)
+		{
+			app->scene->Disable();
+			app->coins->Disable();
+			app->enemyBird->Disable();
+			app->enemyDragon->Disable();
+			//app->player->Disable();
+			app->gameOver->Enable();
+		}
+
+		else if (jumpState == false)
+		{
+			app->enemyDragon->Disable();
+		}
 	}
 	if (bodyA->type == PLAYER && bodyB->type == COIN)
 	{
