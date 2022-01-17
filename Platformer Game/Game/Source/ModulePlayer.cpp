@@ -212,7 +212,10 @@ bool ModulePlayer::Update(float dt)
 	if (app->input->GetKey(SDL_SCANCODE_SPACE) == KeyState::KEY_DOWN && jumpsCount > 0)
 	{
 		pbody->body->ApplyLinearImpulse({ 0,-1.4f }, { 0,0 }, true);
-		jumpsCount--;
+		if (app->scene->godMode == false)
+		{
+			jumpsCount--;
+		}
 	}
 
 	if (pbody->body->GetLinearVelocity().y > 0 && app->input->GetKey(SDL_SCANCODE_SPACE) == KeyState::KEY_DOWN)
