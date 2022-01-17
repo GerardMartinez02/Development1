@@ -38,6 +38,7 @@ public:
 	int sCounter;
 	int delay;
 	bool nextImage;
+	bool introMenu;
 
 	iPoint position;
 	

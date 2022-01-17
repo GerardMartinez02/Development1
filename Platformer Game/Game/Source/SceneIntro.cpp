@@ -52,6 +52,7 @@ bool SceneIntro::Start()
 	sCounter = 0;
 	delay = 0;
 	nextImage = false;
+	introMenu = false;
 
 	return true;
 }
@@ -78,7 +79,13 @@ bool SceneIntro::Update(float dt)
 
 	if (app->input->GetKey(SDL_SCANCODE_RETURN) == KEY_DOWN)
 	{
+		introMenu = true;
+	}
+
+	if (introMenu == true && app->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN)
+	{
 		nextImage = true;
+		introMenu = false;
 		app->fadeToBlack->FadeToBlack(this, (Module*)app->scene);
 	}
 
@@ -110,11 +117,14 @@ bool SceneIntro::PostUpdate()
 	{
 		ret = false;
 	}
-	/*app->render->DrawTexture(backgroundIntro, 0, 2080, NULL, 1.0f);*/
-	
 	app->render->DrawTexture(titleIntro, 0, 2080, NULL, 1.0f);
-
-	if ((sCounter / 60) % 2 == 0)
+	
+	if (introMenu == true)
+	{
+		app->render->DrawTexture(backgroundIntro, 0, 2080, NULL, 1.0f);
+	}
+	
+	if ((sCounter / 55) % 2 == 0 && introMenu == false)
 	{
 		app->render->DrawTexture(startButton, -40, 2200, NULL, 1.0f);
 	}

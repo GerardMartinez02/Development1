@@ -89,6 +89,11 @@ public:
 		}
 	}
 
+	virtual bool OnGuiMouseClickEvent(GuiControl* control)
+	{
+		return true;
+	}
+
 	virtual void OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 	{
 	}

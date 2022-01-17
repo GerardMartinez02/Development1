@@ -16,7 +16,7 @@
 #include "Timer.h"
 #include "AuxTimer.h"
 #include "Coins.h"
-
+#include "GuiManager.h"
 
 #include "Defs.h"
 #include "Log.h"
@@ -41,6 +41,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	pathfinding = new PathFinding();
 	gameOver = new GameOver();
 	map = new Map();
+	guiManager = new GuiManager();
 	
 	physics = new ModulePhysics();
 	
@@ -67,6 +68,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(enemyBird);
 	AddModule(enemyDragon);
 	AddModule(coins);
+	AddModule(guiManager);
 
 	// Render last to swap buffer
 	AddModule(render);

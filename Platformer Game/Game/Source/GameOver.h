@@ -35,6 +35,7 @@ public:
 
 private:
 	SDL_Texture* gameOverImg;
+	SDL_Texture* idleBackground;
 
 	int frames = 0;
 	SString folder;

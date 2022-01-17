@@ -42,6 +42,7 @@ bool GameOver::Awake(pugi::xml_node& config)
 bool GameOver::Start()
 {
 	gameOverImg = app->tex->Load("Assets/scenes/gameOver.png");
+	idleBackground = app->tex->Load("Assets/scenes/idleBackground.png");
 
 	/*app->map->Disable();
 	app->sceneIntro->Disable();
@@ -98,6 +99,9 @@ bool GameOver::Update(float dt)
 	{
 		app->render->DrawTexture(WinImage, 0, 0, NULL);
 	}*/
+
+	app->render->DrawTexture(idleBackground, 0, 2080, NULL, 1.0f);
+
 	app->render->DrawTexture(gameOverImg, 0, 2080, NULL, 1.0f);
 
 	return ret;
@@ -115,6 +119,7 @@ bool GameOver::CleanUp()
 {
 	LOG("Freeing scene");
 	app->tex->UnLoad(gameOverImg);
+	app->tex->UnLoad(idleBackground);
 
 	return true;
 }

@@ -21,6 +21,7 @@ class Scene;
 class PathFinding;
 class SceneIntro;
 class Map;
+class GuiManager;
 
 class ModuleFadeToBlack;
 class ModulePhysics;
@@ -112,6 +113,7 @@ public:
 	PathFinding* pathfinding;
 	GameOver* gameOver;
 	Map* map;
+	GuiManager* guiManager;
 	
 	ModuleFadeToBlack* fadeToBlack;
 	ModulePhysics* physics;

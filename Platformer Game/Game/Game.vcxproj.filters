@@ -37,6 +37,12 @@
       <Filter>Utils</Filter>
     </ClCompile>
     <ClCompile Include="Source\Coins.cpp" />
+    <ClCompile Include="Source\GuiButton.cpp">
+      <Filter>importedModules</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GuiManager.cpp">
+      <Filter>importedModules</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Window.h" />
@@ -96,6 +102,15 @@
       <Filter>Utils</Filter>
     </ClInclude>
     <ClInclude Include="Source\Coins.h" />
+    <ClInclude Include="Source\GuiButton.h">
+      <Filter>importedModules</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GuiControl.h">
+      <Filter>importedModules</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GuiManager.h">
+      <Filter>importedModules</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="External">
