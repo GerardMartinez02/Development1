@@ -7,6 +7,7 @@
 
 class App;
 class PhysBody;
+class GuiControl;
 
 class Module
 {
