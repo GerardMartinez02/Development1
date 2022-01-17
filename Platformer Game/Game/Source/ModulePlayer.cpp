@@ -281,7 +281,7 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 		//app->player->Disable();
 		app->intro->Enable();
 	}
-	if (bodyA->type == PLAYER && bodyB->type == FALL)
+	if (bodyA->type == PLAYER && bodyB->type == FALL && app->scene->godMode == false)
 	{
 		app->scene->Disable();
 		app->coins->Disable();
@@ -290,7 +290,7 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 		//app->player->Disable();
 		app->gameOver->Enable();
 	}
-	if (bodyA->type == PLAYER && bodyB->type == BIRD)
+	if (bodyA->type == PLAYER && bodyB->type == BIRD && app->scene->godMode == false)
 	{
 		if (jumpsCount == 2)
 		{
@@ -307,7 +307,7 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 			app->enemyBird->Disable();
 		}
 	}
-	if (bodyA->type == PLAYER && bodyB->type == DRAGON)
+	if (bodyA->type == PLAYER && bodyB->type == DRAGON && app->scene->godMode == false)
 	{
 		if (jumpsCount == 2)
 		{

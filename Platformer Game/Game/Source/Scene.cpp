@@ -66,6 +66,7 @@ bool Scene::Start()
 	//	//item->data->Awake();
 	//	item->data->Start();
 	//}
+
 	return true;
 }
 
@@ -89,7 +90,7 @@ bool Scene::Update(float dt)
 
     // L02: DONE 3: Request Load / Save when pressing L/S
 
-	if (app->input->GetKey(SDL_SCANCODE_F3) == KeyState::KEY_REPEAT)
+	if (app->input->GetKey(SDL_SCANCODE_F3) == KeyState::KEY_DOWN)
 	{
 		app->intro->Enable();
 	}
@@ -115,7 +116,10 @@ bool Scene::Update(float dt)
 	if (app->input->GetKey(SDL_SCANCODE_F9) == KEY_DOWN)
 		app->map->debugColliders = !app->map->debugColliders;
 
-	
+	if (app->input->GetKey(SDL_SCANCODE_F10) == KeyState::KEY_DOWN)
+	{
+		godMode = !godMode;
+	}
 
 	/*if (camera.y <= 0 || camera.h >= -720)
 	{

@@ -33,6 +33,8 @@ public:
 	// Called before quitting
 	bool CleanUp();
 
+	bool godMode = false;
+
 private:
 	SDL_Texture* img;
 	SDL_Texture* background;
