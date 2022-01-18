@@ -44,7 +44,7 @@ bool Scene::Start()
 
 	app->audio->PlayMusic("Assets/audio/music/GamePlaySEGASonic.ogg");
 	background = app->tex->Load("Assets/maps/backgroundPlatformerGameFinal.png");
-
+	
 	app->map->Enable();
 	// L03: DONE: Load map
 	app->map->Load("tileMap2.tmx");
@@ -143,8 +143,8 @@ bool Scene::Update(float dt)
 				   app->map->mapData.tileWidth, app->map->mapData.tileHeight,
 				   app->map->mapData.tilesets.count());
 
-	
 	app->render->DrawTexture(background, -300, 1240, NULL, 0.75f);
+
 	app->map->Draw();
 
 	return true;
@@ -157,7 +157,7 @@ bool Scene::PostUpdate()
 
 	if(app->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN)
 		ret = false;
-
+	
 	return ret;
 }
 

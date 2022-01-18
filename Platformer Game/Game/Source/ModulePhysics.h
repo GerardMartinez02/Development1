@@ -22,6 +22,7 @@ enum typeOfCollision
 	WALL,
 	WINFLAG,
 	FALL,
+	CHECKPOINT,
 	BIRD,
 	DRAGON,
 	COIN,

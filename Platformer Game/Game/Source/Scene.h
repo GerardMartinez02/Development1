@@ -3,6 +3,7 @@
 
 #include "Module.h"
 #include "ModulePhysics.h"
+#include "Animation.h"
 
 struct SDL_Texture;
 
@@ -35,7 +36,10 @@ public:
 
 	bool godMode = false;
 
+	
+
 private:
+
 	SDL_Texture* img;
 	SDL_Texture* background;
 	SString bgFile;

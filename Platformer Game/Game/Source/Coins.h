@@ -27,15 +27,18 @@ public:
 
 
 	iPoint coinPosition;
+	iPoint flagPosition;
 	typeOfCollision typeCoin;
 	PhysBody* coinBody;
+	PhysBody* checkPointBody;
 	b2Body* c;
 
 	b2CircleShape pCircle;
 
 	Animation* currentCoinAnimation = nullptr;
 	Animation anim;
-
+	Animation animFlag;
+	Animation* currentFlagAnimation = nullptr;
 
 	bool pendingToDelete = false;
 
@@ -47,5 +50,6 @@ public:
 private:
 	SString folder;
 	SDL_Texture* coin;
+	SDL_Texture* checkpointFlag;
 };
 #pragma once

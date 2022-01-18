@@ -58,6 +58,11 @@ public:
 	bool jumpState = false;
 	int jumpsCount;
 
+	bool checkpoint = false;
+	bool checkpointReached = false;
+
+	bool coinTouched = false;
+
 	bool winCondition = false;
 
 	// The player spritesheet loaded into an SDL_Texture

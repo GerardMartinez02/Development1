@@ -22,6 +22,9 @@ Coins::Coins() : Module()
 	anim.PushBack({ 216, 13, 17, 20 });
 	anim.loop = true;
 	anim.speed = 0.1f;
+
+	animFlag.PushBack({ 0, 0, 30, 30 });
+	animFlag.loop = false;
 }
 
 Coins::~Coins()
@@ -43,6 +46,9 @@ bool Coins::Start()
 	coin = app->tex->Load("Assets/textures/items/CoinSprites.png");
 	currentCoinAnimation = &anim;
 
+	checkpointFlag = app->tex->Load("Assets/textures/items/blueFlag.png");
+	currentFlagAnimation = &animFlag;
+
 	destroyed = false;
 
 	coinPosition = app->map->MapToWorld(10, 69);
@@ -51,6 +57,11 @@ bool Coins::Start()
 	coinBody->listener = this;
 	coinBody->type = COIN;
 	coinCollected = false;
+
+	flagPosition = app->map->MapToWorld(96.95, 72.05);
+	checkPointBody = app->physics->CreateRectangleSensor(flagPosition.x , flagPosition.y, 21, 21, 1);
+	checkPointBody->listener = this;
+	checkPointBody->type = CHECKPOINT;
 
 	return true;
 }
@@ -77,6 +88,21 @@ bool Coins::PostUpdate()
 	SDL_Rect rectCoin = currentCoinAnimation->GetCurrentFrame();
 	app->render->DrawTexture(coin, coinPosition.x, coinPosition.y, &rectCoin);
 
+	if (app->player->checkpointReached == true)
+	{
+		SDL_Rect rectFlag = currentFlagAnimation->GetCurrentFrame();
+		app->render->DrawTexture(checkpointFlag, flagPosition.x, flagPosition.y, &rectFlag);
+	}
+	
+	if (app->player->coinTouched == true)
+	{
+		app->tex->UnLoad(coin);
+	}
+	/*if (app->player->checkpointReached == true)
+	{
+		app->render->DrawTexture(checkpointFlag, 97, 72, NULL, 0.75f);
+	}*/
+
 	return ret;
 }
 
@@ -86,7 +112,9 @@ bool Coins::CleanUp()
 	bool ret = true;
 	app->tex->UnLoad(texture);
 	app->physics->world->DestroyBody(coinBody->body);
-	app->tex->UnLoad(coin);
+	app->physics->world->DestroyBody(checkPointBody->body);
+	//app->tex->UnLoad(coin);
+	app->tex->UnLoad(checkpointFlag);
 	return ret;
 }
 

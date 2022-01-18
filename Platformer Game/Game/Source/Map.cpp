@@ -192,6 +192,34 @@ void Map::Colliders()
 			}
 		}
 
+		if (mapLayerItem->data->properties.GetProperty("Checkpoint") == 1)
+		{
+			for (int x = 0; x < mapLayerItem->data->width; x++)
+			{
+				for (int y = 0; y < mapLayerItem->data->height; y++)
+				{
+					int gid = mapLayerItem->data->Get(x, y);
+
+					if (gid > 0)
+					{
+						TileSet* tileset = GetTilesetFromTileId(gid);
+
+						SDL_Rect r = tileset->GetTileRect(gid);
+						iPoint pos = MapToWorld(x, y);
+						if (mapLayerItem->data->properties.GetProperty("Checkpoint") == 1)
+						{
+							collider = new PhysBody();
+							collider->listener = this;
+							collider = app->physics->CreateRectangle(pos.x + 16, pos.y + 16, r.w, r.h, 1);
+							collider->type = CHECKPOINT;
+							colliders.add(collider);
+						}
+					}
+
+				}
+			}
+		}
+
 		mapLayerItem = mapLayerItem->next;
 	}
 }

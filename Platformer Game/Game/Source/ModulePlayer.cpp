@@ -117,8 +117,15 @@ bool ModulePlayer::Start()
 
 	destroyed = false;
 
-	position = app->map->MapToWorld(5, 69);
-
+	if (checkpointReached == false)
+	{
+		position = app->map->MapToWorld(5, 69);
+	}
+	if (checkpointReached == true)
+	{
+		position = app->map->MapToWorld(97, 72);
+	}
+	
 	//Box2D
 
 	b2BodyDef body;
@@ -246,6 +253,11 @@ bool ModulePlayer::Update(float dt)
 
 	}
 
+	if (checkpoint == true)
+	{
+		checkpointReached = true;
+	}
+
 	currentAnimation->Update();
 
 	pbody->GetPosition(position.x, position.y);
@@ -283,6 +295,10 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 		app->scene->Disable();
 		//app->player->Disable();
 		app->intro->Enable();
+	}
+	if (bodyA->type == PLAYER && bodyB->type == CHECKPOINT)
+	{
+		checkpoint = true;
 	}
 	if (bodyA->type == PLAYER && bodyB->type == FALL && app->scene->godMode == false)
 	{
@@ -332,7 +348,9 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 		//app->scene->Disable();
 		//app->player->Disable();
 		//app->intro->Enable();
-		app->coins->Disable();
+		/*app->coins->Disable();*/
+
+		coinTouched = true;
 	}
 }
 
