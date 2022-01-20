@@ -125,6 +125,10 @@ bool ModulePlayer::Start()
 	{
 		position = app->map->MapToWorld(97, 72);
 	}
+	if (winCondition == true)
+	{
+		position = app->map->MapToWorld(5, 69);
+	}
 	
 	//Box2D
 
@@ -290,6 +294,7 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 {
 	if (bodyA->type == PLAYER && bodyB->type == WINFLAG)
 	{
+
 		LOG("WIN!");
 		winCondition = true;
 		app->scene->Disable();
@@ -298,6 +303,7 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 	}
 	if (bodyA->type == PLAYER && bodyB->type == CHECKPOINT)
 	{
+		winCondition = false;
 		checkpoint = true;
 	}
 	if (bodyA->type == PLAYER && bodyB->type == FALL && app->scene->godMode == false)
