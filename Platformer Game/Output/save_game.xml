@@ -12,13 +12,14 @@
 	<gameOver />
 	<map />
 	<player>
-		<position x="530" y="2289" />
+		<position x="449" y="2272" />
 		<atributes />
 	</player>
 	<Enemy />
 	<Enemy />
 	<:anonymous />
+	<guiManager />
 	<renderer>
-		<camera x="-431" y="-4149" />
+		<camera x="-269" y="-4115" />
 	</renderer>
 </save_state>
