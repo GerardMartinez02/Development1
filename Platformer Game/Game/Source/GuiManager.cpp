@@ -1,50 +1,27 @@
 #include "GuiManager.h"
 #include "App.h"
-#include "Textures.h"
-
+#include "GuiCheckBox.h"
+#include "GuiSlider.h"
 #include "GuiButton.h"
-#include "Audio.h"
 
-GuiManager::GuiManager() :Module()
+GuiManager::GuiManager() : Module()
 {
-	name.Create("guiManager");
+	name.Create("guimanager");
 }
 
-GuiManager::~GuiManager() {}
+GuiManager::~GuiManager()
+{
 
-bool GuiManager::Start()
+}
+
+bool GuiManager::Awake(pugi::xml_node& config)
 {
 	return true;
 }
 
-GuiControl* GuiManager::CreateGuiControl(GuiControlType type, int id, const char* text, SDL_Rect bounds, Module* observer, SDL_Rect sliderBounds)
+bool GuiManager::Start()
 {
-	// L14: TODO1: Create a GUI control and add it to the list of controls
-
-	GuiControl* control = nullptr;
-
-	//Call the constructor according to the GuiControlType
-	switch (type)
-	{
-	case GuiControlType::BUTTON:
-		control = new GuiButton(id, bounds, text);
-		break;
-
-		// More Gui Controls can go here
-
-	default:
-		break;
-	}
-
-	//Set the observer
-
-	control->SetObserver(observer);
-	//control->SetTexture(texture);
-
-	// Created GuiControls are added to the list of controls
-	if (control != nullptr) controls.add(control);
-
-	return control;
+	return true;
 }
 
 bool GuiManager::Update(float dt)
@@ -63,47 +40,70 @@ bool GuiManager::Update(float dt)
 	return true;
 }
 
-bool GuiManager::UpdateAll(float dt, bool doLogic) {
-
-	if (doLogic) {
-
-		ListItem<GuiControl*>* control = controls.start;
-
-		while (control != nullptr)
-		{
-			control->data->Update(dt);
-			control = control->next;
-		}
-
-	}
+bool GuiManager::PostUpdate()
+{
+	DrawAll();
 	return true;
-
-}
-
-bool GuiManager::Draw() {
-
-	ListItem<GuiControl*>* control = controls.start;
-
-	while (control != nullptr)
-	{
-		control->data->Draw(app->render);
-		control = control->next;
-	}
-
-	return true;
-
 }
 
 bool GuiManager::CleanUp()
 {
-	ListItem<GuiControl*>* control = controls.start;
-
-	while (control != nullptr)
-	{
-		RELEASE(control);
-	}
-
 	return true;
+}
 
-	return false;
+GuiControl* GuiManager::CreateGuiControl(GuiControlType type, int id, SDL_Rect bounds, Module* observer, SDL_Rect sliderBounds)
+{
+	GuiControl* control = nullptr;
+
+	switch (type)
+	{
+	case GuiControlType::BUTTON:
+		control = new GuiButton(id, bounds, sceneIntro);
+		break;
+	case GuiControlType::CHECKBOX:
+		control = new GuiCheckBox(id, bounds, "EXIT");
+		break;
+	case GuiControlType::SLIDER:
+		control = new GuiSlider(id, bounds, "EXIT");
+		break;
+	default: break;
+	}
+	id++;
+
+	if (control != nullptr)
+	{
+		controls.add(control);
+	}
+	return control;
+}
+
+void GuiManager::AddGuiControl(GuiControl* control)
+{
+	if (control != nullptr) controls.add(control);
+}
+
+void GuiManager::DestroyGuiControl(GuiControl* control)
+{
+	int index = controls.find(control);
+	ListItem<GuiControl*>* L = controls.At(index);
+	controls.del(L);
+}
+
+void GuiManager::UpdateAll(float dt, bool doLogic)
+{
+	if (doLogic == true)
+	{
+		for (int i = 0; i < controls.count(); i++)
+		{
+			controls[i]->Update(app->input, dt);
+		}
+	}
+}
+
+void GuiManager::DrawAll()
+{
+	for (int i = 0; i < controls.count(); i++)
+	{
+		controls[i]->Draw(app->render);
+	}
 }

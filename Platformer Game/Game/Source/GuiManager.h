@@ -10,29 +10,29 @@ class GuiManager : public Module
 {
 public:
 
-	// Constructor
 	GuiManager();
 
-	// Destructor
 	virtual ~GuiManager();
 
-	// Called before the first frame
+	bool Awake(pugi::xml_node&);
+
 	bool Start();
 
 	bool Update(float dt);
 
-	bool UpdateAll(float dt, bool logic);
+	bool PostUpdate();
 
-	bool Draw();
-
-	// Called before quitting
 	bool CleanUp();
 
-	// Additional methods
-	GuiControl* CreateGuiControl(GuiControlType type, int id, const char* text, SDL_Rect bounds, Module* observer, SDL_Rect sliderBounds = { 0,0,0,0 });
+	GuiControl* CreateGuiControl(GuiControlType type, int id, SDL_Rect bounds, Module* observer, SDL_Rect sliderBounds = { 0,0,0,0 });
+
 	void DestroyGuiControl(GuiControl* entity);
+
 	void AddGuiControl(GuiControl* entity);
 
+	void UpdateAll(float dt, bool doLogic);
+
+	void DrawAll();
 public:
 
 	List<GuiControl*> controls;
@@ -40,10 +40,9 @@ public:
 	float accumulatedTime = 0.0f;
 	float updateMsCycle = 0.0f;
 	bool doLogic = false;
-
-	SDL_Texture* texture;
-
+	int id = 0;
+	SDL_Texture* sceneIntro;
 };
 
-#endif // __GUIMANAGER_H__
-#pragma once
+#endif
+

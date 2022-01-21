@@ -55,6 +55,8 @@ public:
 
 	bool vsync;
 
+	bool guiDebug;
+
 };
 
 #endif // __RENDER_H__

@@ -5,6 +5,9 @@
 
 #include "Module.h"
 #include "Animation.h"
+#include "GuiButton.h"
+#include "GuiCheckbox.h"
+#include "GuiSlider.h"
 
 struct SDL_Texture;
 
@@ -35,10 +38,19 @@ public:
 	// Called before quitting
 	bool CleanUp();
 
+	bool LoadState(pugi::xml_node&);
+	bool SaveState(pugi::xml_node&) const;
+	
 	int sCounter;
 	int delay;
 	bool nextImage;
 	bool introMenu;
+
+	virtual bool OnGuiMouseClickEvent(GuiControl* control);
+
+	bool exitRequested;
+
+	bool SavedGame;
 
 	iPoint position;
 	
@@ -48,7 +60,23 @@ private:
 	SDL_Texture* backgroundIntro;
 	SDL_Texture* loading;
 	
-	
+	SDL_Texture* playButton;
+	SDL_Texture* resumeButton;
+	GuiButton* resumeButtonOff;
+	SDL_Texture* newGameButton;
+	SDL_Texture* settingsButton;
+	SDL_Texture* creditsButton;
+	SDL_Texture* returnButton;
+	SDL_Texture* exitButton;
+
+	GuiButton* playButtonG;
+	GuiButton* resumeButtonG;
+	GuiButton* resumeButtonGOff;
+	GuiButton* newGameButtonG;
+	GuiButton* settingsButtonG;
+	GuiButton* creditsButtonG;
+	GuiButton* returnButtonG;
+	GuiButton* exitButtonG;
 };
 
 #endif // __SCENE_H__

@@ -37,11 +37,17 @@
       <Filter>Utils</Filter>
     </ClCompile>
     <ClCompile Include="Source\Coins.cpp" />
-    <ClCompile Include="Source\GuiButton.cpp">
-      <Filter>importedModules</Filter>
-    </ClCompile>
     <ClCompile Include="Source\GuiManager.cpp">
-      <Filter>importedModules</Filter>
+      <Filter>Gui</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GuiButton.cpp">
+      <Filter>Gui</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GuiCheckBox.cpp">
+      <Filter>Gui</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GuiSlider.cpp">
+      <Filter>Gui</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -102,14 +108,20 @@
       <Filter>Utils</Filter>
     </ClInclude>
     <ClInclude Include="Source\Coins.h" />
-    <ClInclude Include="Source\GuiButton.h">
-      <Filter>importedModules</Filter>
+    <ClInclude Include="Source\GuiManager.h">
+      <Filter>Gui</Filter>
     </ClInclude>
     <ClInclude Include="Source\GuiControl.h">
-      <Filter>importedModules</Filter>
+      <Filter>Gui</Filter>
     </ClInclude>
-    <ClInclude Include="Source\GuiManager.h">
-      <Filter>importedModules</Filter>
+    <ClInclude Include="Source\GuiButton.h">
+      <Filter>Gui</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GuiCheckBox.h">
+      <Filter>Gui</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GuiSlider.h">
+      <Filter>Gui</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -127,6 +139,9 @@
     </Filter>
     <Filter Include="importedModules">
       <UniqueIdentifier>{f0115a94-0967-4a5e-8e0d-1b737d114b02}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Gui">
+      <UniqueIdentifier>{eec35596-a3f5-4bb4-a83b-fb9abd1b7c83}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
