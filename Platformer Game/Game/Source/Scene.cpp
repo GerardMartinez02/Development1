@@ -114,12 +114,23 @@ bool Scene::Update(float dt)
 	if(app->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
 		app->render->camera.x += 4;
 
+	if (app->input->GetKey(SDL_SCANCODE_F7) == KeyState::KEY_DOWN)
+	{
+		app->player->Disable();
+		app->player->checkpointReached = true;
+		app->player->Enable();
+	}
+
 	if (app->input->GetKey(SDL_SCANCODE_F9) == KEY_DOWN)
 		app->map->debugColliders = !app->map->debugColliders;
 
 	if (app->input->GetKey(SDL_SCANCODE_F10) == KeyState::KEY_DOWN)
 	{
 		godMode = !godMode;
+	}
+	if (app->input->GetKey(SDL_SCANCODE_F11) == KeyState::KEY_DOWN)
+	{
+		app->fpsCap = !app->fpsCap;
 	}
 
 	/*if (camera.y <= 0 || camera.h >= -720)

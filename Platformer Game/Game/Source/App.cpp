@@ -203,10 +203,15 @@ void App::PrepareUpdate()
 	dt = frameDuration->ReadMs();
 	frameDuration->Start();
 
-	if (fpsCap)
+	if (fpsCap == true)
+	{
 		maxFR = 28;
-	else
+	}
+		
+	if (fpsCap == false)
+	{
 		maxFR = 16;
+	}
 }
 
 // ---------------------------------------------
