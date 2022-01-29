@@ -110,6 +110,7 @@ public:
 	bool verticalCamera;
 
 	int playerHealth = 75;
+	bool playerLifeCount = false;
 
 	int spawnPosition = 0;
 

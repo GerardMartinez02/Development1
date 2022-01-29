@@ -159,6 +159,11 @@ bool ModulePlayer::Start()
 
 	delay = 0;
 
+	if (playerLifeCount == true)
+	{
+		playerLifeCount = false;
+	}
+
 	char lookupTable[] = { "0123456789" };
 	timeFont = app->fonts->Load("Assets/textures/ui/numbers.png", lookupTable, 1);
 	//timeFont = App->fonts->Load("Assets/Art/UI/numbers2.png", lookupTable, 1);
@@ -318,7 +323,7 @@ bool ModulePlayer::PostUpdate()
 	{
 		app->render->DrawQuad(healthIndicator, 120, 255, 0, 255, 0.0f, true);
 	}
-	else if (playerHealth > 20 && playerHealth <= 40)
+	else if (playerHealth > 0 && playerHealth <= 30)
 	{
 		app->render->DrawQuad(healthIndicator, 255, 255, 0, 255, 0.0f, true);
 	}
@@ -350,6 +355,18 @@ bool ModulePlayer::PostUpdate()
 	// Timer
 	app->fonts->BlitText(520, 20, timeFont, timeText);
 
+	if (playerHealth == 0)
+	{
+		app->scene->Disable();
+		app->coins->Disable();
+		app->enemyBird->Disable();
+		app->enemyDragon->Disable();
+		//app->player->Disable();
+		app->gameOver->Enable();
+		playerHealth = 75;
+		timeCounter = 120;
+	}
+
 	return true;
 }
 
@@ -378,9 +395,33 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 		//app->enemyDragon->Disable();
 		////app->player->Disable();
 		//app->gameOver->Enable();
-
-		playerHealth = 40;
-
+		
+		if (playerHealth == 75 && playerLifeCount == false)
+		{
+			playerHealth = 60;
+			playerLifeCount = true;
+		}
+		if (playerHealth == 60 && playerLifeCount == false)
+		{
+			playerHealth = 45;
+			playerLifeCount = true;
+		}
+		if (playerHealth == 45 && playerLifeCount == false)
+		{
+			playerHealth = 30;
+			playerLifeCount = true;
+		}
+		if (playerHealth == 30 && playerLifeCount == false)
+		{
+			playerHealth = 15;
+			playerLifeCount = true;
+		}
+		if (playerHealth == 15 && playerLifeCount == false)
+		{
+			playerHealth = 0;
+			playerLifeCount = true;
+		}
+		
 
 		if (checkpointReached == false)
 		{
