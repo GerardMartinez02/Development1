@@ -396,6 +396,7 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 		//app->player->Disable();
 		app->intro->Enable();
 		timeCounter = 120;
+		playerHealth = 75;
 	}
 	if (bodyA->type == PLAYER && bodyB->type == CHECKPOINT)
 	{
