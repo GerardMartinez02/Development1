@@ -16,6 +16,7 @@
 #include "Timer.h"
 #include "AuxTimer.h"
 #include "Coins.h"
+#include "ModuleFonts.h"
 #include "GuiManager.h"
 
 #include "Defs.h"
@@ -44,8 +45,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	guiManager = new GuiManager();
 	
 	physics = new ModulePhysics();
-	
-	
+	fonts = new ModuleFonts();
 	player = new ModulePlayer();
 	enemyBird = new EnemyBird();
 	enemyDragon = new EnemyDragon();
@@ -69,6 +69,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(enemyDragon);
 	AddModule(coins);
 	AddModule(guiManager);
+	AddModule(fonts);
 
 	// Render last to swap buffer
 	AddModule(render);

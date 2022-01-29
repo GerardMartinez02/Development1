@@ -15,6 +15,7 @@
 #include "enemyDragon.h"
 #include "Coins.h"
 #include "SceneIntro.h"
+#include "ModuleFonts.h"
 
 Scene::Scene() : Module()
 {
@@ -94,6 +95,7 @@ bool Scene::Update(float dt)
 	{
 		app->player->winCondition = true;
 		app->intro->Enable();
+		app->player->timeCounter = 120;
 	}
 
 	if(app->input->GetKey(SDL_SCANCODE_F6) == KEY_DOWN)

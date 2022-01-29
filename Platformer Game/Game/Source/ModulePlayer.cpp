@@ -17,6 +17,7 @@
 #include "enemyBird.h"
 #include "enemyDragon.h"
 #include "GameOver.h"
+#include "ModuleFonts.h"
 
 
 
@@ -156,6 +157,11 @@ bool ModulePlayer::Start()
 	pbody->type = PLAYER;
 	b->SetUserData(pbody);
 
+	delay = 0;
+
+	char lookupTable[] = { "0123456789" };
+	timeFont = app->fonts->Load("Assets/textures/ui/numbers.png", lookupTable, 1);
+	//timeFont = App->fonts->Load("Assets/Art/UI/numbers2.png", lookupTable, 1);
 
 	//-----
 
@@ -171,6 +177,8 @@ bool ModulePlayer::Start()
 
 bool ModulePlayer::Update(float dt)
 {
+	delay++;
+
 	// L10: DONE: Implement gamepad support
 	if (app->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT && app->input->GetKey(SDL_SCANCODE_LSHIFT) == KeyState::KEY_IDLE)
 	{
@@ -262,6 +270,17 @@ bool ModulePlayer::Update(float dt)
 		checkpointReached = true;
 	}
 
+	if ((delay % 60) == 0)
+	{
+		/*
+		if (timeCounter <= 0)
+		{
+			timeCounter == 0;
+		}
+		*/
+		timeCounter--;
+	}
+
 	currentAnimation->Update();
 
 	pbody->GetPosition(position.x, position.y);
@@ -280,12 +299,28 @@ bool ModulePlayer::PostUpdate()
 	app->render->DrawTexture(texture, position.x -16, position.y -16, &rect);
 
 	// Draw UI (score) --------------------------------------
-	sprintf_s(scoreText, 10, "%7d", score);
+	//sprintf_s(scoreText, 10, "%5d", score);
+	sprintf_s(timeText, 10, "%3d", timeCounter);
 
 	// TODO 3: Blit the text of the score in at the bottom of the screen
 	//app->fonts->BlitText(58, 248, scoreFont, scoreText);
 
 	//app->fonts->BlitText(150, 248, scoreFont, "this is just a font test message");
+
+	if (timeCounter == 0 && app->scene->godMode == false)
+	{
+		app->scene->Disable();
+		app->coins->Disable();
+		app->enemyBird->Disable();
+		app->enemyDragon->Disable();
+		//app->player->Disable();
+		app->gameOver->Enable();
+
+		timeCounter = 120;
+	}
+
+	// Timer
+	app->fonts->BlitText(520, 20, timeFont, timeText);
 
 	return true;
 }
@@ -300,6 +335,7 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 		app->scene->Disable();
 		//app->player->Disable();
 		app->intro->Enable();
+		timeCounter = 120;
 	}
 	if (bodyA->type == PLAYER && bodyB->type == CHECKPOINT)
 	{

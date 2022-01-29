@@ -109,6 +109,13 @@ public:
 	bool horizonalCamera;
 	bool verticalCamera;
 
+	//Timer
+
+	int delay;
+	int timeFont = -1;
+	char timeText[10] = { "\0" };
+	uint timeCounter = 120;
+
 };
 
 #endif //!__MODULE_PLAYER_H__

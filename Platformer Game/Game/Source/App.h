@@ -24,6 +24,7 @@ class Map;
 class GuiManager;
 
 class ModuleFadeToBlack;
+class ModuleFonts;
 class ModulePhysics;
 class ModulePlayer;
 class SceneIntro;
@@ -115,8 +116,10 @@ public:
 	Map* map;
 	GuiManager* guiManager;
 	
+	
 	ModuleFadeToBlack* fadeToBlack;
 	ModulePhysics* physics;
+	ModuleFonts* fonts;
 	ModulePlayer* player;
 	SceneIntro* sceneIntro;
 	EnemyBird* enemyBird;

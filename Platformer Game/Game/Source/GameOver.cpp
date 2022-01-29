@@ -16,6 +16,7 @@
 #include "Coins.h"
 #include "enemyBird.h"
 #include "enemyDragon.h"
+#include "ModuleFonts.h"
 
 #include "Defs.h"
 #include "Log.h"
@@ -51,7 +52,7 @@ bool GameOver::Start()
 	
 	app->render->camera.x = app->map->MapToWorld(0, -130).x;
 	app->render->camera.y = app->map->MapToWorld(0, -130).y;
-	
+
 	//app->render->camera.x = app->render->camera.y = 0;
 	return true;
 }

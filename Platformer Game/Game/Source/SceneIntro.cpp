@@ -17,6 +17,7 @@
 #include "Coins.h"
 #include "GameOver.h"
 #include "GuiManager.h"
+#include "ModuleFonts.h"
 
 SceneIntro::SceneIntro() : Module()
 {
