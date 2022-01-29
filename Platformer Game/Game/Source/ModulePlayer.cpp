@@ -361,6 +361,7 @@ bool ModulePlayer::PostUpdate()
 		app->enemyDragon->Disable();
 		//app->player->Disable();
 		app->gameOver->Enable();
+		checkpointReached = false;
 
 		timeCounter = 120;
 	}
