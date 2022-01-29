@@ -112,6 +112,9 @@ public:
 	int playerHealth = 75;
 	bool playerLifeCount = false;
 
+	int hitDelay = 0;
+	bool playerHit = false;
+
 	int spawnPosition = 0;
 
 	//Timer

@@ -285,6 +285,19 @@ bool ModulePlayer::Update(float dt)
 		timeCounter--;
 	}
 
+	if (playerHit == true)
+	{
+		playerHealth = playerHealth;
+		if ((delay % 60) == 0)
+		{
+			hitDelay++;
+			if ((hitDelay % 1) == 0)
+			{
+				playerHit = false;
+			}
+		}
+	}
+
 	currentAnimation->Update();
 
 	pbody->GetPosition(position.x, position.y);
@@ -365,6 +378,7 @@ bool ModulePlayer::PostUpdate()
 		app->gameOver->Enable();
 		playerHealth = 75;
 		timeCounter = 120;
+		checkpointReached = false;
 	}
 
 	return true;
@@ -432,47 +446,48 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 		{
 			spawnPosition = 2;
 		}
-
-		/*switch (playerHealth)
-		{
-			if (playerHealth == 75)
-			{
-				playerHealth = 60;
-				break;
-			}
-			if (playerHealth == 60)
-			{
-				playerHealth = 45;
-				break;
-			}
-			if (playerHealth == 45)
-			{
-				playerHealth = 30;
-				break;
-			}
-			if (playerHealth == 30)
-			{
-				playerHealth = 15;
-				break;
-			}
-			if (playerHealth == 15)
-			{
-				playerHealth = 0;
-				break;
-			}
-		}*/
-
 	}
 	if (bodyA->type == PLAYER && bodyB->type == BIRD && app->scene->godMode == false)
 	{
 		if (jumpsCount == 2)
 		{
-			app->scene->Disable();
-			app->coins->Disable();
-			app->enemyBird->Disable();
-			app->enemyDragon->Disable();
-			//app->player->Disable();
-			app->gameOver->Enable();
+			//app->scene->Disable();
+			//app->coins->Disable();
+			//app->enemyBird->Disable();
+			//app->enemyDragon->Disable();
+			////app->player->Disable();
+			//app->gameOver->Enable();
+
+			
+			if (playerHealth == 75 )
+			{
+				playerHealth = 60;
+				playerHit = true;
+			}
+			if (playerHealth == 60 && playerHit == false)
+			{
+				playerHealth = 45;
+				playerHit = true;
+	
+			}
+			if (playerHealth == 45 && playerHit == false)
+			{
+				playerHealth = 30;
+				playerHit = true;
+				
+			}
+			if (playerHealth == 30 && playerHit == false)
+			{
+				playerHealth = 15;
+				playerHit = true;
+				
+			}
+			if (playerHealth == 15 && playerHit == false)
+			{
+				playerHealth = 0;
+				playerHit = true;
+			}
+
 		}
 
 		else if (jumpsCount == 1 || jumpsCount == 0)
@@ -484,12 +499,40 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 	{
 		if (jumpsCount == 2)
 		{
-			app->scene->Disable();
-			app->coins->Disable();
-			app->enemyBird->Disable();
-			app->enemyDragon->Disable();
-			//app->player->Disable();
-			app->gameOver->Enable();
+			//app->scene->Disable();
+			//app->coins->Disable();
+			//app->enemyBird->Disable();
+			//app->enemyDragon->Disable();
+			////app->player->Disable();
+			//app->gameOver->Enable();
+			if (playerHealth == 75)
+			{
+				playerHealth = 60;
+				playerHit = true;
+			}
+			if (playerHealth == 60 && playerHit == false)
+			{
+				playerHealth = 45;
+				playerHit = true;
+
+			}
+			if (playerHealth == 45 && playerHit == false)
+			{
+				playerHealth = 30;
+				playerHit = true;
+
+			}
+			if (playerHealth == 30 && playerHit == false)
+			{
+				playerHealth = 15;
+				playerHit = true;
+
+			}
+			if (playerHealth == 15 && playerHit == false)
+			{
+				playerHealth = 0;
+				playerHit = true;
+			}
 		}
 
 		else if (jumpsCount == 1 || jumpsCount == 0)
