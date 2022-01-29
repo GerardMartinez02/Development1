@@ -109,6 +109,8 @@ public:
 	bool horizonalCamera;
 	bool verticalCamera;
 
+	int playerHealth;
+
 	//Timer
 
 	int delay;

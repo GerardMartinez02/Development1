@@ -8,8 +8,10 @@
 #include "ModulePlayer.h"
 #include "Defs.h"
 #include "Log.h"
+#include "SDL/include/SDL_render.h"
 
 #define VSYNC true
+#define SCREEN_SIZE 3
 
 Render::Render() : Module()
 {
@@ -250,5 +252,28 @@ bool Render::DrawCircle(int x, int y, int radius, Uint8 r, Uint8 g, Uint8 b, Uin
 		ret = false;
 	}
 
+	return ret;
+}
+
+bool Render::DrawQuad(const SDL_Rect& rect, Uint8 r, Uint8 g, Uint8 b, Uint8 a, float speed, bool useCamera)
+{
+	bool ret = true;
+
+	SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
+	SDL_SetRenderDrawColor(renderer, r, g, b, a);
+
+	SDL_Rect dstRect{ rect.x * SCREEN_SIZE, rect.y * SCREEN_SIZE, rect.w * SCREEN_SIZE, rect.h * SCREEN_SIZE };
+
+	if (useCamera)
+	{
+		dstRect.x -= (camera.x * speed);
+		dstRect.y -= (camera.y * speed);
+	}
+
+	if (SDL_RenderFillRect(renderer, &dstRect) != 0)
+	{
+		LOG("Cannot draw quad to screen. SDL_RenderFillRect error: %s", SDL_GetError());
+		ret = false;
+	}
 	return ret;
 }

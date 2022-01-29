@@ -159,6 +159,8 @@ bool ModulePlayer::Start()
 
 	delay = 0;
 
+	playerHealth = 75;
+
 	char lookupTable[] = { "0123456789" };
 	timeFont = app->fonts->Load("Assets/textures/ui/numbers.png", lookupTable, 1);
 	//timeFont = App->fonts->Load("Assets/Art/UI/numbers2.png", lookupTable, 1);
@@ -306,6 +308,23 @@ bool ModulePlayer::PostUpdate()
 	//app->fonts->BlitText(58, 248, scoreFont, scoreText);
 
 	//app->fonts->BlitText(150, 248, scoreFont, "this is just a font test message");
+
+	SDL_Rect healthIndicator;
+	healthIndicator = { 5, 10, playerHealth, 10 };
+
+	if (playerHealth >= 75)
+	{
+		playerHealth = 75;
+		app->render->DrawQuad(healthIndicator, 0, 255, 0, 255, 0.0f, true);
+	}
+	else if (playerHealth > 40)
+	{
+		app->render->DrawQuad(healthIndicator, 120, 255, 0, 255, 0.0f, true);
+	}
+	else if (playerHealth > 20 && playerHealth <= 40)
+	{
+		app->render->DrawQuad(healthIndicator, 255, 255, 0, 255, 0.0f, true);
+	}
 
 	if (timeCounter == 0 && app->scene->godMode == false)
 	{
