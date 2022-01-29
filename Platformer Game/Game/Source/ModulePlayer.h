@@ -109,7 +109,9 @@ public:
 	bool horizonalCamera;
 	bool verticalCamera;
 
-	int playerHealth;
+	int playerHealth = 75;
+
+	int spawnPosition = 0;
 
 	//Timer
 

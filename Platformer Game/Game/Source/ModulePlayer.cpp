@@ -159,12 +159,9 @@ bool ModulePlayer::Start()
 
 	delay = 0;
 
-	playerHealth = 75;
-
 	char lookupTable[] = { "0123456789" };
 	timeFont = app->fonts->Load("Assets/textures/ui/numbers.png", lookupTable, 1);
 	//timeFont = App->fonts->Load("Assets/Art/UI/numbers2.png", lookupTable, 1);
-
 	//-----
 
 	uint winWidth, winHeight;
@@ -325,6 +322,18 @@ bool ModulePlayer::PostUpdate()
 	{
 		app->render->DrawQuad(healthIndicator, 255, 255, 0, 255, 0.0f, true);
 	}
+	else
+	{
+		if ((app->FPS / 5) % 2 == 0)
+		{
+			app->render->DrawRectangle(healthIndicator, 255, 0, 0, 255, 0.0f, true);
+		}
+		else
+		{
+			app->render->DrawRectangle(healthIndicator, 255, 150, 0, 255, 0.0f, true);
+		}
+
+	}
 
 	if (timeCounter == 0 && app->scene->godMode == false)
 	{
@@ -363,12 +372,55 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 	}
 	if (bodyA->type == PLAYER && bodyB->type == FALL && app->scene->godMode == false)
 	{
-		app->scene->Disable();
-		app->coins->Disable();
-		app->enemyBird->Disable();
-		app->enemyDragon->Disable();
-		//app->player->Disable();
-		app->gameOver->Enable();
+		//app->scene->Disable();
+		//app->coins->Disable();
+		//app->enemyBird->Disable();
+		//app->enemyDragon->Disable();
+		////app->player->Disable();
+		//app->gameOver->Enable();
+
+		playerHealth = 40;
+
+
+		if (checkpointReached == false)
+		{
+			spawnPosition = 1;
+		}
+
+		if (checkpointReached == true)
+		{
+			spawnPosition = 2;
+		}
+
+		/*switch (playerHealth)
+		{
+			if (playerHealth == 75)
+			{
+				playerHealth = 60;
+				break;
+			}
+			if (playerHealth == 60)
+			{
+				playerHealth = 45;
+				break;
+			}
+			if (playerHealth == 45)
+			{
+				playerHealth = 30;
+				break;
+			}
+			if (playerHealth == 30)
+			{
+				playerHealth = 15;
+				break;
+			}
+			if (playerHealth == 15)
+			{
+				playerHealth = 0;
+				break;
+			}
+		}*/
+
 	}
 	if (bodyA->type == PLAYER && bodyB->type == BIRD && app->scene->godMode == false)
 	{

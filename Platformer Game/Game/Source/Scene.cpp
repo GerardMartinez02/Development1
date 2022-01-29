@@ -135,17 +135,24 @@ bool Scene::Update(float dt)
 		app->fpsCap = !app->fpsCap;
 	}
 
-	/*if (camera.y <= 0 || camera.h >= -720)
+	if (app->player->spawnPosition == 1)
 	{
-		if(camera.y >= 0) camera.y = 0;
-		if (camera.y <= -2319) camera.y = -2319;
+		app->player->spawnPosition = 0;
+		app->player->Disable();
+		//app->player->playerHealth = app->player->playerHealth - 40;
+		app->player->Enable();
+
 	}
 
-	if (camera.x <= 0 || camera.x >= -1280)
+	if (app->player->spawnPosition == 2)
 	{
-		if (camera.x >= 0) camera.x = 0;
-		if (camera.x <= -4476) camera.x = -4476;
-	}*/
+		app->player->spawnPosition = 0;
+		app->player->Disable();
+		//app->player->playerHealth = app->player->playerHealth - 40;
+		app->player->Enable();
+
+	}
+
 
 	//app->render->DrawTexture(img, 380, 100); // Placeholder not needed any more
 
