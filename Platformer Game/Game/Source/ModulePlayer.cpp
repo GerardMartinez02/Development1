@@ -746,12 +746,14 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 	}
 }
 
+
 bool ModulePlayer::LoadState(pugi::xml_node& data)
 {
 	position.x = data.child("position").attribute("x").as_int();
 	position.y = data.child("position").attribute("y").as_int();
 
-	/*score = data.child("atrib.").attributes("score").as_int();*/
+	score = data.child("atributes").attribute("score").as_int();
+	playerHealth = data.child("atributes").attribute("playerHealth").as_int();
 
 
 	pbody->body->SetTransform({ PIXEL_TO_METERS(position.x), PIXEL_TO_METERS(position.y) }, 0.0f);
@@ -765,6 +767,9 @@ bool ModulePlayer::SaveState(pugi::xml_node& data) const
 
 	playerPosition.append_attribute("x") = position.x;
 	playerPosition.append_attribute("y") = position.y;
+
+	atributes.append_attribute("score") = score;
+	atributes.append_attribute("playerHealth") = playerHealth;
 
 	return true;
 }
