@@ -315,10 +315,10 @@ bool ModulePlayer::Update(float dt)
 	}
 
 	
-	
-	currentAnimation->Update();
-	
-	
+	if (playerHealth != 0)
+	{
+		currentAnimation->Update();
+	}
 
 	pbody->GetPosition(position.x, position.y);
 
