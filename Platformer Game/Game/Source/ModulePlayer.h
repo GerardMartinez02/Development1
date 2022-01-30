@@ -67,6 +67,8 @@ public:
 	bool coinTouched3 = false;
 	bool coinTouched4 = false;
 
+	bool pizzaTouched = false;
+
 	bool winCondition = false;
 
 	// The player spritesheet loaded into an SDL_Texture

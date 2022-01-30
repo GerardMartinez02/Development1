@@ -25,6 +25,9 @@ Coins::Coins() : Module()
 
 	animFlag.PushBack({ 0, 0, 30, 30 });
 	animFlag.loop = false;
+
+	animPizza.PushBack({ 0, 0, 30, 30 });
+	animPizza.loop = false;
 }
 
 Coins::~Coins()
@@ -51,6 +54,9 @@ bool Coins::Start()
 
 	checkpointFlag = app->tex->Load("Assets/textures/items/blueFlag.png");
 	currentFlagAnimation = &animFlag;
+
+	pizza = app->tex->Load("Assets/textures/items/health.png");
+	currentPizzaAnimation = &animPizza;
 
 	destroyed = false;
 
@@ -81,9 +87,14 @@ bool Coins::Start()
 
 
 	flagPosition = app->map->MapToWorld(96.95, 72.05);
-	checkPointBody = app->physics->CreateRectangleSensor(flagPosition.x , flagPosition.y, 21, 21, 1);
+	checkPointBody = app->physics->CreateRectangleSensor(flagPosition.x +10, flagPosition.y +10, 21, 21, 1);
 	checkPointBody->listener = this;
 	checkPointBody->type = CHECKPOINT;
+
+	pizzaPosition = app->map->MapToWorld(126, 65);
+	pizzaBody = app->physics->CreateRectangleSensor(pizzaPosition.x +16, pizzaPosition.y+16, 21, 21, 1);
+	pizzaBody->listener = this;
+	pizzaBody->type = PIZZA;
 
 	return true;
 }
@@ -113,10 +124,13 @@ bool Coins::PostUpdate()
 	app->render->DrawTexture(coin3, coinPositionThree.x, coinPositionThree.y, &rectCoin);
 	app->render->DrawTexture(coin4, coinPositionFour.x, coinPositionFour.y, &rectCoin);
 
+	SDL_Rect rectPizza = currentPizzaAnimation->GetCurrentFrame();
+	app->render->DrawTexture(pizza, pizzaPosition.x, pizzaPosition.y, &rectPizza);
+
 	if (app->player->checkpointReached == true)
 	{
 		SDL_Rect rectFlag = currentFlagAnimation->GetCurrentFrame();
-		app->render->DrawTexture(checkpointFlag, flagPosition.x, flagPosition.y, &rectFlag);
+		app->render->DrawTexture(checkpointFlag, flagPosition.x , flagPosition.y , &rectFlag);
 	}
 	
 	if (app->player->coinTouched1 == true)
@@ -135,6 +149,11 @@ bool Coins::PostUpdate()
 	{
 		app->tex->UnLoad(coin4);
 	}
+
+	if (app->player->pizzaTouched == true)
+	{
+		app->tex->UnLoad(pizza);
+	}
 	/*if (app->player->checkpointReached == true)
 	{
 		app->render->DrawTexture(checkpointFlag, 97, 72, NULL, 0.75f);
@@ -150,6 +169,7 @@ bool Coins::CleanUp()
 	app->tex->UnLoad(texture);
 	app->physics->world->DestroyBody(coinBody->body);
 	app->physics->world->DestroyBody(checkPointBody->body);
+	app->physics->world->DestroyBody(pizzaBody->body);
 	//app->tex->UnLoad(coin);
 	app->tex->UnLoad(checkpointFlag);
 	return ret;

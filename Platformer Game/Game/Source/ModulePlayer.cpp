@@ -729,6 +729,21 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 		coinTouched4 = true;
 	
 	}
+	if (bodyA->type == PLAYER && bodyB->type == PIZZA)
+	{
+		//app->scene->Disable();
+		//app->player->Disable();
+		//app->intro->Enable();
+		/*app->coins->Disable();*/
+
+		if (pizzaTouched == false)
+		{
+			app->audio->PlayFx(coinSound);
+			playerHealth = playerHealth + 30;
+		}
+
+		pizzaTouched = true;
+	}
 }
 
 bool ModulePlayer::LoadState(pugi::xml_node& data)

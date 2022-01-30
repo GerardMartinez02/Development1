@@ -30,9 +30,11 @@ public:
 	iPoint coinPositionTwo;
 	iPoint coinPositionThree;
 	iPoint coinPositionFour;
+	iPoint pizzaPosition;
 	iPoint flagPosition;
 	typeOfCollision typeCoin;
 	PhysBody* coinBody;
+	PhysBody* pizzaBody;
 	PhysBody* checkPointBody;
 	b2Body* c;
 
@@ -41,7 +43,9 @@ public:
 	Animation* currentCoinAnimation = nullptr;
 	Animation anim;
 	Animation animFlag;
+	Animation animPizza;
 	Animation* currentFlagAnimation = nullptr;
+	Animation* currentPizzaAnimation = nullptr;
 
 	bool pendingToDelete = false;
 
@@ -50,6 +54,7 @@ public:
 	bool coinCollected2 = false;
 	bool coinCollected3 = false;
 	bool coinCollected4 = false;
+	bool pizzaCollected = false;
 
 	SDL_Texture* texture = nullptr;
 
@@ -59,6 +64,7 @@ private:
 	SDL_Texture* coin2;
 	SDL_Texture* coin3;
 	SDL_Texture* coin4;
+	SDL_Texture* pizza;
 	SDL_Texture* checkpointFlag;
 };
 #pragma once
