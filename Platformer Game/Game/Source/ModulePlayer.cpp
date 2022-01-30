@@ -109,6 +109,10 @@ bool ModulePlayer::Start()
 	bool ret = true;
 
 	texture = app->tex->Load("Assets/textures/player/playerSprites.png");
+	letterP = app->tex->Load("Assets/textures/items/letterP.png");
+	letterI = app->tex->Load("Assets/textures/items/letterI.png");
+	letterZ = app->tex->Load("Assets/textures/items/letterZ.png");
+	letterA = app->tex->Load("Assets/textures/items/letterA.png");
 	currentAnimation = &idleAnimRight;
 
 
@@ -307,10 +311,10 @@ bool ModulePlayer::Update(float dt)
 
 bool ModulePlayer::PostUpdate()
 {
-	if (!destroyed)
+	/*if (!destroyed)
 	{
 
-	}
+	}*/
 
 	SDL_Rect rect = currentAnimation->GetCurrentFrame();
 	app->render->DrawTexture(texture, position.x -16, position.y -16, &rect);
@@ -369,6 +373,10 @@ bool ModulePlayer::PostUpdate()
 
 	// Timer
 	app->fonts->BlitText(520, 20, timeFont, timeText);
+	app->render->DrawTexture(letterP, 0, 11.5, NULL, 0, true);
+	app->render->DrawTexture(letterI, 20, 10, NULL, 0, true);
+	app->render->DrawTexture(letterZ, 40, 10, NULL, 0, true);
+	app->render->DrawTexture(letterA, 60, 10, NULL, 0, true);
 
 	if (playerHealth == 0)
 	{

@@ -67,6 +67,10 @@ public:
 
 	// The player spritesheet loaded into an SDL_Texture
 	SDL_Texture* texture;
+	SDL_Texture* letterP = nullptr;
+	SDL_Texture* letterI = nullptr;
+	SDL_Texture* letterZ = nullptr;
+	SDL_Texture* letterA = nullptr;
 
 	// The pointer to the current player animation
 	// It will be switched depending on the player's movement direction
