@@ -38,9 +38,16 @@ Keyboard:
 · Developer Mode:
 
  -F3 Start from the beginning
+ 
  -F5 Save the current game state
+ 
  -F6 Load the previous state
+ 
  -F7 Move to the checkpoint
+ 
  -F9 View colliders
+ 
  -F10 God Mode (you can fly and you can not die)
+ 
  -F11 Enable/Disable FPS cap to 30
+ 
