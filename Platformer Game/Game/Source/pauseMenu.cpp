@@ -66,7 +66,7 @@ bool PauseMenu::Start()
 	
 	creditsButtonG = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 5, { 215, 2280, 108, 35 }, this, creditsButton, NULL, {});
 	exitButtonG = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 6, { 215, 2380, 108, 35 }, this, exitButton, NULL, {});
-	returnButtonG = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 7, { 10, 2480, 71, 35 }, this, returnButton, NULL, {});
+	returnButtonG = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 7, { 10, 10, 71, 35 }, this, returnButton, NULL, {});
 	settingsButtonG = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 4, { 105, 2180, 108, 35 }, this, settingsButton, NULL, {});
 
 	resumeButtonG = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 2, { 105, 160, 108, 35 }, this, resumeButton, NULL, {});
@@ -105,10 +105,10 @@ bool PauseMenu::Update(float dt)
 		pauseTimer++;
 		noPauseTimer = 0;
 
-		resumeButtonG->canClick = true;
+		resumeButtonG->canClick = false;
 		settingsButtonG->canClick = true;
 		exitButtonG->canClick = true;
-		returnButtonG->canClick = false;
+		returnButtonG->canClick = true;
 		fxVolumeSliderG->canClick = false;
 		musicVolumeSliderG->canClick = false;
 		fullScreenBoxG->canClick = false;

@@ -116,8 +116,17 @@ bool EnemyRedBird::PreUpdate()
 // Called each loop iteration
 bool EnemyRedBird::Update(float dt)
 {
+	if (app->player->pauseMenu == true)
+	{
+		iPoint NewPosition = birdPosition;
+		birdBody->GetPosition(NewPosition.x, NewPosition.y);
+		if (birdPosition.x < app->player->position.x) currentBirdAnimation = &leftBird;
+		if (birdPosition.x > app->player->position.x) currentBirdAnimation = &rightBird;
+		currentBirdAnimation->loop = false;
 
-	if (birdDead == false)
+		birdBody->body->SetLinearVelocity({ 0.0f,0.0f });
+	}
+	if (birdDead == false && app->player->pauseMenu == false)
 	{
 
 		BirdVelocity = birdBody->body->GetLinearVelocity();

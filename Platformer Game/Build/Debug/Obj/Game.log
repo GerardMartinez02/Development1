@@ -1,1 +1,74 @@
-﻿  Game.vcxproj -> C:\GitHub\Development1\Platformer Game\Build\Debug\Game.exe
+﻿  enemyBird.cpp
+C:\Users\user\Desktop\UNI\2n\Desenvolupament de Videojocs\Development1\Platformer Game\Game\Source\Animation.h(54,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
+C:\Users\user\Desktop\UNI\2n\Desenvolupament de Videojocs\Development1\Platformer Game\Game\Source\Animation.h(56,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\user\Desktop\UNI\2n\Desenvolupament de Videojocs\Development1\Platformer Game\Game\Source\Point.h(111,24): warning C4244: 'argument': conversion from 'TYPE' to 'float', possible loss of data
+          with
+          [
+              TYPE=int
+          ]
+C:\Users\user\Desktop\UNI\2n\Desenvolupament de Videojocs\Development1\Platformer Game\Game\Source\Point.h(107): message : while compiling class template member function 'TYPE Point<TYPE>::DistanceTo(const Point<TYPE> &) const'
+          with
+          [
+              TYPE=int
+          ]
+C:\Users\user\Desktop\UNI\2n\Desenvolupament de Videojocs\Development1\Platformer Game\Game\Source\enemyBird.cpp(136): message : see reference to function template instantiation 'TYPE Point<TYPE>::DistanceTo(const Point<TYPE> &) const' being compiled
+          with
+          [
+              TYPE=int
+          ]
+C:\Users\user\Desktop\UNI\2n\Desenvolupament de Videojocs\Development1\Platformer Game\Game\Source\enemyBird.h(72): message : see reference to class template instantiation 'Point<int>' being compiled
+C:\Users\user\Desktop\UNI\2n\Desenvolupament de Videojocs\Development1\Platformer Game\Game\Source\Point.h(111,15): warning C4244: 'return': conversion from 'float' to 'TYPE', possible loss of data
+          with
+          [
+              TYPE=int
+          ]
+  enemyDragon.cpp
+C:\Users\user\Desktop\UNI\2n\Desenvolupament de Videojocs\Development1\Platformer Game\Game\Source\Animation.h(54,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
+C:\Users\user\Desktop\UNI\2n\Desenvolupament de Videojocs\Development1\Platformer Game\Game\Source\Animation.h(56,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\user\Desktop\UNI\2n\Desenvolupament de Videojocs\Development1\Platformer Game\Game\Source\Point.h(111,24): warning C4244: 'argument': conversion from 'TYPE' to 'float', possible loss of data
+          with
+          [
+              TYPE=int
+          ]
+C:\Users\user\Desktop\UNI\2n\Desenvolupament de Videojocs\Development1\Platformer Game\Game\Source\Point.h(107): message : while compiling class template member function 'TYPE Point<TYPE>::DistanceTo(const Point<TYPE> &) const'
+          with
+          [
+              TYPE=int
+          ]
+C:\Users\user\Desktop\UNI\2n\Desenvolupament de Videojocs\Development1\Platformer Game\Game\Source\enemyDragon.cpp(141): message : see reference to function template instantiation 'TYPE Point<TYPE>::DistanceTo(const Point<TYPE> &) const' being compiled
+          with
+          [
+              TYPE=int
+          ]
+C:\Users\user\Desktop\UNI\2n\Desenvolupament de Videojocs\Development1\Platformer Game\Game\Source\enemyDragon.h(71): message : see reference to class template instantiation 'Point<int>' being compiled
+C:\Users\user\Desktop\UNI\2n\Desenvolupament de Videojocs\Development1\Platformer Game\Game\Source\Point.h(111,15): warning C4244: 'return': conversion from 'float' to 'TYPE', possible loss of data
+          with
+          [
+              TYPE=int
+          ]
+  enemyRedBird.cpp
+C:\Users\user\Desktop\UNI\2n\Desenvolupament de Videojocs\Development1\Platformer Game\Game\Source\Animation.h(54,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
+C:\Users\user\Desktop\UNI\2n\Desenvolupament de Videojocs\Development1\Platformer Game\Game\Source\Animation.h(56,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\user\Desktop\UNI\2n\Desenvolupament de Videojocs\Development1\Platformer Game\Game\Source\Point.h(111,24): warning C4244: 'argument': conversion from 'TYPE' to 'float', possible loss of data
+          with
+          [
+              TYPE=int
+          ]
+C:\Users\user\Desktop\UNI\2n\Desenvolupament de Videojocs\Development1\Platformer Game\Game\Source\Point.h(107): message : while compiling class template member function 'TYPE Point<TYPE>::DistanceTo(const Point<TYPE> &) const'
+          with
+          [
+              TYPE=int
+          ]
+C:\Users\user\Desktop\UNI\2n\Desenvolupament de Videojocs\Development1\Platformer Game\Game\Source\enemyRedBird.cpp(136): message : see reference to function template instantiation 'TYPE Point<TYPE>::DistanceTo(const Point<TYPE> &) const' being compiled
+          with
+          [
+              TYPE=int
+          ]
+C:\Users\user\Desktop\UNI\2n\Desenvolupament de Videojocs\Development1\Platformer Game\Game\Source\enemyRedBird.h(72): message : see reference to class template instantiation 'Point<int>' being compiled
+C:\Users\user\Desktop\UNI\2n\Desenvolupament de Videojocs\Development1\Platformer Game\Game\Source\Point.h(111,15): warning C4244: 'return': conversion from 'float' to 'TYPE', possible loss of data
+          with
+          [
+              TYPE=int
+          ]
+  Generating Code...
+  Game.vcxproj -> C:\Users\user\Desktop\UNI\2n\Desenvolupament de Videojocs\Development1\Platformer Game\Build\Debug\Game.exe

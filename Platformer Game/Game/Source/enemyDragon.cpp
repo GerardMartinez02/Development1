@@ -117,8 +117,17 @@ bool EnemyDragon::PreUpdate()
 // Called each loop iteration
 bool EnemyDragon::Update(float dt)
 {
+	if (app->player->pauseMenu == true)
+	{
+		iPoint NewPosition = dragonPosition;
+		dragonBody->GetPosition(NewPosition.x, NewPosition.y);
+		if (dragonPosition.x < app->player->position.x) currentDragonAnimation = &leftDragon;
+		if (dragonPosition.x > app->player->position.x) currentDragonAnimation = &rightDragon;
+		currentDragonAnimation->loop = false;
 
-	if (dragonDead == false)
+		dragonBody->body->SetLinearVelocity({ 0.0f,0.0f });
+	}
+	if (dragonDead == false && app->player->pauseMenu == false)
 	{
 		if (app->input->GetKey(SDL_SCANCODE_F3) == KEY_DOWN)
 		{

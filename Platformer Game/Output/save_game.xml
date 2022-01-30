@@ -7,15 +7,15 @@
 	<audio />
 	<:anonymous />
 	<sceneIntro>
-		<saved_game bool="true" />
+		<saved_game bool="false" />
 	</sceneIntro>
 	<scene />
 	<pathfinding />
 	<gameOver />
 	<map />
 	<player>
-		<position x="373" y="2284" />
-		<atributes />
+		<position x="618" y="2289" />
+		<atributes score="0" playerHealth="75" />
 	</player>
 	<Enemy />
 	<Enemy />
@@ -25,6 +25,6 @@
 	<:anonymous />
 	<PauseMenu />
 	<renderer>
-		<camera x="-116" y="-4138" />
+		<camera x="-607" y="-4149" />
 	</renderer>
 </save_state>

@@ -90,8 +90,8 @@ bool SceneIntro::Start()
 	exitButtonG = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 6, { 10, 10, 108, 35 }, this, exitButton, NULL, {});
 	returnButtonG = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 7, { 700, 300, 71, 35 }, this, returnButton, NULL, {});
 
-	resumeButtonG = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 2, { 150, 350, 108, 35 }, this, resumeButton, NULL, {});
-	newGameButtonG = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 3, { 350, 350, 108, 35 }, this, newGameButton, NULL, {});
+	resumeButtonG = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 2, { 150, 150, 108, 35 }, this, resumeButton, NULL, {});
+	newGameButtonG = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 3, { 350, 250, 108, 35 }, this, newGameButton, NULL, {});
 
 
 	fullScreenBoxG = (GuiCheckBox*)app->guiManager->CreateGuiControl(GuiControlType::CHECKBOX, 8, { 185, 149, 17, 17 }, this, fullScreenOff, NULL, {});
@@ -319,15 +319,27 @@ bool SceneIntro::PostUpdate()
 		if (playButtonG->state == GuiControlState::FOCUSED && playButtonG->canClick == true) playButtonG->SetTexture(playButtonTouch);
 		playButtonG->Draw(app->render);
 
+
 		if (SavedGame == true)
 		{
-			if (resumeButtonG->state == GuiControlState::NORMAL && resumeButtonG->canClick == true) resumeButtonG->SetTexture(resumeButton);
-			if (resumeButtonG->state == GuiControlState::FOCUSED && resumeButtonG->canClick == true) resumeButtonG->SetTexture(resumeButtonTouch);
+			if (newGameButtonG->state == GuiControlState::NORMAL && newGameButtonG->canClick == true) newGameButtonG->SetTexture(newGameButton);
+			if (newGameButtonG->state == GuiControlState::FOCUSED && newGameButtonG->canClick == true) newGameButtonG->SetTexture(newGameButton);
+			newGameButtonG->Draw(app->render);
+		}
+		if (SavedGame == false)
+		{
+			newGameButtonG->SetTexture(newGameButton);
+			newGameButtonG->Draw(app->render);
+		}
+
+		if (SavedGame == true)
+		{
+			resumeButtonG->SetTexture(resumeButtonTouch);
 			resumeButtonG->Draw(app->render);
 		}
 		if (SavedGame == false)
 		{
-			resumeButtonG->SetTexture(resumeButtonOff);
+			resumeButtonG->SetTexture(resumeButton);
 			resumeButtonG->Draw(app->render);
 		}
 
