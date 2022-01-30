@@ -135,6 +135,20 @@ bool Scene::Update(float dt)
 		app->fpsCap = !app->fpsCap;
 	}
 
+	//app->render->DrawTexture(img, 380, 100); // Placeholder not needed any more
+
+	// Draw map
+
+	// L03: DONE 7: Set the window title with map/tileset info
+	SString title("Map:%dx%d Tiles:%dx%d Tilesets:%d",
+				   app->map->mapData.width, app->map->mapData.height,
+				   app->map->mapData.tileWidth, app->map->mapData.tileHeight,
+				   app->map->mapData.tilesets.count());
+
+	app->render->DrawTexture(background, -300, 1240, NULL, 0.75f);
+
+	app->map->Draw();
+
 	if (app->player->spawnPosition == 1)
 	{
 		app->player->spawnPosition = 0;
@@ -152,21 +166,6 @@ bool Scene::Update(float dt)
 		app->player->Enable();
 
 	}
-
-
-	//app->render->DrawTexture(img, 380, 100); // Placeholder not needed any more
-
-	// Draw map
-
-	// L03: DONE 7: Set the window title with map/tileset info
-	SString title("Map:%dx%d Tiles:%dx%d Tilesets:%d",
-				   app->map->mapData.width, app->map->mapData.height,
-				   app->map->mapData.tileWidth, app->map->mapData.tileHeight,
-				   app->map->mapData.tilesets.count());
-
-	app->render->DrawTexture(background, -300, 1240, NULL, 0.75f);
-
-	app->map->Draw();
 
 	return true;
 }

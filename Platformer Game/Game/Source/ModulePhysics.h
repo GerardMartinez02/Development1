@@ -15,7 +15,7 @@
 #define METERS_TO_PIXELS(m) ((int) floor(PIXELS_PER_METER * m))
 #define PIXEL_TO_METERS(p)  ((float) METER_PER_PIXEL * p)
 
-enum typeOfCollision 
+enum typeOfCollision
 {
 	NONE = -1,
 	PLAYER,
@@ -25,8 +25,10 @@ enum typeOfCollision
 	CHECKPOINT,
 	BIRD,
 	DRAGON,
-	COIN,
-	PIZZA
+	COIN1,
+	COIN2,
+	COIN3,
+	COIN4
 };
 
 // Small class to return to other modules to track position and rotation of physics bodies

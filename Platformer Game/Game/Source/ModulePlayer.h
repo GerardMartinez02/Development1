@@ -61,7 +61,10 @@ public:
 	bool checkpoint = false;
 	bool checkpointReached = false;
 
-	bool coinTouched = false;
+	bool coinTouched1 = false;
+	bool coinTouched2 = false;
+	bool coinTouched3 = false;
+	bool coinTouched4 = false;
 
 	bool winCondition = false;
 

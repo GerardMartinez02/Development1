@@ -26,7 +26,10 @@ public:
 	void OnCollision(PhysBody* bodyA, PhysBody* bodyB);
 
 
-	iPoint coinPosition;
+	iPoint coinPositionOne;
+	iPoint coinPositionTwo;
+	iPoint coinPositionThree;
+	iPoint coinPositionFour;
 	iPoint flagPosition;
 	typeOfCollision typeCoin;
 	PhysBody* coinBody;
@@ -43,13 +46,19 @@ public:
 	bool pendingToDelete = false;
 
 	bool destroyed = false;
-	bool coinCollected = false;
+	bool coinCollected1 = false;
+	bool coinCollected2 = false;
+	bool coinCollected3 = false;
+	bool coinCollected4 = false;
 
 	SDL_Texture* texture = nullptr;
 
 private:
 	SString folder;
-	SDL_Texture* coin;
+	SDL_Texture* coin1;
+	SDL_Texture* coin2;
+	SDL_Texture* coin3;
+	SDL_Texture* coin4;
 	SDL_Texture* checkpointFlag;
 };
 #pragma once

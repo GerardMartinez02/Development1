@@ -302,7 +302,11 @@ bool ModulePlayer::Update(float dt)
 		}
 	}
 
-	currentAnimation->Update();
+	if (playerHealth != 0)
+	{
+		currentAnimation->Update();
+	}
+	
 
 	pbody->GetPosition(position.x, position.y);
 
@@ -363,9 +367,13 @@ bool ModulePlayer::PostUpdate()
 	}
 
 	// Timer
-	app->fonts->BlitText(520, 60, timeFont, timeText);
+	if (playerHealth != 0)
+	{
+		app->fonts->BlitText(520, 60, timeFont, timeText);
+	}
+	
 
-	if (coinTouched == true)
+	if (coinTouched1 == true)
 	{
 		app->render->DrawTexture(letterP, 500, 11.5, NULL, 0, true);
 		app->render->DrawTexture(letterI, 520, 10, NULL, 0, true);
@@ -386,7 +394,10 @@ bool ModulePlayer::PostUpdate()
 		timeCounter = 120;
 		checkpoint = false;
 		checkpointReached = false;
-		coinTouched = false;
+		coinTouched1 = false;
+		coinTouched2 = false;
+		coinTouched3 = false;
+		coinTouched4 = false;
 	}
 
 	return true;
@@ -549,14 +560,41 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 			app->enemyDragon->Disable();
 		}
 	}
-	if (bodyA->type == PLAYER && bodyB->type == COIN)
+	if (bodyA->type == PLAYER && bodyB->type == COIN1)
 	{
 		//app->scene->Disable();
 		//app->player->Disable();
 		//app->intro->Enable();
 		/*app->coins->Disable();*/
 
-		coinTouched = true;
+		coinTouched1 = true;
+	}
+	if (bodyA->type == PLAYER && bodyB->type == COIN2)
+	{
+		//app->scene->Disable();
+		//app->player->Disable();
+		//app->intro->Enable();
+		/*app->coins->Disable();*/
+
+		coinTouched2 = true;
+	}
+	if (bodyA->type == PLAYER && bodyB->type == COIN3)
+	{
+		//app->scene->Disable();
+		//app->player->Disable();
+		//app->intro->Enable();
+		/*app->coins->Disable();*/
+
+		coinTouched3 = true;
+	}
+	if (bodyA->type == PLAYER && bodyB->type == COIN4)
+	{
+		//app->scene->Disable();
+		//app->player->Disable();
+		//app->intro->Enable();
+		/*app->coins->Disable();*/
+
+		coinTouched4 = true;
 	}
 }
 

@@ -43,7 +43,10 @@ bool Coins::Start()
 
 	bool ret = true;
 
-	coin = app->tex->Load("Assets/textures/items/CoinSprites.png");
+	coin1 = app->tex->Load("Assets/textures/items/CoinSprites.png");
+	coin2 = app->tex->Load("Assets/textures/items/CoinSprites.png");
+	coin3 = app->tex->Load("Assets/textures/items/CoinSprites.png");
+	coin4 = app->tex->Load("Assets/textures/items/CoinSprites.png");
 	currentCoinAnimation = &anim;
 
 	checkpointFlag = app->tex->Load("Assets/textures/items/blueFlag.png");
@@ -51,12 +54,31 @@ bool Coins::Start()
 
 	destroyed = false;
 
-	coinPosition = app->map->MapToWorld(10, 69);
+	coinPositionOne = app->map->MapToWorld(10, 69);
+	coinPositionTwo = app->map->MapToWorld(20, 69);
+	coinPositionThree = app->map->MapToWorld(30, 69);
+	coinPositionFour = app->map->MapToWorld(40, 69);
 
-	coinBody = app->physics->CreateRectangleSensor(coinPosition.x +10, coinPosition.y+10, 21, 21, 1);
+	coinBody = app->physics->CreateRectangleSensor(coinPositionOne.x +10, coinPositionOne.y+10, 21, 21, 1);
 	coinBody->listener = this;
-	coinBody->type = COIN;
-	coinCollected = false;
+	coinBody->type = COIN1;
+	coinCollected1 = false;
+
+	coinBody = app->physics->CreateRectangleSensor(coinPositionTwo.x + 10, coinPositionTwo.y + 10, 21, 21, 1);
+	coinBody->listener = this;
+	coinBody->type = COIN2;
+	coinCollected2 = false;
+
+	coinBody = app->physics->CreateRectangleSensor(coinPositionThree.x + 10, coinPositionThree.y + 10, 21, 21, 1);
+	coinBody->listener = this;
+	coinBody->type = COIN3;
+	coinCollected3 = false;
+
+	coinBody = app->physics->CreateRectangleSensor(coinPositionFour.x + 10, coinPositionFour.y + 10, 21, 21, 1);
+	coinBody->listener = this;
+	coinBody->type = COIN4;
+	coinCollected4 = false;
+
 
 	flagPosition = app->map->MapToWorld(96.95, 72.05);
 	checkPointBody = app->physics->CreateRectangleSensor(flagPosition.x , flagPosition.y, 21, 21, 1);
@@ -86,7 +108,10 @@ bool Coins::PostUpdate()
 
 	//Bird
 	SDL_Rect rectCoin = currentCoinAnimation->GetCurrentFrame();
-	app->render->DrawTexture(coin, coinPosition.x, coinPosition.y, &rectCoin);
+	app->render->DrawTexture(coin1, coinPositionOne.x, coinPositionOne.y, &rectCoin);
+	app->render->DrawTexture(coin2, coinPositionTwo.x, coinPositionTwo.y, &rectCoin);
+	app->render->DrawTexture(coin3, coinPositionThree.x, coinPositionThree.y, &rectCoin);
+	app->render->DrawTexture(coin4, coinPositionFour.x, coinPositionFour.y, &rectCoin);
 
 	if (app->player->checkpointReached == true)
 	{
@@ -94,9 +119,21 @@ bool Coins::PostUpdate()
 		app->render->DrawTexture(checkpointFlag, flagPosition.x, flagPosition.y, &rectFlag);
 	}
 	
-	if (app->player->coinTouched == true)
+	if (app->player->coinTouched1 == true)
 	{
-		app->tex->UnLoad(coin);
+		app->tex->UnLoad(coin1);
+	}
+	if (app->player->coinTouched2 == true)
+	{
+		app->tex->UnLoad(coin2);
+	}
+	if (app->player->coinTouched3 == true)
+	{
+		app->tex->UnLoad(coin3);
+	}
+	if (app->player->coinTouched4 == true)
+	{
+		app->tex->UnLoad(coin4);
 	}
 	/*if (app->player->checkpointReached == true)
 	{
