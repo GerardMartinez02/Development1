@@ -102,6 +102,13 @@ public:
 	// Sound effects indices
 	uint laserFx = 0;
 	uint explosionFx = 0;
+	uint playerHitSound = 0;
+	uint coinSound = 0;
+	uint enemyHit = 0;
+	uint checkpointSound = 0;
+	uint gameOverSound = 0;
+	uint fallSound = 0;
+	uint playerWinSound = 0;
 
 	// Font score index
 	uint score = 0000;

@@ -19,6 +19,8 @@
 #include "GameOver.h"
 #include "ModuleFonts.h"
 
+//#include <SDL_mixer/include/SDL_mixer.h>
+
 
 
 ModulePlayer::ModulePlayer() : Module()
@@ -114,6 +116,14 @@ bool ModulePlayer::Start()
 	letterZ = app->tex->Load("Assets/textures/items/letterZ.png");
 	letterA = app->tex->Load("Assets/textures/items/letterA.png");
 	currentAnimation = &idleAnimRight;
+
+	playerHitSound = app->audio->LoadFx("Assets/audio/fx/enemyDead.wav");
+	coinSound = app->audio->LoadFx("Assets/audio/fx/coinsound.wav");
+	enemyHit = app->audio->LoadFx("Assets/audio/fx/enemyHit.wav");
+	checkpointSound = app->audio->LoadFx("Assets/audio/fx/checkpoinSound.wav");
+	gameOverSound = app->audio->LoadFx("Assets/audio/fx/GameOver.wav");
+	fallSound = app->audio->LoadFx("Assets/audio/fx/fallSound.wav");
+	playerWinSound = app->audio->LoadFx("Assets/audio/fx/playerWin.wav");
 
 
 	//Per fer atacs
@@ -292,6 +302,7 @@ bool ModulePlayer::Update(float dt)
 
 	if (playerHit == true)
 	{
+		app->audio->PlayFx(playerHitSound);
 		playerHealth = playerHealth;
 		if ((delay % 60) == 0)
 		{
@@ -401,6 +412,8 @@ bool ModulePlayer::PostUpdate()
 
 	if (playerHealth == 0)
 	{
+		//Mix_PauseMusic();
+		app->audio->PlayFx(gameOverSound);
 		app->scene->Disable();
 		app->coins->Disable();
 		app->enemyBird->Disable();
@@ -427,6 +440,7 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 	{
 
 		LOG("WIN!");
+		app->audio->PlayFx(playerWinSound);
 		winCondition = true;
 		app->scene->Disable();
 		//app->player->Disable();
@@ -443,6 +457,10 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 	}
 	if (bodyA->type == PLAYER && bodyB->type == CHECKPOINT)
 	{
+		if (checkpoint == false)
+		{
+			app->audio->PlayFx(checkpointSound);
+		}
 		winCondition = false;
 		checkpoint = true;
 	}
@@ -458,26 +476,31 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 		if (playerHealth == 75 && playerLifeCount == false)
 		{
 			playerHealth = 60;
+			app->audio->PlayFx(fallSound);
 			playerLifeCount = true;
 		}
 		if (playerHealth == 60 && playerLifeCount == false)
 		{
 			playerHealth = 45;
+			app->audio->PlayFx(fallSound);
 			playerLifeCount = true;
 		}
 		if (playerHealth == 45 && playerLifeCount == false)
 		{
 			playerHealth = 30;
+			app->audio->PlayFx(fallSound);
 			playerLifeCount = true;
 		}
 		if (playerHealth == 30 && playerLifeCount == false)
 		{
 			playerHealth = 15;
+			app->audio->PlayFx(fallSound);
 			playerLifeCount = true;
 		}
 		if (playerHealth == 15 && playerLifeCount == false)
 		{
 			playerHealth = 0;
+			app->audio->PlayFx(fallSound);
 			playerLifeCount = true;
 		}
 		
@@ -537,6 +560,7 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 
 		else if (jumpsCount == 1 || jumpsCount == 0)
 		{
+			app->audio->PlayFx(enemyHit);
 			app->enemyBird->Disable();
 			score = score + 25;
 		}
@@ -583,6 +607,7 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 
 		else if (jumpsCount == 1 || jumpsCount == 0)
 		{
+			app->audio->PlayFx(enemyHit);
 			app->enemyDragon->Disable();
 			score = score + 25;
 		}
@@ -596,6 +621,7 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 
 		if (coinTouched1 == false)
 		{
+			app->audio->PlayFx(coinSound);
 			score = score + 100;
 		}
 
@@ -612,6 +638,7 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 
 		if (coinTouched2 == false)
 		{
+			app->audio->PlayFx(coinSound);
 			score = score + 100;
 		}
 
@@ -627,6 +654,7 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 
 		if (coinTouched3 == false)
 		{
+			app->audio->PlayFx(coinSound);
 			score = score + 100;
 		}
 
@@ -642,6 +670,7 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 
 		if (coinTouched4 == false)
 		{
+			app->audio->PlayFx(coinSound);
 			score = score + 100;
 		}
 
