@@ -6,20 +6,23 @@
 	<textures />
 	<audio />
 	<:anonymous />
-	<sceneIntro />
+	<sceneIntro>
+		<saved_game bool="false" />
+	</sceneIntro>
 	<scene />
 	<pathfinding />
 	<gameOver />
 	<map />
 	<player>
-		<position x="449" y="2272" />
+		<position x="470" y="2289" />
 		<atributes />
 	</player>
 	<Enemy />
 	<Enemy />
 	<:anonymous />
-	<guiManager />
+	<guimanager />
+	<:anonymous />
 	<renderer>
-		<camera x="-269" y="-4115" />
+		<camera x="-311" y="-4149" />
 	</renderer>
 </save_state>

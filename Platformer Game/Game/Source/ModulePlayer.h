@@ -104,7 +104,7 @@ public:
 	uint explosionFx = 0;
 
 	// Font score index
-	uint score = 000;
+	uint score = 0000;
 	int scoreFont = -1;
 	char scoreText[10] = { "\0" };
 

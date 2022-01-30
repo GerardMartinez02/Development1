@@ -329,7 +329,7 @@ bool ModulePlayer::PostUpdate()
 	
 	
 	sprintf_s(timeText, 10, "%3d", timeCounter);
-	sprintf_s(scoreText, 10, "%3d", score);
+	sprintf_s(scoreText, 10, "%4d", score);
 	
 	
 
@@ -594,8 +594,14 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 		//app->intro->Enable();
 		/*app->coins->Disable();*/
 
+		if (coinTouched1 == false)
+		{
+			score = score + 100;
+		}
+
 		coinTouched1 = true;
-		score = score + 100;
+
+		
 	}
 	if (bodyA->type == PLAYER && bodyB->type == COIN2)
 	{
@@ -604,8 +610,13 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 		//app->intro->Enable();
 		/*app->coins->Disable();*/
 
+		if (coinTouched2 == false)
+		{
+			score = score + 100;
+		}
+
 		coinTouched2 = true;
-		score = score + 100;
+		
 	}
 	if (bodyA->type == PLAYER && bodyB->type == COIN3)
 	{
@@ -614,8 +625,13 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 		//app->intro->Enable();
 		/*app->coins->Disable();*/
 
+		if (coinTouched3 == false)
+		{
+			score = score + 100;
+		}
+
 		coinTouched3 = true;
-		score = score + 100;
+	
 	}
 	if (bodyA->type == PLAYER && bodyB->type == COIN4)
 	{
@@ -624,8 +640,13 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 		//app->intro->Enable();
 		/*app->coins->Disable();*/
 
+		if (coinTouched4 == false)
+		{
+			score = score + 100;
+		}
+
 		coinTouched4 = true;
-		score = score + 100;
+	
 	}
 }
 
@@ -657,6 +678,12 @@ bool ModulePlayer::CleanUp()
 	LOG("Cleaning the Player");
 	bool ret = true;
 	app->tex->UnLoad(texture);
+	app->tex->UnLoad(letterP);
+	app->tex->UnLoad(letterI);
+	app->tex->UnLoad(letterZ);
+	app->tex->UnLoad(letterA);
+	app->fonts->UnLoad(timeFont);
+	app->fonts->UnLoad(scoreFont);
 	app->physics->world->DestroyBody(b);
 	return true;
 }
