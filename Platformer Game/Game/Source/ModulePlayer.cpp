@@ -15,6 +15,7 @@
 #include "SceneIntro.h"
 #include "Coins.h"
 #include "enemyBird.h"
+#include "enemyRedBird.h"
 #include "enemyDragon.h"
 #include "GameOver.h"
 #include "ModuleFonts.h"
@@ -562,6 +563,57 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 		{
 			app->audio->PlayFx(enemyHit);
 			app->enemyBird->Disable();
+			score = score + 25;
+		}
+	}
+
+	if (bodyA->type == PLAYER && bodyB->type == REDBIRD && app->scene->godMode == false)
+	{
+		if (jumpsCount == 2)
+		{
+			//app->scene->Disable();
+			//app->coins->Disable();
+			//app->enemyBird->Disable();
+			//app->enemyDragon->Disable();
+			////app->player->Disable();
+			//app->gameOver->Enable();
+
+
+			if (playerHealth == 75)
+			{
+				playerHealth = 60;
+				playerHit = true;
+			}
+			if (playerHealth == 60 && playerHit == false)
+			{
+				playerHealth = 45;
+				playerHit = true;
+
+			}
+			if (playerHealth == 45 && playerHit == false)
+			{
+				playerHealth = 30;
+				playerHit = true;
+
+			}
+			if (playerHealth == 30 && playerHit == false)
+			{
+				playerHealth = 15;
+				playerHit = true;
+
+			}
+			if (playerHealth == 15 && playerHit == false)
+			{
+				playerHealth = 0;
+				playerHit = true;
+			}
+
+		}
+
+		else if (jumpsCount == 1 || jumpsCount == 0)
+		{
+			app->audio->PlayFx(enemyHit);
+			app->enemyRedBird->Disable();
 			score = score + 25;
 		}
 	}

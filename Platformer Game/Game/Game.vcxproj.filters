@@ -52,6 +52,7 @@
     <ClCompile Include="Source\ModuleFonts.cpp">
       <Filter>importedModules</Filter>
     </ClCompile>
+    <ClCompile Include="Source\enemyRedBird.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Window.h" />
@@ -129,6 +130,7 @@
     <ClInclude Include="Source\ModuleFonts.h">
       <Filter>importedModules</Filter>
     </ClInclude>
+    <ClInclude Include="Source\enemyRedBird.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="External">

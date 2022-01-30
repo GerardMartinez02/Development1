@@ -30,6 +30,7 @@ class ModulePlayer;
 class SceneIntro;
 class GameOver;
 class EnemyBird;
+class EnemyRedBird;
 class EnemyDragon;
 class Coins;
 class Timer;
@@ -123,6 +124,7 @@ public:
 	ModulePlayer* player;
 	SceneIntro* sceneIntro;
 	EnemyBird* enemyBird;
+	EnemyRedBird* enemyRedBird;
 	EnemyDragon* enemyDragon;
 	Coins* coins;
 	

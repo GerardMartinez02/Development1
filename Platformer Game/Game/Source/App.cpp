@@ -12,6 +12,7 @@
 #include "Pathfinding.h"
 #include "GameOver.h"
 #include "enemyBird.h"
+#include "enemyRedBird.h"
 #include "enemyDragon.h"
 #include "Timer.h"
 #include "AuxTimer.h"
@@ -48,6 +49,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	fonts = new ModuleFonts();
 	player = new ModulePlayer();
 	enemyBird = new EnemyBird();
+	enemyRedBird = new EnemyRedBird();
 	enemyDragon = new EnemyDragon();
 	coins = new Coins();
 
@@ -66,6 +68,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(map);
 	AddModule(player);
 	AddModule(enemyBird);
+	AddModule(enemyRedBird);
 	AddModule(enemyDragon);
 	AddModule(coins);
 	AddModule(guiManager);
@@ -236,6 +239,13 @@ void App::FinishUpdate()
 		app->enemyBird->birdBody->body->DestroyFixture(app->enemyBird->birdBody->body->GetFixtureList());
 
 		app->enemyBird->destroyedBird = false;
+	}
+
+	if (app->enemyRedBird->destroyedBird == true)
+	{
+		app->enemyRedBird->birdBody->body->DestroyFixture(app->enemyRedBird->birdBody->body->GetFixtureList());
+
+		app->enemyRedBird->destroyedBird = false;
 	}
 
 	if (app->enemyDragon->destroyedDragon == true)

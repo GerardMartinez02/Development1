@@ -24,6 +24,7 @@ enum typeOfCollision
 	FALL,
 	CHECKPOINT,
 	BIRD,
+	REDBIRD,
 	DRAGON,
 	COIN1,
 	COIN2,
