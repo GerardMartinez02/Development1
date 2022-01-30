@@ -1,1 +1,16 @@
-﻿  Game.vcxproj -> C:\GitHub\Development1\Platformer Game\Build\Release\Game.exe
+﻿  ModulePlayer.cpp
+C:\GitHub\Development1\Platformer Game\Game\Source\Animation.h(54,19): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
+C:\GitHub\Development1\Platformer Game\Game\Source\Animation.h(56,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+Source\ModulePlayer.cpp(159,40): warning C4244: '=': conversion from 'float32' to 'int', possible loss of data
+Source\ModulePlayer.cpp(370,42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  Generating code
+  1 of 662 functions ( 0.2%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    1 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+GuiButton.obj : warning LNK4099: PDB 'vc142.pdb' was not found with 'GuiButton.obj' or at 'C:\GitHub\Development1\Platformer Game\Build\Release\vc142.pdb'; linking object as if no debug info
+GuiCheckBox.obj : warning LNK4099: PDB 'vc142.pdb' was not found with 'GuiCheckBox.obj' or at 'C:\GitHub\Development1\Platformer Game\Build\Release\vc142.pdb'; linking object as if no debug info
+GuiManager.obj : warning LNK4099: PDB 'vc142.pdb' was not found with 'GuiManager.obj' or at 'C:\GitHub\Development1\Platformer Game\Build\Release\vc142.pdb'; linking object as if no debug info
+GuiSlider.obj : warning LNK4099: PDB 'vc142.pdb' was not found with 'GuiSlider.obj' or at 'C:\GitHub\Development1\Platformer Game\Build\Release\vc142.pdb'; linking object as if no debug info
+ModulePhysics.obj : warning LNK4099: PDB 'vc142.pdb' was not found with 'ModulePhysics.obj' or at 'C:\GitHub\Development1\Platformer Game\Build\Release\vc142.pdb'; linking object as if no debug info
+  Game.vcxproj -> C:\GitHub\Development1\Platformer Game\Build\Release\Game.exe

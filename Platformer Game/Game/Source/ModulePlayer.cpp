@@ -359,24 +359,20 @@ bool ModulePlayer::PostUpdate()
 
 	if (timeCounter == 0 && app->scene->godMode == false)
 	{
-		app->scene->Disable();
-		app->coins->Disable();
-		app->enemyBird->Disable();
-		app->enemyDragon->Disable();
-		//app->player->Disable();
-		app->gameOver->Enable();
-		checkpoint = false;
-		checkpointReached = false;
-
-		timeCounter = 120;
+		playerHealth = 0;
 	}
 
 	// Timer
-	app->fonts->BlitText(520, 20, timeFont, timeText);
-	app->render->DrawTexture(letterP, 0, 11.5, NULL, 0, true);
-	app->render->DrawTexture(letterI, 20, 10, NULL, 0, true);
-	app->render->DrawTexture(letterZ, 40, 10, NULL, 0, true);
-	app->render->DrawTexture(letterA, 60, 10, NULL, 0, true);
+	app->fonts->BlitText(520, 60, timeFont, timeText);
+
+	if (coinTouched == true)
+	{
+		app->render->DrawTexture(letterP, 500, 11.5, NULL, 0, true);
+		app->render->DrawTexture(letterI, 520, 10, NULL, 0, true);
+		app->render->DrawTexture(letterZ, 540, 10, NULL, 0, true);
+		app->render->DrawTexture(letterA, 560, 10, NULL, 0, true);
+	}
+	
 
 	if (playerHealth == 0)
 	{
@@ -390,6 +386,7 @@ bool ModulePlayer::PostUpdate()
 		timeCounter = 120;
 		checkpoint = false;
 		checkpointReached = false;
+		coinTouched = false;
 	}
 
 	return true;
