@@ -425,6 +425,12 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 		app->intro->Enable();
 		timeCounter = 120;
 		playerHealth = 75;
+		checkpoint = false;
+		checkpointReached = false;
+		coinTouched1 = false;
+		coinTouched2 = false;
+		coinTouched3 = false;
+		coinTouched4 = false;
 	}
 	if (bodyA->type == PLAYER && bodyB->type == CHECKPOINT)
 	{
