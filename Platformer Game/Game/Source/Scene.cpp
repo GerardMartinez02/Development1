@@ -119,6 +119,7 @@ bool Scene::Update(float dt)
 	if (app->input->GetKey(SDL_SCANCODE_F7) == KeyState::KEY_DOWN)
 	{
 		app->player->Disable();
+		app->player->winCondition = false;
 		app->player->checkpointReached = true;
 		app->player->Enable();
 	}
