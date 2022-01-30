@@ -17,6 +17,7 @@
 #include "enemyBird.h"
 #include "enemyDragon.h"
 #include "ModuleFonts.h"
+#include "GuiManager.h"
 
 #include "Defs.h"
 #include "Log.h"
@@ -44,6 +45,9 @@ bool GameOver::Start()
 {
 	gameOverImg = app->tex->Load("Assets/scenes/gameOver.png");
 	idleBackground = app->tex->Load("Assets/scenes/idleBackground.png");
+	
+	exitButton = app->tex->Load("Assets/textures/ui/exitButtonBlue.png");
+	exitButtonTouch = app->tex->Load("Assets/textures/ui/exitButtonOrange.png");
 
 	/*app->map->Disable();
 	app->sceneIntro->Disable();
@@ -76,6 +80,10 @@ bool GameOver::Update(float dt)
 			
 		
 	}*/
+	exitButtonG = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 6, { 10, 10, 108, 35 }, this, exitButton, NULL, {});
+	
+	exitButtonG->canClick = true;
+
 
 	app->player->Disable();
 
@@ -104,6 +112,10 @@ bool GameOver::Update(float dt)
 	app->render->DrawTexture(idleBackground, 0, 2080, NULL, 1.0f);
 
 	app->render->DrawTexture(gameOverImg, 0, 2080, NULL, 1.0f);
+
+	if (exitButtonG->state == GuiControlState::NORMAL && exitButtonG->canClick == true) exitButtonG->SetTexture(exitButton);
+	if (exitButtonG->state == GuiControlState::FOCUSED && exitButtonG->canClick == true) exitButtonG->SetTexture(exitButtonTouch);
+	exitButtonG->Draw(app->render);
 
 	return ret;
 }

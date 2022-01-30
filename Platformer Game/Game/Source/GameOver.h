@@ -3,6 +3,10 @@
 
 #include "Module.h"
 #include "Animation.h"
+#include "GuiButton.h"
+#include "GuiCheckbox.h"
+#include "GuiSlider.h"
+
 struct SDL_Texture;
 
 class GameOver : public Module
@@ -32,6 +36,10 @@ public:
 	// Called before quitting
 	bool CleanUp();
 
+	SDL_Texture* exitButton;
+	SDL_Texture* exitButtonTouch;
+
+	GuiButton* exitButtonG;
 
 private:
 	SDL_Texture* gameOverImg;

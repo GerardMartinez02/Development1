@@ -10,12 +10,17 @@ class GuiCheckBox : public GuiControl
 {
 public:
 
-    GuiCheckBox(uint32 id, SDL_Rect bounds, const char* text);
+    GuiCheckBox(uint32 id, SDL_Rect bounds);
     virtual ~GuiCheckBox();
 
     bool Update(float dt);
-    bool DrawDebug();
-    bool DrawTexture();
+    bool Draw(Render* render);
+
+    int mouseX, mouseY;
+    unsigned int click;
+
+    bool canClick = true;
+    bool drawBasic = false;
 
 private:
 

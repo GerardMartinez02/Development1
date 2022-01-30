@@ -52,7 +52,7 @@ public:
         texture = NULL;
     }
 
-    virtual bool Update(Input* input, float dt)
+    virtual bool Update(float dt)
     {
         return true;
     }
@@ -86,6 +86,7 @@ public:
 
 	SString text;           // Control text (if required)
 	SDL_Rect bounds;        // Position and size
+    SDL_Rect limitBounds;
 	SDL_Color color;        // Tint color
 
 	SDL_Texture* texture;   // Texture atlas reference

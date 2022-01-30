@@ -14,25 +14,22 @@ public:
 
 	virtual ~GuiManager();
 
-	bool Awake(pugi::xml_node&);
-
 	bool Start();
 
 	bool Update(float dt);
 
-	bool PostUpdate();
+	bool Draw();
 
 	bool CleanUp();
 
-	GuiControl* CreateGuiControl(GuiControlType type, int id, SDL_Rect bounds, Module* observer, SDL_Rect sliderBounds = { 0,0,0,0 });
+	GuiControl* CreateGuiControl(GuiControlType type, int id, SDL_Rect bounds, Module* observer, SDL_Texture* texture, SDL_Texture* sliderTexture, SDL_Rect sliderBounds = { 0,0,0,0 });
 
-	void DestroyGuiControl(GuiControl* entity);
+	void DestroyGuiControl(int id);
 
-	void AddGuiControl(GuiControl* entity);
+	void AddGuiControl(int id);
 
-	void UpdateAll(float dt, bool doLogic);
+	bool UpdateAll(float dt, bool logic);
 
-	void DrawAll();
 public:
 
 	List<GuiControl*> controls;

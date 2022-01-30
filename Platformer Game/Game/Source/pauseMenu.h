@@ -1,27 +1,24 @@
-
-
-#ifndef __INTRO_H__
-#define __INTRO_H__
+#ifndef __PAUSE_MENU_H__
+#define __PAUSE_MENU_H__
 
 #include "Module.h"
-#include "Animation.h"
 #include "GuiButton.h"
 #include "GuiCheckbox.h"
 #include "GuiSlider.h"
 
 struct SDL_Texture;
 
-class SceneIntro : public Module
+class PauseMenu : public Module
 {
 public:
 
-	SceneIntro();
+	PauseMenu();
 
 	// Destructor
-	virtual ~SceneIntro();
+	virtual ~PauseMenu();
 
 	// Called before render is available
-	bool Awake(pugi::xml_node& config);
+	bool Awake();
 
 	// Called before the first frame
 	bool Start();
@@ -38,43 +35,25 @@ public:
 	// Called before quitting
 	bool CleanUp();
 
-	bool LoadState(pugi::xml_node&);
-	bool SaveState(pugi::xml_node&) const;
-	
-	int sCounter;
-	int delay;
-	int delaySaved;
-	bool nextImage;
-	bool nextImageSaved;
-
-
-	bool introMenu = false;
-	bool options = false;
-	bool credits = false;
-
-	virtual bool OnGuiMouseClickEvent(GuiControl* control);
-
-	bool exitRequested;
-
-	bool SavedGame;
+	bool OnGuiMouseClickEvent(GuiControl* control);
 
 	int buttonClickedFx = 0;
-	int buttonNotClickedFx = 0;
+	int sceneTimer;
+	int pauseTimer;
+	int noPauseTimer;
+	bool options = false;
+	bool TitleTransition = false;
 
-	bool titleScreenWait = true;
 
-	bool Vsync = false;
-	bool FullScreen = false;
-
-	iPoint position;
-	
 private:
-	
+
+	SDL_Texture* PauseFrame;
+
 	SDL_Texture* startButton;
 	SDL_Texture* titleIntro;
 	SDL_Texture* backgroundIntro;
 	SDL_Texture* loading;
-	
+
 	//Menu Buttons
 	SDL_Texture* playButton;
 	SDL_Texture* resumeButton;
@@ -84,6 +63,7 @@ private:
 	SDL_Texture* creditsButton;
 	SDL_Texture* returnButton;
 	SDL_Texture* exitButton;
+	SDL_Texture* pauseMenuF;
 	SDL_Texture* button;
 
 	SDL_Texture* playButtonTouch;
@@ -123,23 +103,18 @@ private:
 	GuiCheckBox* VSyncBoxG;
 	GuiCheckBox* fullScreenBoxG;
 	GuiCheckBox* fullScreenBoxSelectedG;
-	
+
 	//Sliders
 	SDL_Texture* baseSlider_fx;
 	SDL_Texture* baseSlider_music;
 
-	SDL_Texture* baseSlider_fxTouch;
-	SDL_Texture* baseSlider_musicTouch;
-
 	SDL_Texture* sliderSelector;
-	SDL_Texture* sliderSelectorTouch;
+	SDL_Texture* sliderSelectorOnIdle;
+	SDL_Texture* sliderSelectorPressed;
 
-	GuiSlider* musicVolumeSlider;
-	GuiSlider* fxVolumeSlider;
-
-	
-
-	
+	GuiSlider* musicVolumeSliderG;
+	GuiSlider* fxVolumeSliderG;
 };
 
-#endif // __SCENE_H__
+#endif // __SCENE_FOREST_H__
+#pragma once

@@ -1,85 +1,102 @@
 #include "GuiButton.h"
-#include "Input.h"
-#include "App.h"
 #include "Render.h"
-GuiButton::GuiButton(uint32 id, SDL_Rect bounds, SDL_Texture* text) : GuiControl(GuiControlType::BUTTON, id)
+#include "App.h"
+#include "Audio.h"
+#include "SceneIntro.h"
+#include <iostream>
+using namespace std;
+
+GuiButton::GuiButton(uint32 id, SDL_Rect bounds,SDL_Texture* texture) : GuiControl(GuiControlType::BUTTON, id)
 {
-    this->id = id;
-    this->bounds = bounds;
-    this->texture = text;
+	this->bounds = bounds;
+	this->texture = texture;
+	canClick = true;
+	drawBasic = false;
 }
 
 GuiButton::~GuiButton()
 {
+
 }
 
 bool GuiButton::Update(float dt)
 {
-    if (state != GuiControlState::DISABLED)
-    {
-        int mouseX, mouseY;
-        app->input->GetMousePosition(mouseX, mouseY);
+	if (state != GuiControlState::DISABLED)
+	{
+		// L14: TODO 3_D: Update the state of the GUiButton according to the mouse position
+		int mouseX, mouseY;
+		app->input->GetMousePosition(mouseX, mouseY);
 
-        if ((mouseX > bounds.x) && (mouseX < (bounds.x + bounds.w)) &&
-            (mouseY > bounds.y) && (mouseY < (bounds.y + bounds.h)))
-        {
-            if (state == GuiControlState::NORMAL)
-            {
-                //app->audio->PlayFx(MouseOver){
-            }
-            if (state != GuiControlState::PRESSED)
-            {
-                state = GuiControlState::FOCUSED;
-            }
-            else
-            {
-                //app->audio->PlayFx(Pressed)
-            }
+		if ((mouseX > bounds.x && mouseX < (bounds.x + bounds.w)) &&
+			(mouseY > bounds.y && mouseY < bounds.y + bounds.h))
+		{
+			state = GuiControlState::FOCUSED;
 
-            if (app->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KeyState::KEY_REPEAT)
-            {
-                state = GuiControlState::PRESSED;
-            }
+			if (app->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KeyState::KEY_UP)
+			{
+				state = GuiControlState::PRESSED;
+				//cout << "Pressed " << endl;
+				NotifyObserver();
+			}
+			else if (app->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KeyState::KEY_REPEAT)
+			{
+				state = GuiControlState::SELECTED;
+				//cout << "Selected " << endl;
+				//NotifyObserver();
+			}
 
-            if (app->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KeyState::KEY_UP)
-            {
-                NotifyObserver();
-            }
-        }
-        else state = GuiControlState::NORMAL;
-    }
+		}
+		else
+		{
+			state = GuiControlState::NORMAL;
+		}
 
-    return false;
+	}
+
+	return false;
 }
 
 bool GuiButton::Draw(Render* render)
 {
-    switch (state)
-    {
-    case GuiControlState::DISABLED:
-        break;
-    case GuiControlState::NORMAL:
-        if (app->render->guiDebug)
-        {
-            app->render->DrawRectangle(bounds, 0, 255, 0, 100);
-        }
-        break;
-    case GuiControlState::FOCUSED:
-        // app->render->DrawTexture(texture, bounds.x, bounds.y, &SDL_Rect({ 0,0,9,7 }));
-        if (app->render->guiDebug)
-        {
-            app->render->DrawRectangle(bounds, 255, 255, 0, 100);
-        }
-        break;
-    case GuiControlState::PRESSED:
-        // app->render->DrawTexture(texture, bounds.x, bounds.y, &SDL_Rect({ 9,0,9,7 }));
-        break;
-    case GuiControlState::SELECTED:
-        app->render->DrawTexture(texture, bounds.x, bounds.y, &SDL_Rect({ 9,0,9,7 }));
-        break;
-    default:
-        break;
-    }
 
-    return true;
+
+	// Draw the right button depending on state
+	switch (state)
+	{
+
+	case GuiControlState::DISABLED:
+	{
+
+		render->DrawTexture2(texture, bounds.x, bounds.y, NULL); //<--Usar esto
+	} break;
+
+	case GuiControlState::NORMAL:
+	{
+
+		render->DrawTexture2(texture, bounds.x, bounds.y, NULL); //<--Usar esto
+	} break;
+
+	//L14: TODO 4: Draw the button according the GuiControl State
+	case GuiControlState::FOCUSED:
+	{
+
+		render->DrawTexture2(texture, bounds.x, bounds.y, NULL); //<--Usar esto
+	} break;
+	case GuiControlState::PRESSED:
+	{
+
+		render->DrawTexture2(texture, bounds.x, bounds.y, NULL); //<--Usar esto
+	} break;
+
+	/******/
+
+	case GuiControlState::SELECTED:
+	{
+		render->DrawTexture2(texture, bounds.x, bounds.y, NULL); //<--Usar esto
+	}break;
+	default:
+		break;
+	}
+
+	return false;
 }
