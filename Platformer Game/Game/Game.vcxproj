@@ -111,6 +111,7 @@
     </ClCompile>
     <ClCompile Include="Source\ModulePlayer.cpp" />
     <ClCompile Include="Source\Pathfinding.cpp" />
+    <ClCompile Include="Source\pauseMenu.cpp" />
     <ClCompile Include="Source\Scene.cpp" />
     <ClCompile Include="Source\Render.cpp" />
     <ClCompile Include="Source\SceneIntro.cpp" />
@@ -135,6 +136,7 @@
     <ClInclude Include="Source\ModulePhysics.h" />
     <ClInclude Include="Source\ModulePlayer.h" />
     <ClInclude Include="Source\Pathfinding.h" />
+    <ClInclude Include="Source\pauseMenu.h" />
     <ClInclude Include="Source\Scene.h" />
     <ClInclude Include="Source\Audio.h" />
     <ClInclude Include="Source\Input.h" />

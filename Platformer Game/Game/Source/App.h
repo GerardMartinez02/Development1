@@ -22,6 +22,7 @@ class PathFinding;
 class SceneIntro;
 class Map;
 class GuiManager;
+class PauseMenu;
 
 class ModuleFadeToBlack;
 class ModuleFonts;
@@ -77,6 +78,8 @@ public:
 	void LoadGameRequest();
 	void SaveGameRequest() const;
 
+	void SaveGameAudio();
+
 private:
 
 	// Load config file
@@ -116,7 +119,7 @@ public:
 	GameOver* gameOver;
 	Map* map;
 	GuiManager* guiManager;
-	
+	PauseMenu* pauseMenu;
 	
 	ModuleFadeToBlack* fadeToBlack;
 	ModulePhysics* physics;
@@ -152,6 +155,8 @@ private:
 
 	mutable bool saveGameRequested;
 	bool loadGameRequested;
+
+	bool saveGameAudioRequest;
 
 	AuxTimer* frameDuration;
 	AuxTimer* ptimer;

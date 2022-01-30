@@ -40,6 +40,8 @@ public:
 
 	bool LoadState(pugi::xml_node&);
 	bool SaveState(pugi::xml_node&) const;
+
+
 	
 	int sCounter;
 	int delay;

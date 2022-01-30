@@ -53,6 +53,7 @@ public:
 	b2CircleShape pCircle;
 	b2PolygonShape pBox;
 
+	bool pauseMenu = false;
 
 	int speed = 1;
 	bool jumpState = false;

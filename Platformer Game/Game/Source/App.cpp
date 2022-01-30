@@ -19,6 +19,7 @@
 #include "Coins.h"
 #include "ModuleFonts.h"
 #include "GuiManager.h"
+#include "pauseMenu.h"
 
 #include "Defs.h"
 #include "Log.h"
@@ -44,6 +45,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	gameOver = new GameOver();
 	map = new Map();
 	guiManager = new GuiManager();
+	pauseMenu = new PauseMenu();
 	
 	physics = new ModulePhysics();
 	fonts = new ModuleFonts();
@@ -73,6 +75,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(coins);
 	AddModule(guiManager);
 	AddModule(fonts);
+	AddModule(pauseMenu);
 
 	// Render last to swap buffer
 	AddModule(render);

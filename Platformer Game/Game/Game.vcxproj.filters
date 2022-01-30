@@ -53,6 +53,7 @@
       <Filter>importedModules</Filter>
     </ClCompile>
     <ClCompile Include="Source\enemyRedBird.cpp" />
+    <ClCompile Include="Source\pauseMenu.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Window.h" />
@@ -131,6 +132,7 @@
       <Filter>importedModules</Filter>
     </ClInclude>
     <ClInclude Include="Source\enemyRedBird.h" />
+    <ClInclude Include="Source\pauseMenu.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="External">
