@@ -372,15 +372,25 @@ bool ModulePlayer::PostUpdate()
 		app->fonts->BlitText(520, 60, timeFont, timeText);
 	}
 	
-
-	if (coinTouched1 == true)
+	if (playerHealth != 0)
 	{
-		app->render->DrawTexture(letterP, 500, 11.5, NULL, 0, true);
-		app->render->DrawTexture(letterI, 520, 10, NULL, 0, true);
-		app->render->DrawTexture(letterZ, 540, 10, NULL, 0, true);
-		app->render->DrawTexture(letterA, 560, 10, NULL, 0, true);
+		if (coinTouched1 == true)
+		{
+			app->render->DrawTexture(letterP, 500, 11.5, NULL, 0, true);
+		}
+		if (coinTouched2 == true)
+		{
+			app->render->DrawTexture(letterI, 520, 10, NULL, 0, true);
+		}
+		if (coinTouched3 == true)
+		{
+			app->render->DrawTexture(letterZ, 540, 10, NULL, 0, true);
+		}
+		if (coinTouched4 == true)
+		{
+			app->render->DrawTexture(letterA, 560, 10, NULL, 0, true);
+		}
 	}
-	
 
 	if (playerHealth == 0)
 	{

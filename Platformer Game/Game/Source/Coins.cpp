@@ -55,9 +55,9 @@ bool Coins::Start()
 	destroyed = false;
 
 	coinPositionOne = app->map->MapToWorld(10, 69);
-	coinPositionTwo = app->map->MapToWorld(20, 69);
-	coinPositionThree = app->map->MapToWorld(30, 69);
-	coinPositionFour = app->map->MapToWorld(40, 69);
+	coinPositionTwo = app->map->MapToWorld(88, 71);
+	coinPositionThree = app->map->MapToWorld(122, 65);
+	coinPositionFour = app->map->MapToWorld(156, 68);
 
 	coinBody = app->physics->CreateRectangleSensor(coinPositionOne.x +10, coinPositionOne.y+10, 21, 21, 1);
 	coinBody->listener = this;
