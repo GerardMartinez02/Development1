@@ -135,6 +135,7 @@ public:
 	float dt = 0.0f;
 	uint32 FPS = 0;
 
+
 private:
 
 	int argc;
@@ -156,7 +157,7 @@ private:
 	mutable bool saveGameRequested;
 	bool loadGameRequested;
 
-	bool saveGameAudioRequest;
+	bool saveGameAudioRequested;
 
 	AuxTimer* frameDuration;
 	AuxTimer* ptimer;

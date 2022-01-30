@@ -397,6 +397,11 @@ void App::SaveGameRequest() const
 	saveGameRequested = true;
 }
 
+void App::SaveGameAudio()
+{
+	saveGameAudioRequested = true;
+}
+
 // ---------------------------------------
 // L02: DONE 5: Create a method to actually load an xml file
 // then call all the modules to load themselves

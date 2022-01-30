@@ -491,7 +491,7 @@ bool SceneIntro::OnGuiMouseClickEvent(GuiControl* control)
 		if (control->id == 6 && returnButtonG->canClick == true)
 		{
 			app->audio->PlayFx(buttonClickedFx, 0);
-			/*app->SaveGameAudio();*/
+			app->SaveGameAudio();
 			options = false;
 			credits = false;
 			introMenu = true;
