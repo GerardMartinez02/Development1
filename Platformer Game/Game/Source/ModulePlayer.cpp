@@ -120,7 +120,7 @@ bool ModulePlayer::Start()
 	//laserFx = app->audio->LoadFx("Assets/Fx/laser.wav");
 	//explosionFx = app->audio->LoadFx("Assets/Fx/explosion.wav");
 
-	destroyed = false;
+	//destroyed = false;
 
 	if (checkpointReached == false)
 	{
@@ -170,6 +170,7 @@ bool ModulePlayer::Start()
 
 	char lookupTable[] = { "0123456789" };
 	timeFont = app->fonts->Load("Assets/textures/ui/numbers.png", lookupTable, 1);
+	scoreFont = app->fonts->Load("Assets/textures/ui/numbers2.png", lookupTable, 1);
 	//timeFont = App->fonts->Load("Assets/Art/UI/numbers2.png", lookupTable, 1);
 	//-----
 
@@ -325,7 +326,12 @@ bool ModulePlayer::PostUpdate()
 
 	// Draw UI (score) --------------------------------------
 	//sprintf_s(scoreText, 10, "%5d", score);
+	
+	
 	sprintf_s(timeText, 10, "%3d", timeCounter);
+	sprintf_s(scoreText, 10, "%3d", score);
+	
+	
 
 	// TODO 3: Blit the text of the score in at the bottom of the screen
 	//app->fonts->BlitText(58, 248, scoreFont, scoreText);
@@ -370,6 +376,7 @@ bool ModulePlayer::PostUpdate()
 	if (playerHealth != 0)
 	{
 		app->fonts->BlitText(520, 60, timeFont, timeText);
+		app->fonts->BlitText(30, 50, scoreFont, scoreText);
 	}
 	
 	if (playerHealth != 0)
@@ -408,6 +415,7 @@ bool ModulePlayer::PostUpdate()
 		coinTouched2 = false;
 		coinTouched3 = false;
 		coinTouched4 = false;
+		score = 0;
 	}
 
 	return true;
@@ -431,6 +439,7 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 		coinTouched2 = false;
 		coinTouched3 = false;
 		coinTouched4 = false;
+		score = 0;
 	}
 	if (bodyA->type == PLAYER && bodyB->type == CHECKPOINT)
 	{
@@ -529,6 +538,7 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 		else if (jumpsCount == 1 || jumpsCount == 0)
 		{
 			app->enemyBird->Disable();
+			score = score + 25;
 		}
 	}
 	if (bodyA->type == PLAYER && bodyB->type == DRAGON && app->scene->godMode == false)
@@ -574,6 +584,7 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 		else if (jumpsCount == 1 || jumpsCount == 0)
 		{
 			app->enemyDragon->Disable();
+			score = score + 25;
 		}
 	}
 	if (bodyA->type == PLAYER && bodyB->type == COIN1)
@@ -584,6 +595,7 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 		/*app->coins->Disable();*/
 
 		coinTouched1 = true;
+		score = score + 100;
 	}
 	if (bodyA->type == PLAYER && bodyB->type == COIN2)
 	{
@@ -593,6 +605,7 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 		/*app->coins->Disable();*/
 
 		coinTouched2 = true;
+		score = score + 100;
 	}
 	if (bodyA->type == PLAYER && bodyB->type == COIN3)
 	{
@@ -602,6 +615,7 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 		/*app->coins->Disable();*/
 
 		coinTouched3 = true;
+		score = score + 100;
 	}
 	if (bodyA->type == PLAYER && bodyB->type == COIN4)
 	{
@@ -611,6 +625,7 @@ void ModulePlayer::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 		/*app->coins->Disable();*/
 
 		coinTouched4 = true;
+		score = score + 100;
 	}
 }
 
